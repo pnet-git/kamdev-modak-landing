@@ -937,7 +937,7 @@ footer .container { max-width: 900px; }
 
     <!-- PRODUCT IMAGE PLACEHOLDER -->
     <div class="hero-product-image">
-      [PRODUCT_IMAGE_1 — Kamdev Modak jar, hero shot]
+      <img src="hero-product.jpg" alt="Kamdev Modak herbal supplement" style="width:100%; max-width:380px; border-radius:24px; object-fit:cover;">
     </div>
 
     <button class="cta-primary" onclick="openModal('hero')">👉 Show Me How It Works</button>
@@ -1048,6 +1048,11 @@ footer .container { max-width: 900px; }
     <div class="section-eyebrow">The Formula</div>
     <h2 class="section-title" style="margin-left:auto; margin-right:auto;">5 Ancient Herbs. One Modern Formula. <span class="accent">Zero Compromises.</span></h2>
 
+    <!-- COMBINED HERBS IMAGE -->
+    <div style="text-align:center; margin-bottom:50px;">
+      <img src="herbs-layout.jpg" alt="Ayurvedic Jatibuti - 5 herbs in Kamdev Modak" style="width:100%; max-width:600px; border-radius:20px; box-shadow: 0 8px 24px rgba(91, 14, 37, 0.12);">
+    </div>
+
     <div class="herbs-grid">
       <div class="herb-card">
         <div class="herb-image">[HERB_1]</div>
@@ -1148,6 +1153,11 @@ footer .container { max-width: 900px; }
 
     <p class="pricing-recommendation">💡 Most patients see real results at the 30-day mark. We recommend the Monthly Pack for first-time users.</p>
 
+    <!-- MODAK LIFESTYLE IMAGE -->
+    <div style="text-align:center; margin-bottom:40px; margin-top:40px;">
+      <img src="modak-premium.jpg" alt="Kamdev Modak premium product lifestyle" style="width:100%; max-width:500px; border-radius:20px; box-shadow: 0 8px 24px rgba(91, 14, 37, 0.12);">
+    </div>
+
     <div class="risk-strip">
       <div class="risk-item"><span class="emoji">🛡️</span> Unopened pack refund within 7 days</div>
       <div class="risk-item"><span class="emoji">👨‍⚕️</span> Free Dr. Madhu consultation if no results</div>
@@ -1200,6 +1210,12 @@ footer .container { max-width: 900px; }
   <div class="container">
     <h2>You've Read Enough. <span class="accent">Now Decide.</span></h2>
     <p class="final-cta-sub">72 hours from now, you'll either feel the difference — or still be reading articles about it.</p>
+    
+    <!-- MODAK FINAL CTA IMAGE -->
+    <div style="text-align:center; margin-bottom:40px; margin-top:30px;">
+      <img src="modak-lifestyle-2.jpg" alt="Kamdev Modak - start your transformation" style="width:100%; max-width:450px; border-radius:20px; box-shadow: 0 12px 32px rgba(201,161,74,0.3);">
+    </div>
+    
     <button class="cta-primary" onclick="openModal('final')">👉 Start My 72-Hour Transformation</button>
     <div class="urgency-strip">
       <span>⚡ Trial pack stock limited</span>
@@ -1290,8 +1306,10 @@ function closeModalOutside(e) {
 }
 
 // ==========================================
-// FORM HANDLER — REPLACE WITH KIT INTEGRATION
+// FORM HANDLER — REDIRECT TO ECOM
 // ==========================================
+const ECOM_PRODUCT_URL = 'https://drmadhusudan.com/shop/kamdev-modak/'; // ← UPDATE THIS WITH ACTUAL URL
+
 function handleSubmit(e) {
   e.preventDefault();
   
@@ -1309,24 +1327,14 @@ function handleSubmit(e) {
   // ==========================================
   // KIT.COM INTEGRATION (To be added by Akassh)
   // ==========================================
-  // 1. Send `data` to Kit.com via their API or form action
-  // 2. After successful submission, redirect to ecom page
+  // 1. Replace the form with Kit's embed code
+  // 2. Kit will auto-capture email + name + phone
+  // 3. Kit will auto-redirect to ECOM_PRODUCT_URL
   // ==========================================
   
-  // Redirect logic (update these URLs once ecom links are ready)
-  const redirectUrls = {
-    'trial': 'https://drmadhusudan.com/product/kamdev-modak/?pack=trial',
-    'monthly': 'https://drmadhusudan.com/product/kamdev-modak/?pack=monthly',
-    'quarterly': 'https://drmadhusudan.com/product/kamdev-modak/?pack=3-month',
-    'hero': 'https://drmadhusudan.com/product/kamdev-modak/',
-    'final': 'https://drmadhusudan.com/product/kamdev-modak/'
-  };
-  
-  const redirectUrl = redirectUrls[selectedPack] || 'https://drmadhusudan.com/product/kamdev-modak/';
-  
-  // Brief delay so user sees confirmation, then redirect
-  alert('Thank you! Redirecting you to checkout...');
-  window.location.href = redirectUrl;
+  // For now: redirect to ecom product page
+  // Once Kit is integrated, Kit handles the redirect
+  window.location.href = ECOM_PRODUCT_URL;
 }
 
 // Close modal on ESC key
