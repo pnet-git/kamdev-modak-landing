@@ -547,7 +547,7 @@ body {
 .discount-badge {
   position: absolute;
   top: -12px;
-  right: 20px;
+  left: 20px;
   background: var(--gold);
   color: var(--maroon);
   padding: 6px 14px;
@@ -708,6 +708,128 @@ body {
   .exit-popup-content {
     padding: 30px 20px;
     max-width: 90%;
+  }
+}
+
+/* === GUARANTEE SECTION === */
+.guarantee-section {
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.guarantee-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(201,161,74,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.guarantee-section::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201,161,74,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.guarantee-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.guarantee-badge {
+  display: inline-block;
+  background: rgba(201,161,74,0.2);
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.guarantee-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.guarantee-section p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.95);
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.guarantee-highlight {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+.guarantee-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+  text-align: left;
+}
+
+.guarantee-point {
+  background: rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid rgba(201,161,74,0.3);
+  backdrop-filter: blur(10px);
+}
+
+.guarantee-point-icon {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.guarantee-point h3 {
+  font-size: 18px;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.guarantee-point p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .guarantee-section {
+    padding: 60px 20px;
+  }
+
+  .guarantee-section h2 {
+    font-size: 32px;
+  }
+
+  .guarantee-section p {
+    font-size: 16px;
   }
 }
 .pricing {
@@ -1403,6 +1525,39 @@ footer .container { max-width: 900px; }
 </section>
 
 <!-- ============================================ -->
+<!-- SECTION 7.5: GUARANTEE                       -->
+<!-- ============================================ -->
+<section class="guarantee-section reveal">
+  <div class="guarantee-container">
+    <div class="guarantee-badge">✓ Our Promise</div>
+    <h2>Results in 72 Hours. Or Your Consultation is Free.</h2>
+    <p>
+      We're <span class="guarantee-highlight">that confident</span> in Kamdev Modak. You get real results within 72 hours — or you don't pay for a consultation with Dr. Madhu Sudan himself. 
+      <br><br>
+      No money back. No unopened pack nonsense. Just <span class="guarantee-highlight">results or a free expert session</span> to find what works for you.
+    </p>
+    
+    <div class="guarantee-points">
+      <div class="guarantee-point">
+        <div class="guarantee-point-icon">⏱️</div>
+        <h3>72-Hour Promise</h3>
+        <p>Feel noticeable difference in energy, confidence, and performance within 72 hours or claim your free consultation.</p>
+      </div>
+      <div class="guarantee-point">
+        <div class="guarantee-point-icon">👨‍⚕️</div>
+        <h3>Free Dr. Madhu Consultation</h3>
+        <p>Get 60 minutes with Dr. Madhu Sudan directly — in clinic or online. No cost. No questions asked.</p>
+      </div>
+      <div class="guarantee-point">
+        <div class="guarantee-point-icon">🎯</div>
+        <h3>Results or Guidance</h3>
+        <p>Either Kamdev Modak transforms you, or Dr. Madhu personalizes a plan for your specific needs. You win either way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
 <!-- SECTION 8: FAQ                               -->
 <!-- ============================================ -->
 <section class="faq">
@@ -1620,6 +1775,10 @@ document.addEventListener('mouseleave', function(e) {
 
 function closeExitPopup() {
   document.getElementById('exitPopup').classList.remove('active');
+  // Scroll to pricing section
+  setTimeout(() => {
+    document.querySelector('.pricing').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 300);
 }
 
 document.getElementById('exitPopup').addEventListener('click', function(e) {
@@ -1637,14 +1796,23 @@ const indianStates = [
   'Gurgaon', 'Noida', 'Cochin', 'Visakhapatnam', 'Nagpur', 'Vadodara'
 ];
 
-const firstNames = [
-  'Rajesh', 'Priya', 'Amit', 'Sneha', 'Vikram', 'Anjali', 'Arjun', 'Deepika',
-  'Rohan', 'Aisha', 'Nikhil', 'Pooja', 'Sameer', 'Kavya', 'Kunal', 'Isha',
-  'Harsh', 'Ritika', 'Dev', 'Neha', 'Akshay', 'Shruti', 'Varun', 'Ananya'
+const maleNames = [
+  'Rajesh', 'Amit', 'Vikram', 'Arjun', 'Rohan', 'Sameer', 'Kunal', 'Dev',
+  'Varun', 'Akshay', 'Harsh', 'Nikhil', 'Anand', 'Deepak', 'Sanjay', 'Ravi',
+  'Manish', 'Arun', 'Vikash', 'Pradeep', 'Suresh', 'Ramesh', 'Ashok', 'Vishal',
+  'Aditya', 'Rahul', 'Naveen', 'Siddharth', 'Karan', 'Aryan'
+];
+
+const femaleNames = [
+  'Priya', 'Sneha', 'Anjali', 'Deepika', 'Aisha', 'Ritika', 'Isha', 'Neha',
+  'Ananya', 'Pooja', 'Kavya', 'Shruti'
 ];
 
 function getRandomName() {
-  const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+  const isMale = Math.random() < 0.8; // 80% male
+  const firstName = isMale 
+    ? maleNames[Math.floor(Math.random() * maleNames.length)]
+    : femaleNames[Math.floor(Math.random() * femaleNames.length)];
   const state = indianStates[Math.floor(Math.random() * indianStates.length)];
   return { firstName, state };
 }
