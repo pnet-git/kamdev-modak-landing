@@ -1323,6 +1323,8 @@ function handleFormSubmit(e) {
   
   // Get selected pack
   const pack = localStorage.getItem('selectedPack') || 'monthly';
+  console.log('Form submitted. Selected pack:', pack);
+  console.log('Razorpay link:', RAZORPAY_LINKS[pack]);
   
   // Collect form data
   const formData = new FormData(e.target);
@@ -1335,7 +1337,9 @@ function handleFormSubmit(e) {
   
   // Redirect to Razorpay
   setTimeout(() => {
-    window.location.href = RAZORPAY_LINKS[pack] || RAZORPAY_LINKS['monthly'];
+    const finalLink = RAZORPAY_LINKS[pack] || RAZORPAY_LINKS['monthly'];
+    console.log('Redirecting to:', finalLink);
+    window.location.href = finalLink;
   }, 300);
 }
 
