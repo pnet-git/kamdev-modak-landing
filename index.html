@@ -181,13 +181,14 @@ section {
   margin: 0 auto;
 }
 .section-eyebrow {
-  display: inline-block;
+  display: block;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 12px;
+  text-align: center;
 }
 .section-title {
   font-size: clamp(28px, 4vw, 44px);
@@ -546,18 +547,24 @@ body {
 /* === DISCOUNT BADGE ON PRICE CARDS === */
 .discount-badge {
   position: absolute;
-  top: -12px;
-  left: 20px;
+  bottom: auto;
+  top: 16px;
+  left: 16px;
   background: var(--gold);
   color: var(--maroon);
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 800;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   box-shadow: var(--shadow-md);
   z-index: 10;
+}
+
+.price-card.featured .discount-badge {
+  left: auto;
+  right: 16px;
 }
 
 .price-original {
@@ -1486,7 +1493,7 @@ footer .container { max-width: 900px; }
       </div>
 
       <div class="price-card featured">
-        <div class="discount-badge" style="left: auto; right: 20px;">-20% OFF</div>
+        <div class="discount-badge">-20% OFF</div>
         <span class="price-badge">⭐ Most Popular</span>
         <div class="price-icon">🔥</div>
         <h3>Monthly Pack</h3>
@@ -1558,7 +1565,7 @@ footer .container { max-width: 900px; }
 <!-- ============================================ -->
 <section class="faq">
   <div class="container reveal">
-    <div class="section-eyebrow" style="text-align: center;">Your Questions</div>
+    <div class="section-eyebrow">Your Questions</div>
     <h2 class="section-title" style="text-align:center; margin-left:auto; margin-right:auto;">Everything You Need To Know.</h2>
 
     <div class="faq-list">
