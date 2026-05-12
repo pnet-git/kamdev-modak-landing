@@ -357,13 +357,13 @@
     
     <form id="leadForm" onsubmit="handleFormSubmit(event)">
       <div class="form-group">
-        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="email" name="email_address" placeholder="Email Address" required>
       </div>
       <div class="form-group">
-        <input type="text" name="firstName" placeholder="First Name" required>
+        <input type="text" name="fields[first_name]" placeholder="First Name" required>
       </div>
       <div class="form-group">
-        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <input type="tel" name="fields[phone_number]" placeholder="Phone Number" required>
       </div>
       <button type="submit" class="form-submit">Continue To Checkout →</button>
     </form>
