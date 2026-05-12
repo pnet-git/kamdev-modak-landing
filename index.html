@@ -1339,10 +1339,10 @@ function handleFormSubmit(e) {
     return;
   }
   
-  // Phone validation (at least 10 digits)
+  // Phone validation (exactly 10 digits for India)
   const phoneDigits = phone.replace(/\D/g, '');
-  if (phoneDigits.length < 10) {
-    alert('Please enter a valid phone number');
+  if (phoneDigits.length !== 10) {
+    alert('Please enter a valid 10-digit phone number');
     return;
   }
   
