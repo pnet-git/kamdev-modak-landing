@@ -1,392 +1,1304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kamdev Modak - Ayurvedic ED & Stamina Solution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --maroon: #8B1538;
-      --maroon-dark: #5C0E25;
-      --cream: #FAF6EE;
-      --cream-dark: #EBE5D4;
-      --gold: #C9A14A;
-      --ink: #2A1810;
-      --ink-soft: #5C4836;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
-    
-    /* MODAL */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(42,24,16,0.6);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(4px);
-    }
-    .modal-overlay.active {
-      display: flex !important;
-    }
-    .modal {
-      background: var(--cream);
-      border-radius: 16px;
-      padding: 48px 32px;
-      max-width: 500px;
-      width: 90vw;
-      box-shadow: 0 20px 60px rgba(91, 14, 37, 0.25);
-      position: relative;
-      animation: slideUp 0.3s ease-out;
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .modal-close {
-      position: absolute;
-      top: 16px; right: 16px;
-      background: none;
-      border: none;
-      font-size: 32px;
-      color: var(--ink-soft);
-      cursor: pointer;
-      padding: 0;
-      width: 40px;
-      height: 40px;
-    }
-    .modal-close:hover { color: var(--maroon); }
-    .modal h3 {
-      font-family: 'Cormorant Garamond';
-      font-size: 32px;
-      margin-bottom: 12px;
-      color: var(--maroon-dark);
-    }
-    .modal p {
-      color: var(--ink-soft);
-      margin-bottom: 24px;
-      line-height: 1.6;
-      font-size: 15px;
-    }
-    .modal-trust {
-      text-align: center;
-      color: var(--ink-soft);
-      font-size: 13px;
-      margin-top: 20px;
-    }
-    .form-group {
-      margin-bottom: 16px;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 14px 16px;
-      border: 2px solid rgba(139, 21, 56, 0.15);
-      border-radius: 8px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      color: var(--ink);
-    }
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--maroon);
-      box-shadow: 0 0 0 3px rgba(139, 21, 56, 0.08);
-    }
-    .form-group input::placeholder {
-      color: var(--ink-soft);
-      opacity: 0.7;
-    }
-    .form-submit {
-      width: 100%;
-      padding: 14px 28px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-family: 'DM Sans', sans-serif;
-      letter-spacing: 0.3px;
-      box-shadow: 0 8px 24px rgba(139, 21, 56, 0.25);
-      transition: all 0.3s ease;
-    }
-    .form-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(139, 21, 56, 0.35);
-    }
-    .form-submit:active { transform: translateY(0); }
-    
-    /* HERO */
-    .hero {
-      padding: 80px 20px 60px;
-      text-align: center;
-      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
-    }
-    .hero-content { max-width: 900px; margin: 0 auto; }
-    .hero h1 {
-      font-family: 'Cormorant Garamond';
-      font-size: clamp(36px, 6vw, 56px);
-      margin-bottom: 16px;
-      color: var(--maroon);
-      font-weight: 700;
-    }
-    .hero-sub {
-      font-size: 18px;
-      color: var(--ink-soft);
-      margin: 20px auto 40px;
-      max-width: 700px;
-      line-height: 1.7;
-    }
-    .hero img {
-      width: 100%;
-      max-width: 350px;
-      border-radius: 20px;
-      margin: 30px auto;
-      box-shadow: 0 12px 32px rgba(201, 161, 74, 0.2);
-    }
-    .cta-primary {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-      color: white;
-      padding: 18px 48px;
-      border-radius: 50px;
-      font-size: 17px;
-      font-weight: 700;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(139, 21, 56, 0.35);
-      transition: all 0.3s ease;
-      font-family: 'DM Sans', sans-serif;
-    }
-    .cta-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(139, 21, 56, 0.45);
-    }
-    
-    /* SECTIONS */
-    section {
-      padding: 70px 20px;
-      background: white;
-    }
-    section:nth-child(odd) { background: var(--cream); }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond';
-      font-size: clamp(32px, 5vw, 48px);
-      margin-bottom: 40px;
-      color: var(--maroon);
-      text-align: center;
-    }
-    .section-title .accent { font-style: italic; }
-    
-    /* PRICING GRID */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-    .price-card {
-      padding: 40px;
-      border-radius: 16px;
-      text-align: center;
-      background: white;
-      border: 2px solid rgba(139, 21, 56, 0.1);
-      transition: all 0.3s ease;
-    }
-    .price-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--maroon);
-      box-shadow: 0 12px 32px rgba(139, 21, 56, 0.15);
-    }
-    .price-card.featured {
-      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-      color: white;
-      transform: scale(1.05);
-    }
-    .price-card h3 {
-      font-family: 'Cormorant Garamond';
-      font-size: 28px;
-      margin-bottom: 16px;
-      font-weight: 700;
-    }
-    .price-amount {
-      font-size: 42px;
-      font-weight: 700;
-      margin: 16px 0;
-      color: var(--maroon);
-    }
-    .price-card.featured .price-amount { color: var(--gold); }
-    .price-card p {
-      font-size: 14px;
-      margin-bottom: 24px;
-      opacity: 0.8;
-    }
-    
-    /* HERO TRUST */
-    .hero-trust {
-      margin-top: 32px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      color: var(--ink-soft);
-    }
-    .hero-trust span::before {
-      content: '✓ ';
-      color: var(--maroon);
-      font-weight: 700;
-    }
-    
-    /* GRID CONTENT */
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      margin-top: 40px;
-    }
-    @media (max-width: 768px) {
-      .content-grid { grid-template-columns: 1fr; }
-      .price-card.featured { transform: scale(1); }
-    }
-    
-    /* FOOTER */
-    footer {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 40px 20px;
-      text-align: center;
-      font-size: 13px;
-    }
-    footer a { color: var(--gold); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kamdev Modak — The Ayurvedic Answer To Viagra | Dr. Madhu Sudan</title>
+<meta name="description" content="Feel the difference in 72 hours. Formulated by Dr. Madhu Sudan, India's leading sexologist. 100% Ayurvedic. Zero side effects.">
+
+<!-- Fonts: Cormorant Garamond (serif, heritage) + Inter (clean body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --maroon: #8B1538;
+  --maroon-dark: #5C0E25;
+  --gold: #C9A14A;
+  --gold-light: #E5C77E;
+  --cream: #FAF6EE;
+  --cream-dark: #F0E9DC;
+  --ink: #2A1810;
+  --ink-soft: #5C4836;
+  --white: #FFFFFF;
+  --shadow-sm: 0 2px 8px rgba(91, 14, 37, 0.08);
+  --shadow-md: 0 8px 24px rgba(91, 14, 37, 0.12);
+  --shadow-lg: 0 16px 48px rgba(91, 14, 37, 0.18);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--maroon-dark);
+}
+
+/* === DECORATIVE TOP STRIP === */
+.top-bar {
+  background: var(--maroon-dark);
+  color: var(--gold-light);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.top-bar span { margin: 0 12px; white-space: nowrap; }
+
+/* === HERO === */
+.hero {
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+  padding: 60px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(201,161,74,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -150px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(139,21,56,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(139,21,56,0.08);
+  color: var(--maroon);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  border: 1px solid rgba(139,21,56,0.15);
+}
+.hero h1 {
+  font-size: clamp(32px, 5.5vw, 58px);
+  margin-bottom: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 .accent {
+  color: var(--maroon);
+  font-style: italic;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin: 0 auto 40px;
+  line-height: 1.65;
+}
+.hero-product-image {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1/1;
+  margin: 0 auto 40px;
+  background: linear-gradient(135deg, var(--cream-dark) 0%, #E8DCC4 100%);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-size: 14px;
+  border: 2px dashed rgba(139,21,56,0.2);
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+.cta-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: var(--cream);
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  box-shadow: 0 8px 24px rgba(139,21,56,0.35);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+.cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(139,21,56,0.45);
+}
+.cta-primary:active { transform: translateY(0); }
+
+.hero-trust {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.hero-trust span::before { content: '✓ '; color: var(--maroon); font-weight: 700; }
+
+/* === SECTION BASE === */
+section {
+  padding: 70px 20px;
+  position: relative;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 44px);
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+.section-title .accent { color: var(--maroon); font-style: italic; }
+.section-intro {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 700px;
+  margin-bottom: 40px;
+}
+
+/* === SECTION 2: PROBLEM === */
+.problem {
+  background: var(--white);
+}
+.problem .container { max-width: 800px; }
+.problem-list {
+  list-style: none;
+  margin: 30px 0;
+}
+.problem-list li {
+  font-size: 19px;
+  padding: 18px 0 18px 36px;
+  border-bottom: 1px solid rgba(139,21,56,0.08);
+  position: relative;
+  color: var(--ink);
+}
+.problem-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  color: var(--maroon);
+  font-weight: 700;
+  font-size: 22px;
+}
+.problem-punch {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 28px);
+  color: var(--maroon-dark);
+  font-style: italic;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 2px solid var(--gold);
+  font-weight: 500;
+}
+
+/* === SECTION 3: COMPARISON === */
+.comparison {
+  background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+  text-align: center;
+}
+.comparison-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 900px;
+  margin: 50px auto 30px;
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.comparison-col {
+  padding: 40px 30px;
+}
+.comparison-col.bad {
+  background: linear-gradient(180deg, #F5E8E8 0%, #EFD8D8 100%);
+}
+.comparison-col.good {
+  background: linear-gradient(180deg, #F0EDE0 0%, #E5DFC8 100%);
+}
+.comparison-header {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.comparison-col.bad .comparison-header { color: #8B2A2A; }
+.comparison-col.good .comparison-header { color: var(--maroon-dark); }
+.comparison-list {
+  list-style: none;
+  text-align: left;
+}
+.comparison-list li {
+  padding: 12px 0;
+  font-size: 15px;
+  border-bottom: 1px dashed rgba(0,0,0,0.08);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.comparison-list li:last-child { border-bottom: none; }
+.comparison-list .icon {
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.bad .icon { color: #C13B3B; }
+.good .icon { color: #5C7A2E; }
+.comparison-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(20px, 3vw, 26px);
+  color: var(--maroon-dark);
+  margin: 40px auto 30px;
+  max-width: 700px;
+  line-height: 1.4;
+}
+.cta-mini {
+  display: inline-block;
+  color: var(--maroon);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 24px;
+  border: 2px solid var(--maroon);
+  border-radius: 50px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+}
+.cta-mini:hover {
+  background: var(--maroon);
+  color: var(--cream);
+}
+
+/* === SECTION 4: HOW IT WORKS === */
+.timeline {
+  background: var(--white);
+  text-align: center;
+}
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 50px 0 30px;
+}
+.timeline-card {
+  background: linear-gradient(160deg, var(--cream) 0%, var(--cream-dark) 100%);
+  padding: 32px 22px;
+  border-radius: 18px;
+  text-align: left;
+  position: relative;
+  border-top: 4px solid var(--gold);
+  transition: transform 0.3s ease;
+}
+.timeline-card:hover { transform: translateY(-6px); }
+.timeline-card .stage {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--maroon);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding: 4px 10px;
+  background: rgba(139,21,56,0.08);
+  border-radius: 4px;
+}
+.timeline-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--maroon-dark);
+}
+.timeline-card p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.timeline-caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-soft);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* === SECTION 5: 5 HERBS === */
+.herbs {
+  background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%);
+  text-align: center;
+}
+.herbs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin: 50px 0 30px;
+}
+.herb-card {
+  background: var(--white);
+  padding: 28px 20px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(201,161,74,0.2);
+}
+.herb-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.herb-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cream-dark) 0%, #E8DCC4 100%);
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--ink-soft);
+  border: 2px dashed rgba(139,21,56,0.2);
+}
+.herb-card h4 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: var(--maroon-dark);
+}
+.herb-card p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.herbs-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(22px, 3vw, 28px);
+  color: var(--maroon-dark);
+  margin-top: 20px;
+}
+
+/* === SECTION 6: AUTHORITY === */
+.authority {
+  background: var(--maroon-dark);
+  color: var(--cream);
+}
+.authority::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 20% 30%, rgba(201,161,74,0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(201,161,74,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.authority .container {
+  position: relative;
+  z-index: 2;
+}
+.authority-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.authority-photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: linear-gradient(135deg, rgba(201,161,74,0.2) 0%, rgba(201,161,74,0.05) 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  font-size: 14px;
+  border: 2px dashed rgba(201,161,74,0.3);
+}
+.authority-content .section-eyebrow { color: var(--gold-light); }
+.authority-content h2 {
+  color: var(--cream);
+  margin-bottom: 24px;
+  font-size: clamp(28px, 4vw, 40px);
+}
+.authority-content h2 .accent { color: var(--gold-light); }
+.authority-bio {
+  list-style: none;
+  margin-bottom: 30px;
+}
+.authority-bio li {
+  padding: 8px 0 8px 24px;
+  position: relative;
+  font-size: 17px;
+  color: rgba(250,246,238,0.9);
+}
+.authority-bio li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+.authority-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(19px, 2.5vw, 24px);
+  font-style: italic;
+  line-height: 1.45;
+  padding: 24px 0 24px 24px;
+  border-left: 3px solid var(--gold);
+  color: var(--gold-light);
+}
+.authority-quote-author {
+  display: block;
+  font-style: normal;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(229,199,126,0.7);
+  margin-top: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* === SECTION 7: PRICING === */
+.pricing {
+  background: var(--cream);
+  text-align: center;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 50px 0 30px;
+  align-items: stretch;
+}
+.price-card {
+  background: var(--white);
+  padding: 36px 28px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(139,21,56,0.08);
+  transition: all 0.3s ease;
+}
+.price-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+.price-card.featured {
+  background: linear-gradient(180deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: var(--cream);
+  transform: scale(1.05);
+  border: none;
+  z-index: 2;
+}
+.price-card.featured:hover { transform: scale(1.05) translateY(-6px); }
+.price-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--maroon-dark);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-sm);
+}
+.price-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+.price-card h3 {
+  font-size: 24px;
+  margin-bottom: 6px;
+  color: inherit;
+}
+.price-card.featured h3 { color: var(--cream); }
+.price-card .pack-detail {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+}
+.price-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--maroon);
+}
+.price-card.featured .price-amount { color: var(--gold-light); }
+.price-per-day {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-bottom: 24px;
+}
+.price-tagline {
+  font-style: italic;
+  font-size: 15px;
+  margin-bottom: 28px;
+  opacity: 0.85;
+  min-height: 44px;
+}
+.price-card .cta-card {
+  margin-top: auto;
+  background: var(--maroon);
+  color: var(--cream);
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 15px;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+.price-card.featured .cta-card {
+  background: var(--gold);
+  color: var(--maroon-dark);
+}
+.price-card .cta-card:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+.pricing-recommendation {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+}
+.risk-strip {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(201,161,74,0.2);
+}
+.risk-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.risk-item .emoji { font-size: 20px; }
+
+/* === SECTION 8: FAQ === */
+.faq {
+  background: var(--white);
+}
+.faq-list {
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(139,21,56,0.1);
+  padding: 22px 0;
+  cursor: pointer;
+}
+.faq-question {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--maroon-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.faq-question::after {
+  content: '+';
+  color: var(--gold);
+  font-size: 32px;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+.faq-item.active .faq-question::after {
+  transform: rotate(45deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.65;
+}
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  padding-top: 16px;
+}
+
+/* === SECTION 9: FINAL CTA === */
+.final-cta {
+  background: linear-gradient(135deg, var(--maroon-dark) 0%, var(--maroon) 100%);
+  color: var(--cream);
+  text-align: center;
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: -200px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(201,161,74,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.final-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(201,161,74,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.final-cta .container { position: relative; z-index: 2; }
+.final-cta h2 {
+  color: var(--cream);
+  font-size: clamp(32px, 5vw, 52px);
+  margin-bottom: 22px;
+}
+.final-cta h2 .accent { color: var(--gold-light); font-style: italic; }
+.final-cta-sub {
+  font-size: clamp(17px, 2vw, 21px);
+  color: rgba(250,246,238,0.85);
+  max-width: 680px;
+  margin: 0 auto 44px;
+  line-height: 1.55;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+.final-cta .cta-primary {
+  background: var(--gold);
+  color: var(--maroon-dark);
+  padding: 22px 50px;
+  font-size: 19px;
+  box-shadow: 0 12px 32px rgba(201,161,74,0.4);
+}
+.final-cta .cta-primary:hover {
+  background: var(--gold-light);
+  box-shadow: 0 16px 40px rgba(201,161,74,0.5);
+}
+.urgency-strip {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--gold-light);
+}
+
+/* === FOOTER === */
+footer {
+  background: #1A0E0E;
+  color: rgba(250,246,238,0.6);
+  padding: 50px 20px 30px;
+  font-size: 13px;
+  text-align: center;
+}
+footer .container { max-width: 900px; }
+.footer-mfr {
+  margin-bottom: 20px;
+  color: var(--gold-light);
+  font-weight: 500;
+  font-size: 14px;
+}
+.footer-disclaimer {
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: var(--gold-light);
+  text-decoration: none;
+  font-size: 13px;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-copy {
+  padding-top: 24px;
+  border-top: 1px solid rgba(201,161,74,0.15);
+  font-size: 12px;
+}
+
+/* === MODAL === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,14,14,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: var(--cream);
+  border-radius: 24px;
+  max-width: 480px;
+  width: 100%;
+  padding: 44px 36px;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  animation: modalIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s ease;
+}
+.modal-close:hover { background: rgba(139,21,56,0.08); }
+.modal h3 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.modal p {
+  text-align: center;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+  font-size: 15px;
+}
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid rgba(139,21,56,0.15);
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  transition: border-color 0.2s ease;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: var(--maroon);
+}
+.modal .cta-primary {
+  width: 100%;
+  margin-top: 8px;
+  padding: 16px;
+  font-size: 16px;
+}
+.modal-trust {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+/* === MOBILE === */
+@media (max-width: 768px) {
+  .top-bar { font-size: 11px; padding: 8px 12px; }
+  .top-bar span { margin: 0 6px; display: inline-block; }
+  section { padding: 50px 20px; }
+  .hero { padding: 40px 20px 60px; }
+  .comparison-table { grid-template-columns: 1fr; }
+  .timeline-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card.featured { transform: none; }
+  .price-card.featured:hover { transform: translateY(-6px); }
+  .authority-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+  .authority-photo { max-width: 240px; margin: 0 auto; }
+  .authority-bio li { text-align: left; }
+  .risk-strip { flex-direction: column; align-items: flex-start; }
+  .risk-item { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .timeline-grid { grid-template-columns: 1fr; }
+  .modal { padding: 36px 24px; }
+  .hero h1 { font-size: 30px; }
+  .section-title { font-size: 26px; }
+}
+
+/* === SCROLL REVEAL === */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <h1>Kamdev Modak</h1>
-    <p class="hero-sub">The Ayurvedic Answer To Viagra — Without The Side Effects. Feel The Difference In 72 Hours.</p>
-    <img src="hero-product.jpg" alt="Kamdev Modak Premium Herbal Supplement">
-    <button class="cta-primary" onclick="openModal('hero')">Start Your 72-Hour Transformation →</button>
-    <div class="hero-trust">
-      <span>Clinically Proven Herbs</span>
-      <span>FSSAI Approved</span>
-      <span>Fast Results</span>
-    </div>
-  </div>
+<!-- TOP TRUST BAR -->
+<div class="top-bar">
+  <span>🌿 FSSAI Approved</span>
+  <span>✦ GMP Certified</span>
+  <span>✦ 100% Ayurvedic</span>
 </div>
 
-<!-- PRICING SECTION -->
-<section>
-  <div class="container">
-    <h2 class="section-title">Simple, Transparent Pricing</h2>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <h3>Trial Pack</h3>
-        <div class="price-amount">₹1,490</div>
-        <p>7 Days • 7 Modaks</p>
-        <button class="cta-primary" onclick="openModal('trial')">Try Now</button>
+<!-- ============================================ -->
+<!-- SECTION 1: HERO                              -->
+<!-- ============================================ -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-badge">🌿 Formulated By Dr. Madhu Sudan</div>
+    <h1>The Ayurvedic Answer To Viagra — <span class="accent">Without The Side Effects.</span></h1>
+    <p class="hero-sub">Feel the difference in 72 hours. Formulated by Dr. Madhu Sudan, India's leading sexologist, after treating 5,000+ patients with the same problem you're facing right now.</p>
+
+    <!-- PRODUCT IMAGE PLACEHOLDER -->
+    <div class="hero-product-image">
+      <img src="hero-product.jpg" alt="Kamdev Modak herbal supplement" style="width:100%; max-width:380px; border-radius:24px; object-fit:cover;">
+    </div>
+
+    <button class="cta-primary" onclick="openModal('hero')">👉 Show Me How It Works</button>
+
+    <div class="hero-trust">
+      <span>5,000+ Patients</span>
+      <span>Zero Side Effects</span>
+      <span>Results in 72 Hours</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 2: PROBLEM AGITATION                 -->
+<!-- ============================================ -->
+<section class="problem">
+  <div class="container reveal">
+    <div class="section-eyebrow">The Truth</div>
+    <h2 class="section-title">If You're Reading This, You Already Know <span class="accent">What's Wrong.</span></h2>
+    <ul class="problem-list">
+      <li>Mornings feel different. The energy isn't there.</li>
+      <li>Performance has slipped. You've stopped initiating.</li>
+      <li>You've thought about Viagra — but the side effects scare you.</li>
+      <li>You're not alone. 1 in 3 Indian men over 40 face this. Most stay silent.</li>
+    </ul>
+    <p class="problem-punch">Silence won't fix it. The right formula will.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 3: VIAGRA vs MODAK                   -->
+<!-- ============================================ -->
+<section class="comparison">
+  <div class="container reveal">
+    <div class="section-eyebrow">The Comparison</div>
+    <h2 class="section-title" style="margin-left:auto; margin-right:auto;">Why Smart Men Are Switching From Synthetic Pills To <span class="accent">Ancient Ayurveda.</span></h2>
+
+    <div class="comparison-table">
+      <div class="comparison-col bad">
+        <div class="comparison-header">Synthetic Pills<br><small style="font-size:13px; opacity:0.7; font-family:'DM Sans',sans-serif; font-weight:400;">(Viagra, Tadalafil)</small></div>
+        <ul class="comparison-list">
+          <li><span class="icon">✗</span> Headaches</li>
+          <li><span class="icon">✗</span> Blurred vision</li>
+          <li><span class="icon">✗</span> Heart palpitations</li>
+          <li><span class="icon">✗</span> Body temperature spikes</li>
+          <li><span class="icon">✗</span> Works for one night only</li>
+          <li><span class="icon">✗</span> Emergency-room results</li>
+        </ul>
       </div>
-      <div class="price-card featured">
-        <h3>Monthly Pack</h3>
-        <div class="price-amount">₹5,550</div>
-        <p>30 Days • Most Popular</p>
-        <button class="cta-primary" onclick="openModal('monthly)">Get Monthly →</button>
+      <div class="comparison-col good">
+        <div class="comparison-header">Kamdev Modak<br><small style="font-size:13px; opacity:0.7; font-family:'DM Sans',sans-serif; font-weight:400;">(100% Ayurvedic)</small></div>
+        <ul class="comparison-list">
+          <li><span class="icon">✓</span> Zero side effects</li>
+          <li><span class="icon">✓</span> 100% natural ingredients</li>
+          <li><span class="icon">✓</span> Calms the mind</li>
+          <li><span class="icon">✓</span> Supports full body health</li>
+          <li><span class="icon">✓</span> Long-term restoration</li>
+          <li><span class="icon">✓</span> Steady daily improvement</li>
+        </ul>
       </div>
-      <div class="price-card">
-        <h3>3-Month Pack</h3>
-        <div class="price-amount">₹15,000</div>
-        <p>90 Days • Best Value</p>
-        <button class="cta-primary" onclick="openModal('quarterly')">Get 3-Month →</button>
+    </div>
+
+    <p class="comparison-quote">"One gives you a single night. The other gives you back your life."</p>
+    <button class="cta-mini" onclick="document.getElementById('timeline-section').scrollIntoView({behavior:'smooth'})">See How Modak Works ↓</button>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 4: HOW IT WORKS (72-hour timeline)   -->
+<!-- ============================================ -->
+<section class="timeline" id="timeline-section">
+  <div class="container reveal">
+    <div class="section-eyebrow">The Transformation</div>
+    <h2 class="section-title" style="margin-left:auto; margin-right:auto;">What Happens When You Take <span class="accent">1 Kamdev Modak Daily.</span></h2>
+
+    <div class="timeline-grid">
+      <div class="timeline-card">
+        <span class="stage">Day 1 – 3</span>
+        <h3>Energy Returns</h3>
+        <p>Body feels lighter. Morning vitality starts coming back.</p>
+      </div>
+      <div class="timeline-card">
+        <span class="stage">Week 1 – 2</span>
+        <h3>Desire Awakens</h3>
+        <p>Libido returns. You start feeling it again — naturally.</p>
+      </div>
+      <div class="timeline-card">
+        <span class="stage">Week 3 – 4</span>
+        <h3>Performance Rises</h3>
+        <p>Stamina improves. Confidence builds. You feel different.</p>
+      </div>
+      <div class="timeline-card">
+        <span class="stage">Month 2 – 3</span>
+        <h3>Full Rhythm Restored</h3>
+        <p>You're back. Stronger. More confident. Better than before.</p>
+      </div>
+    </div>
+
+    <p class="timeline-caption">Most herbal formulas take weeks. Kamdev Modak is built for 72-hour onset, then compounds for 90 days.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 5: 5 HERBS                           -->
+<!-- ============================================ -->
+<section class="herbs">
+  <div class="container reveal">
+    <div class="section-eyebrow">The Formula</div>
+    <h2 class="section-title" style="margin-left:auto; margin-right:auto;">5 Ancient Herbs. One Modern Formula. <span class="accent">Zero Compromises.</span></h2>
+
+    <!-- COMBINED HERBS IMAGE -->
+    <div style="text-align:center; margin-bottom:50px;">
+      <img src="herbs-layout.jpg" alt="Ayurvedic Jatibuti - 5 herbs in Kamdev Modak" style="width:100%; max-width:600px; border-radius:20px; box-shadow: 0 8px 24px rgba(91, 14, 37, 0.12);">
+    </div>
+
+    <div class="herbs-grid">
+      <div class="herb-card">
+        <div class="herb-image"><img src="herb-ashwagandha.jpg" alt="Ashwagandha" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"></div>
+        <h4>Ashwagandha</h4>
+        <p>Cuts cortisol. Restores confidence and reduces stress.</p>
+      </div>
+      <div class="herb-card">
+        <div class="herb-image"><img src="herb-shuddha-shilajit.jpg" alt="Shuddha Shilajit" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"></div>
+        <h4>Shuddha Shilajit</h4>
+        <p>Boosts testosterone. The "destroyer of weakness."</p>
+      </div>
+      <div class="herb-card">
+        <div class="herb-image"><img src="herb-kaunch-beej.jpg" alt="Kaunch Beej" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"></div>
+        <h4>Kaunch Beej</h4>
+        <p>Stamina + sustained energy throughout the day.</p>
+      </div>
+      <div class="herb-card">
+        <div class="herb-image"><img src="herb-shatavari.jpg" alt="Shatavari" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"></div>
+        <h4>Shatavari</h4>
+        <p>Hormonal balance and faster recovery.</p>
+      </div>
+      <div class="herb-card">
+        <div class="herb-image"><img src="herb-gokshura.jpg" alt="Gokshura" style="width:100%; height:100%; object-fit:cover; border-radius:50%;"></div>
+        <h4>Gokshura</h4>
+        <p>Vitality and improved circulation naturally.</p>
+      </div>
+    </div>
+
+    <p class="herbs-tagline">5,000 years of Ayurveda. Combined in one daily modak.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 6: AUTHORITY — DR. MADHU             -->
+<!-- ============================================ -->
+<section class="authority">
+  <div class="container reveal">
+    <div class="authority-grid">
+      <div class="authority-photo"><img src="dr-madhu-authority.jpg" alt="Dr. Madhu Sudan, Ayurvedic Sexologist" style="width:100%; height:100%; object-fit:cover; border-radius:20px;"></div>
+      <div class="authority-content">
+        <div class="section-eyebrow">The Doctor</div>
+        <h2>Formulated By India's <span class="accent">Leading Sexologist.</span></h2>
+        <ul class="authority-bio">
+          <li>20+ years of clinical practice</li>
+          <li>5,000+ patients treated</li>
+          <li>Two clinics: Kalkaji & Gurgaon</li>
+          <li>Specializes in male sexual health & infertility</li>
+        </ul>
+        <blockquote class="authority-quote">
+          "I formulated Kamdev Modak after seeing the same problem in thousands of patients — and watching them suffer through pharmaceutical side effects. There had to be a better way. So I built it."
+          <span class="authority-quote-author">— Dr. Madhu Sudan</span>
+        </blockquote>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROBLEM SECTION -->
-<section>
-  <div class="container">
-    <h2 class="section-title">You're Not Alone</h2>
-    <p style="text-align: center; font-size: 18px; color: var(--ink-soft); max-width: 800px; margin: 0 auto 40px;">
-      43% of men over 35 experience ED. Modern stress, diet, and lifestyle kill your natural energy. But you don't need synthetic drugs with side effects.
-    </p>
+<!-- ============================================ -->
+<!-- SECTION 7: PRICING                           -->
+<!-- ============================================ -->
+<section class="pricing">
+  <div class="container reveal">
+    <div class="section-eyebrow">The Offer</div>
+    <h2 class="section-title" style="margin-left:auto; margin-right:auto;">Pick Your Pack. Start Your <span class="accent">72-Hour Transformation.</span></h2>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-icon">🌱</div>
+        <h3>Trial Pack</h3>
+        <p class="pack-detail">7 MODAK · 1 WEEK</p>
+        <div class="price-amount">₹1,490</div>
+        <div class="price-per-day">₹213 per day</div>
+        <p class="price-tagline">"Test it first. See the difference in 72 hours."</p>
+        <button class="cta-card" onclick="openModal('trial')">Get Trial Pack →</button>
+      </div>
+
+      <div class="price-card featured">
+        <span class="price-badge">⭐ Most Popular</span>
+        <div class="price-icon">🔥</div>
+        <h3>Monthly Pack</h3>
+        <p class="pack-detail">30 MODAK · 1 MONTH</p>
+        <div class="price-amount">₹5,550</div>
+        <div class="price-per-day">₹185 per day</div>
+        <p class="price-tagline">"The full 1-month cycle for real results."</p>
+        <button class="cta-card" onclick="openModal('monthly')">Start Monthly Pack →</button>
+      </div>
+
+      <div class="price-card">
+        <div class="price-icon">💎</div>
+        <h3>3-Month Transformation</h3>
+        <p class="pack-detail">90 MODAK · 3 MONTHS</p>
+        <div class="price-amount">₹15,000</div>
+        <div class="price-per-day">₹167 per day</div>
+        <p class="price-tagline">"Best results + best value. Complete transformation."</p>
+        <button class="cta-card" onclick="openModal('quarterly')">Get 3-Month Pack →</button>
+      </div>
+    </div>
+
+    <p class="pricing-recommendation">💡 Most patients see real results at the 30-day mark. We recommend the Monthly Pack for first-time users.</p>
+
+    <!-- MODAK LIFESTYLE IMAGE -->
+    <div style="text-align:center; margin-bottom:40px; margin-top:40px;">
+      <img src="modak-premium.jpg" alt="Kamdev Modak premium product lifestyle" style="width:100%; max-width:500px; border-radius:20px; box-shadow: 0 8px 24px rgba(91, 14, 37, 0.12);">
+    </div>
+
+    <div class="risk-strip">
+      <div class="risk-item"><span class="emoji">🛡️</span> Unopened pack refund within 7 days</div>
+      <div class="risk-item"><span class="emoji">👨‍⚕️</span> Free Dr. Madhu consultation if no results</div>
+      <div class="risk-item"><span class="emoji">🌿</span> 100% natural · No habit-forming</div>
+    </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section style="text-align: center; padding: 80px 20px;">
+<!-- ============================================ -->
+<!-- SECTION 8: FAQ                               -->
+<!-- ============================================ -->
+<section class="faq">
+  <div class="container reveal">
+    <div class="section-eyebrow">Your Questions</div>
+    <h2 class="section-title" style="text-align:center; margin-left:auto; margin-right:auto;">Everything You Need To Know.</h2>
+
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">How fast will I see results?</div>
+        <div class="faq-answer">Most patients feel a noticeable difference within 72 hours — more energy, lighter body, mental clarity. Full results compound over 30 to 90 days of daily use.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">Are there any side effects?</div>
+        <div class="faq-answer">None. Kamdev Modak is made from 100% natural Ayurvedic herbs (Ashwagandha, Shilajit, Kaunch Beej, Shatavari, Gokshura). Unlike synthetic pills, it works with your body, not against it.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">How long should I take it?</div>
+        <div class="faq-answer">For full transformation, we recommend 2 to 3 months of daily use (1 modak per day). After that, you can continue as a daily wellness supplement or take it as needed.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">Is this safe with my existing medication?</div>
+        <div class="faq-answer">Kamdev Modak is classified as a food supplement and is generally safe. However, if you're on prescription medication for heart, blood pressure, or diabetes, we recommend consulting your doctor before starting.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">What if it doesn't work for me?</div>
+        <div class="faq-answer">Unopened packs are eligible for a full refund within 7 days. If you've completed the full course and feel you haven't seen results, you can book a free personal consultation with Dr. Madhu Sudan to assess your case.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">Will my order be discreet?</div>
+        <div class="faq-answer">Yes. All orders are shipped in 100% confidential, plain packaging. Your details are kept private and secure. No one will know what's inside.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 9: FINAL CTA                         -->
+<!-- ============================================ -->
+<section class="final-cta">
   <div class="container">
-    <h2 class="section-title">72 Hours To Transform</h2>
-    <p style="font-size: 18px; color: var(--ink-soft); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
-      Most men feel the results in 3 days. Full transformation in 3 months.
-    </p>
-    <img src="modak-lifestyle-2.jpg" alt="Kamdev Modak Lifestyle" style="max-width: 450px; width: 100%; border-radius: 20px; margin-bottom: 40px; box-shadow: 0 12px 32px rgba(201, 161, 74, 0.2);">
-    <button class="cta-primary" onclick="openModal('final')" style="padding: 20px 56px; font-size: 18px;">Start My Transformation Now →</button>
-    <div class="hero-trust" style="margin-top: 32px;">
-      <span>⚡ Limited stock available</span>
+    <h2>You've Read Enough. <span class="accent">Now Decide.</span></h2>
+    <p class="final-cta-sub">72 hours from now, you'll either feel the difference — or still be reading articles about it.</p>
+    
+    <!-- MODAK FINAL CTA IMAGE -->
+    <div style="text-align:center; margin-bottom:40px; margin-top:30px;">
+      <img src="modak-lifestyle-2.jpg" alt="Kamdev Modak - start your transformation" style="width:100%; max-width:450px; border-radius:20px; box-shadow: 0 12px 32px rgba(201,161,74,0.3);">
+    </div>
+    
+    <button class="cta-primary" onclick="openModal('final')">👉 Start My 72-Hour Transformation</button>
+    <div class="urgency-strip">
+      <span>⚡ Trial pack stock limited</span>
       <span>🔒 100% secure checkout</span>
       <span>🚚 Fast delivery across India</span>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============================================ -->
+<!-- FOOTER                                       -->
+<!-- ============================================ -->
 <footer>
-  <p><strong>Samayra Healthcare Pvt. Ltd.</strong></p>
-  <p>N-16, Kalkaji, Rampuri Marg, New Delhi – 110019</p>
-  <p style="margin-top: 20px; opacity: 0.7;">© 2026 Kamdev Modak · All Rights Reserved</p>
+  <div class="container">
+    <div class="footer-mfr">Manufactured & Marketed By: Samayra Healthcare Pvt. Ltd.<br>N-16, Kalkaji, Rampuri Marg, New Delhi – 110019</div>
+    <div class="footer-disclaimer">
+      This product is a Health Supplement and is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Not recommended for children, pregnant, or lactating women. Consult your healthcare provider before use if you have underlying health conditions. Store in a cool, dry place away from sunlight.
+    </div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Refund Policy</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="footer-copy">© 2026 Kamdev Modak · Dr. Madhu Sudan · All Rights Reserved.</div>
+  </div>
 </footer>
 
-<!-- MODAL WITH HARDCODED FORM -->
+<!-- ============================================ -->
+<!-- MODAL — HARDCODED FORM (NO KIT EMBED)        -->
+<!-- ============================================ -->
 <div class="modal-overlay" id="leadModal" onclick="closeModalOutside(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">×</button>
-    <h3>One Step Away</h3>
-    <p>Enter your details. Redirect to secure checkout.</p>
-    
-    <form id="leadForm" onsubmit="handleFormSubmit(event)">
+    <h3>One Step Away.</h3>
+    <p>Enter your details to unlock your offer. Your information is 100% confidential.</p>
+
+    <!-- HARDCODED FORM — SENDS TO KIT API VIA FETCH -->
+    <form id="leadForm" onsubmit="handleFormSubmit(event)" method="post">
       <div class="form-group">
-        <input type="email" name="email_address" placeholder="Email Address" required>
+        <input class="formkit-input" type="email" name="email_address" placeholder="Email Address" required>
       </div>
       <div class="form-group">
-        <input type="text" name="fields[first_name]" placeholder="First Name" required>
+        <input class="formkit-input" type="text" name="fields[first_name]" placeholder="First Name" required>
       </div>
       <div class="form-group">
-        <input type="tel" name="fields[phone_number]" placeholder="Phone Number" required>
+        <input class="formkit-input" type="tel" name="fields[phone_number]" placeholder="Phone Number" required>
       </div>
       <button type="submit" class="form-submit">Continue To Checkout →</button>
     </form>
-    
+
+    <p class="modal-trust">🔒 Your details are encrypted and never shared.</p>
+  </div>
+</div>
+
+<!-- REMOVED ALL KIT EMBED CSS AND MARKUP --> *{box-sizing:border-box;}.formkit-form[data-uid="956fbaf570"]{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.formkit-form[data-uid="956fbaf570"] legend{border:none;font-size:inherit;margin-bottom:10px;padding:0;position:relative;display:table;}.formkit-form[data-uid="956fbaf570"] fieldset{border:0;padding:0.01em 0 0 0;margin:0;min-width:0;}.formkit-form[data-uid="956fbaf570"] body:not(:-moz-handler-blocked) fieldset{display:table-cell;}.formkit-form[data-uid="956fbaf570"] h1,.formkit-form[data-uid="956fbaf570"] h2,.formkit-form[data-uid="956fbaf570"] h3,.formkit-form[data-uid="956fbaf570"] h4,.formkit-form[data-uid="956fbaf570"] h5,.formkit-form[data-uid="956fbaf570"] h6{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="956fbaf570"] h2{font-size:1.5em;margin:1em 0;}.formkit-form[data-uid="956fbaf570"] h3{font-size:1.17em;margin:1em 0;}.formkit-form[data-uid="956fbaf570"] p{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="956fbaf570"] ol:not([template-default]),.formkit-form[data-uid="956fbaf570"] ul:not([template-default]),.formkit-form[data-uid="956fbaf570"] blockquote:not([template-default]){text-align:left;}.formkit-form[data-uid="956fbaf570"] p:not([template-default]),.formkit-form[data-uid="956fbaf570"] hr:not([template-default]),.formkit-form[data-uid="956fbaf570"] blockquote:not([template-default]),.formkit-form[data-uid="956fbaf570"] ol:not([template-default]),.formkit-form[data-uid="956fbaf570"] ul:not([template-default]){color:inherit;font-style:initial;}.formkit-form[data-uid="956fbaf570"] .ordered-list,.formkit-form[data-uid="956fbaf570"] .unordered-list{list-style-position:outside !important;padding-left:1em;}.formkit-form[data-uid="956fbaf570"] .list-item{padding-left:0;}.formkit-form[data-uid="956fbaf570"][data-format="modal"]{display:none;}.formkit-form[data-uid="956fbaf570"][data-format="slide in"]{display:none;}.formkit-form[data-uid="956fbaf570"][data-format="sticky bar"]{display:none;}.formkit-sticky-bar .formkit-form[data-uid="956fbaf570"][data-format="sticky bar"]{display:block;}.formkit-form[data-uid="956fbaf570"] .formkit-input,.formkit-form[data-uid="956fbaf570"] .formkit-select,.formkit-form[data-uid="956fbaf570"] .formkit-checkboxes{width:100%;}.formkit-form[data-uid="956fbaf570"] .formkit-button,.formkit-form[data-uid="956fbaf570"] .formkit-submit{border:0;border-radius:5px;color:#ffffff;cursor:pointer;display:inline-block;text-align:center;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:15px;overflow:hidden;padding:0;position:relative;vertical-align:middle;}.formkit-form[data-uid="956fbaf570"] .formkit-button:hover,.formkit-form[data-uid="956fbaf570"] .formkit-submit:hover,.formkit-form[data-uid="956fbaf570"] .formkit-button:focus,.formkit-form[data-uid="956fbaf570"] .formkit-submit:focus{outline:none;}.formkit-form[data-uid="956fbaf570"] .formkit-button:hover > span,.formkit-form[data-uid="956fbaf570"] .formkit-submit:hover > span,.formkit-form[data-uid="956fbaf570"] .formkit-button:focus > span,.formkit-form[data-uid="956fbaf570"] .formkit-submit:focus > span{background-color:rgba(0,0,0,0.1);}.formkit-form[data-uid="956fbaf570"] .formkit-button > span,.formkit-form[data-uid="956fbaf570"] .formkit-submit > span{display:block;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;padding:12px 24px;}.formkit-form[data-uid="956fbaf570"] .formkit-input{background:#ffffff;font-size:15px;padding:12px;border:1px solid #e3e3e3;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;line-height:1.4;margin:0;-webkit-transition:border-color ease-out 300ms;transition:border-color ease-out 300ms;}.formkit-form[data-uid="956fbaf570"] .formkit-input:focus{outline:none;border-color:#1677be;-webkit-transition:border-color ease 300ms;transition:border-color ease 300ms;}.formkit-form[data-uid="956fbaf570"] .formkit-input::-webkit-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="956fbaf570"] .formkit-input::-moz-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="956fbaf570"] .formkit-input:-ms-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="956fbaf570"] .formkit-input::placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="956fbaf570"] [data-group="dropdown"]{position:relative;display:inline-block;width:100%;}.formkit-form[data-uid="956fbaf570"] [data-group="dropdown"]::before{content:"";top:calc(50% - 2.5px);right:10px;position:absolute;pointer-events:none;border-color:#4f4f4f transparent transparent transparent;border-style:solid;border-width:6px 6px 0 6px;height:0;width:0;z-index:999;}.formkit-form[data-uid="956fbaf570"] [data-group="dropdown"] select{height:auto;width:100%;cursor:pointer;color:#333333;line-height:1.4;margin-bottom:0;padding:0 6px;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:15px;padding:12px;padding-right:25px;border:1px solid #e3e3e3;background:#ffffff;}.formkit-form[data-uid="956fbaf570"] [data-group="dropdown"] select:focus{outline:none;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"]{text-align:left;margin:0;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"]{margin-bottom:10px;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"] *{cursor:pointer;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"]:last-of-type{margin-bottom:0;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]{display:none;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"] + label::after{content:none;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::after{border-color:#ffffff;content:"";}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::before{background:#10bf7a;border-color:#10bf7a;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"] label{position:relative;display:inline-block;padding-left:28px;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"] label::before,.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"] label::after{position:absolute;content:"";display:inline-block;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"] label::before{height:16px;width:16px;border:1px solid #e3e3e3;background:#ffffff;left:0px;top:3px;}.formkit-form[data-uid="956fbaf570"] [data-group="checkboxes"] [data-group="checkbox"] label::after{height:4px;width:8px;border-left:2px solid #4d4d4d;border-bottom:2px solid #4d4d4d;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);left:4px;top:8px;}.formkit-form[data-uid="956fbaf570"] .formkit-alert{background:#f9fafb;border:1px solid #e3e3e3;border-radius:5px;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;list-style:none;margin:25px auto;padding:12px;text-align:center;width:100%;}.formkit-form[data-uid="956fbaf570"] .formkit-alert:empty{display:none;}.formkit-form[data-uid="956fbaf570"] .formkit-alert-success{background:#d3fbeb;border-color:#10bf7a;color:#0c905c;}.formkit-form[data-uid="956fbaf570"] .formkit-alert-error{background:#fde8e2;border-color:#f2643b;color:#ea4110;}.formkit-form[data-uid="956fbaf570"] .formkit-spinner{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:0px;width:0px;margin:0 auto;position:absolute;top:0;left:0;right:0;width:0px;overflow:hidden;text-align:center;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;}.formkit-form[data-uid="956fbaf570"] .formkit-spinner > div{margin:auto;width:12px;height:12px;background-color:#fff;opacity:0.3;border-radius:100%;display:inline-block;-webkit-animation:formkit-bouncedelay-formkit-form-data-uid-956fbaf570- 1.4s infinite ease-in-out both;animation:formkit-bouncedelay-formkit-form-data-uid-956fbaf570- 1.4s infinite ease-in-out both;}.formkit-form[data-uid="956fbaf570"] .formkit-spinner > div:nth-child(1){-webkit-animation-delay:-0.32s;animation-delay:-0.32s;}.formkit-form[data-uid="956fbaf570"] .formkit-spinner > div:nth-child(2){-webkit-animation-delay:-0.16s;animation-delay:-0.16s;}.formkit-form[data-uid="956fbaf570"] .formkit-submit[data-active] .formkit-spinner{opacity:1;height:100%;width:50px;}.formkit-form[data-uid="956fbaf570"] .formkit-submit[data-active] .formkit-spinner ~ span{opacity:0;}.formkit-form[data-uid="956fbaf570"] .formkit-powered-by[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="956fbaf570"] .formkit-powered-by-convertkit-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;margin:10px 0;position:relative;}.formkit-form[data-uid="956fbaf570"] .formkit-powered-by-convertkit-container[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="956fbaf570"] .formkit-powered-by-convertkit{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;border-radius:9px;color:#3d3d3d;cursor:pointer;display:block;height:36px;margin:0 auto;opacity:0.95;padding:0;-webkit-text-decoration:none;text-decoration:none;text-indent:100%;-webkit-transition:ease-in-out all 200ms;transition:ease-in-out all 200ms;white-space:nowrap;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:157px;background-repeat:no-repeat;background-position:center;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='%231E1E1E'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='%231E1E1E'/%3E%3C/svg%3E");}.formkit-form[data-uid="956fbaf570"] .formkit-powered-by-convertkit:hover,.formkit-form[data-uid="956fbaf570"] .formkit-powered-by-convertkit:focus{background-color:#ffffff;-webkit-transform:scale(1.025) perspective(1px);-ms-transform:scale(1.025) perspective(1px);transform:scale(1.025) perspective(1px);opacity:1;}.formkit-form[data-uid="956fbaf570"] .formkit-powered-by-convertkit[data-variant="dark"],.formkit-form[data-uid="956fbaf570"] .formkit-powered-by-convertkit[data-variant="light"]{background-color:transparent;border-color:transparent;width:133px;}.formkit-form[data-uid="956fbaf570"] .formkit-powered-by-convertkit[data-variant="light"]{color:#ffffff;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237Z' fill='white'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='white'/%3E%3C/svg%3E");}@-webkit-keyframes formkit-bouncedelay-formkit-form-data-uid-956fbaf570-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}@keyframes formkit-bouncedelay-formkit-form-data-uid-956fbaf570-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}.formkit-form[data-uid="956fbaf570"] blockquote{padding:10px 20px;margin:0 0 20px;border-left:5px solid #e1e1e1;}.formkit-form[data-uid="956fbaf570"] .seva-custom-content{padding:15px;font-size:16px;color:#fff;mix-blend-mode:difference;}.formkit-form[data-uid="956fbaf570"] .formkit-modal.guard{max-width:420px;width:100%;} .formkit-form[data-uid="956fbaf570"]{max-width:700px;}.formkit-form[data-uid="956fbaf570"] [data-style="clean"]{width:100%;}.formkit-form[data-uid="956fbaf570"] .formkit-fields{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 auto;}.formkit-form[data-uid="956fbaf570"] .formkit-field,.formkit-form[data-uid="956fbaf570"] .formkit-submit{margin:0 0 15px 0;-webkit-flex:1 0 100%;-ms-flex:1 0 100%;flex:1 0 100%;}.formkit-form[data-uid="956fbaf570"] .formkit-powered-by-convertkit-container{margin:0;}.formkit-form[data-uid="956fbaf570"] .formkit-submit{position:static;}.formkit-form[data-uid="956fbaf570"][min-width~="700"] [data-style="clean"],.formkit-form[data-uid="956fbaf570"][min-width~="800"] [data-style="clean"]{padding:10px;padding-top:56px;}.formkit-form[data-uid="956fbaf570"][min-width~="700"] .formkit-fields[data-stacked="false"],.formkit-form[data-uid="956fbaf570"][min-width~="800"] .formkit-fields[data-stacked="false"]{margin-left:-5px;margin-right:-5px;}.formkit-form[data-uid="956fbaf570"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="956fbaf570"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="956fbaf570"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,.formkit-form[data-uid="956fbaf570"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit{margin:0 5px 15px 5px;}.formkit-form[data-uid="956fbaf570"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="956fbaf570"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field{-webkit-flex:100 1 auto;-ms-flex:100 1 auto;flex:100 1 auto;}.formkit-form[data-uid="956fbaf570"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,.formkit-form[data-uid="956fbaf570"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit{-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;} </style></form>
+
     <p class="modal-trust">🔒 Your details are encrypted and never shared.</p>
   </div>
 </div>
 
 <script>
+// ==========================================
+// RAZORPAY PAYMENT PAGE LINKS
+// ==========================================
 const RAZORPAY_LINKS = {
-  trial: 'https://rzp.io/rzp/igtS6lgg',
-  monthly: 'https://rzp.io/rzp/a1Zmxh3m',
-  quarterly: 'https://rzp.io/rzp/y8ynIRH',
-  hero: 'https://rzp.io/rzp/a1Zmxh3m',
-  final: 'https://rzp.io/rzp/a1Zmxh3m'
+  trial: 'https://rzp.io/rzp/igtS6lgg',    // 7-day trial pack ₹1,490
+  monthly: 'https://rzp.io/rzp/a1Zmxh3m',  // 30-day monthly ₹5,550
+  quarterly: 'https://rzp.io/rzp/y8ynIRH'  // 90-day 3-month ₹15,000
 };
 
-let selectedPack = 'monthly';
+// ==========================================
+// MODAL & PACK DETECTION LOGIC
+// ==========================================
+let selectedPack = '';
 
-function openModal(pack) {
-  selectedPack = pack;
+function openModal(source) {
+  selectedPack = source;
+  window.selectedPack = source;
+  localStorage.setItem('selectedPack', source);
   document.getElementById('leadModal').classList.add('active');
   document.body.style.overflow = 'hidden';
+  console.log('Modal opened for pack:', source);
 }
 
 function closeModal() {
@@ -398,11 +1310,24 @@ function closeModalOutside(e) {
   if (e.target.id === 'leadModal') closeModal();
 }
 
+// Close modal on ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ==========================================
+// FORM SUBMISSION HANDLER + RAZORPAY REDIRECT
+// ==========================================
 function handleFormSubmit(e) {
   e.preventDefault();
   
-  // Send to Kit API silently
+  // Get selected pack
+  const pack = localStorage.getItem('selectedPack') || 'monthly';
+  
+  // Collect form data
   const formData = new FormData(e.target);
+  
+  // Send to Kit API silently
   fetch('https://app.kit.com/forms/9433191/subscriptions', {
     method: 'POST',
     body: new URLSearchParams(formData)
@@ -410,14 +1335,30 @@ function handleFormSubmit(e) {
   
   // Redirect to Razorpay
   setTimeout(() => {
-    window.location.href = RAZORPAY_LINKS[selectedPack] || RAZORPAY_LINKS['monthly'];
+    window.location.href = RAZORPAY_LINKS[pack] || RAZORPAY_LINKS['monthly'];
   }, 300);
 }
 
-// Close on ESC
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeModal();
-});
+// ==========================================
+// FAQ ACCORDION
+// ==========================================
+function toggleFaq(item) {
+  item.classList.toggle('active');
+}
+
+// ==========================================
+// SCROLL REVEAL ANIMATIONS
+// ==========================================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
