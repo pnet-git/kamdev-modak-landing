@@ -355,6 +355,40 @@
       box-shadow: 0 12px 32px rgba(139, 21, 56, 0.45);
     }
 
+    .contact-button {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+      transition: all 0.3s ease;
+      border: 2px solid white;
+      cursor: pointer;
+    }
+
+    .whatsapp-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+    }
+
+    .whatsapp-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .email-btn {
+      background: white;
+      color: var(--maroon);
+      border-color: white;
+    }
+
+    .email-btn:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+    }
+
     /* ==========================================
        FOOTER
        ========================================== */
@@ -456,10 +490,14 @@
         <p class="poc-label">Phone</p>
         <p class="poc-value"><a href="tel:+918588021416">+91 85880 21416</a></p>
       </div>
-      <div class="poc-item">
-        <p class="poc-label">Email</p>
-        <p class="poc-value"><a href="mailto:hello@drmadhusudan.com">hello@drmadhusudan.com</a></p>
-      </div>
+    </div>
+    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
+      <a href="https://wa.me/918588021416?text=Hi%20Rajkumar%2C%20I%20just%20ordered%20Kamdev%20Modak.%20I%20have%20a%20query." class="contact-button whatsapp-btn" target="_blank">
+        💬 Message on WhatsApp
+      </a>
+      <a href="mailto:hello@drmadhusudan.com?subject=Kamdev%20Modak%20Order%20Inquiry" class="contact-button email-btn">
+        ✉️ Send Email
+      </a>
     </div>
   </div>
 
