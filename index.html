@@ -1321,6 +1321,31 @@ document.addEventListener('keydown', (e) => {
 function handleFormSubmit(e) {
   e.preventDefault();
   
+  // Get form data
+  const email = e.target.querySelector('input[name="email_address"]').value;
+  const firstName = e.target.querySelector('input[name="fields[first_name]"]').value;
+  const phone = e.target.querySelector('input[name="fields[phone_number]"]').value;
+  
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert('Please enter a valid email address');
+    return;
+  }
+  
+  // Name validation
+  if (firstName.trim().length < 2) {
+    alert('Please enter a valid name');
+    return;
+  }
+  
+  // Phone validation (at least 10 digits)
+  const phoneDigits = phone.replace(/\D/g, '');
+  if (phoneDigits.length < 10) {
+    alert('Please enter a valid phone number');
+    return;
+  }
+  
   // Get selected pack
   const pack = localStorage.getItem('selectedPack') || 'monthly';
   console.log('Form submitted. Selected pack:', pack);
