@@ -1,2 +1,424 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Kamdev Modak</title><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet"><style>:root{--maroon:#8B1538;--cream:#FAF6EE}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans';background:var(--cream);color:#2A1810}.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(42,24,16,0.6);z-index:999;align-items:center;justify-content:center}.modal-overlay.active{display:flex !important}.modal{background:var(--cream);border-radius:16px;padding:40px;max-width:450px;width:90vw;box-shadow:0 20px 60px rgba(91,14,37,0.25)}.modal-close{position:absolute;top:16px;right:16px;background:0;border:0;font-size:32px;color:#5C4836;cursor:pointer}.modal h3{font-family:'Cormorant Garamond';font-size:28px;margin-bottom:12px;color:var(--maroon)}.modal p{color:#5C4836;margin-bottom:16px;font-size:14px}.form-group{margin-bottom:14px}.form-group input{width:100%;padding:12px 14px;border:2px solid rgba(139,21,56,0.15);border-radius:6px;font-size:14px;font-family:'DM Sans'}.form-group input:focus{outline:0;border-color:var(--maroon)}.form-submit{width:100%;padding:12px;border-radius:6px;background:linear-gradient(135deg, var(--maroon) 0%, #5C0E25 100%);color:#fff;border:0;cursor:pointer;font-weight:600;margin-top:8px}</style></head><body><section style="padding:60px 20px;text-align:center"><h1 style="font-family:'Cormorant Garamond';font-size:48px;margin-bottom:20px;color:var(--maroon)">Kamdev Modak</h1><p style="font-size:16px;color:#5C4836;margin-bottom:32px">The Ayurvedic Answer To Viagra</p><button onclick="document.getElementById('leadModal').classList.add('active')" style="padding:16px 32px;border-radius:50px;background:var(--maroon);color:#fff;border:0;cursor:pointer;font-weight:700;font-family:'DM Sans'">Get Started</button></section><section style="padding:60px 20px;background:#fff"><h2 style="font-family:'Cormorant Garamond';text-align:center;font-size:36px;margin-bottom:40px">Pricing</h2><div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px"><div style="padding:30px;border-radius:12px;background:var(--cream);text-align:center"><h3 style="font-size:20px;margin-bottom:10px">Trial</h3><p style="font-size:18px;color:var(--maroon);font-weight:700;margin:15px 0">₹1,490</p><button onclick="setPackAndOpen('trial')" style="width:100%;padding:12px;border-radius:8px;background:var(--maroon);color:#fff;border:0;cursor:pointer;font-weight:600">Get Trial →</button></div><div style="padding:30px;border-radius:12px;background:var(--maroon);color:#fff;text-align:center;transform:scale(1.05)"><h3 style="font-size:20px;margin-bottom:10px">Monthly</h3><p style="font-size:18px;color:#E5C77E;font-weight:700;margin:15px 0">₹5,550</p><button onclick="setPackAndOpen('monthly')" style="width:100%;padding:12px;border-radius:8px;background:#C9A14A;color:var(--maroon);border:0;cursor:pointer;font-weight:600">Start Monthly →</button></div><div style="padding:30px;border-radius:12px;background:var(--cream);text-align:center"><h3 style="font-size:20px;margin-bottom:10px">3-Month</h3><p style="font-size:18px;color:var(--maroon);font-weight:700;margin:15px 0">₹15,000</p><button onclick="setPackAndOpen('quarterly')" style="width:100%;padding:12px;border-radius:8px;background:var(--maroon);color:#fff;border:0;cursor:pointer;font-weight:600">Get 3-Month →</button></div></div></section><div class="modal-overlay" id="leadModal" onclick="if(event.target.id==='leadModal') document.getElementById('leadModal').classList.remove('active')"><div class="modal"><button class="modal-close" onclick="document.getElementById('leadModal').classList.remove('active')">×</button><h3>One Step Away</h3><p>Enter details to proceed to checkout</p><form onsubmit="handleSubmit(event)"><div class="form-group"><input type="email" placeholder="Email" required></div><div class="form-group"><input type="text" placeholder="First Name" required></div><div class="form-group"><input type="tel" placeholder="Phone" required></div><button type="submit" class="form-submit">Continue →</button></form></div></div><script>let pack='monthly';function setPackAndOpen(p){pack=p;document.getElementById('leadModal').classList.add('active')}function handleSubmit(e){e.preventDefault();const link={trial:'https://rzp.io/rzp/igtS6lgg',monthly:'https://rzp.io/rzp/a1Zmxh3m',quarterly:'https://rzp.io/rzp/y8ynIRH'}[pack];setTimeout(()=>{window.location.href=link},300)}</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kamdev Modak - Ayurvedic ED & Stamina Solution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --maroon: #8B1538;
+      --maroon-dark: #5C0E25;
+      --cream: #FAF6EE;
+      --cream-dark: #EBE5D4;
+      --gold: #C9A14A;
+      --ink: #2A1810;
+      --ink-soft: #5C4836;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
+    
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(42,24,16,0.6);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active {
+      display: flex !important;
+    }
+    .modal {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 48px 32px;
+      max-width: 500px;
+      width: 90vw;
+      box-shadow: 0 20px 60px rgba(91, 14, 37, 0.25);
+      position: relative;
+      animation: slideUp 0.3s ease-out;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: none;
+      border: none;
+      font-size: 32px;
+      color: var(--ink-soft);
+      cursor: pointer;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+    }
+    .modal-close:hover { color: var(--maroon); }
+    .modal h3 {
+      font-family: 'Cormorant Garamond';
+      font-size: 32px;
+      margin-bottom: 12px;
+      color: var(--maroon-dark);
+    }
+    .modal p {
+      color: var(--ink-soft);
+      margin-bottom: 24px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .modal-trust {
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 13px;
+      margin-top: 20px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid rgba(139, 21, 56, 0.15);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--maroon);
+      box-shadow: 0 0 0 3px rgba(139, 21, 56, 0.08);
+    }
+    .form-group input::placeholder {
+      color: var(--ink-soft);
+      opacity: 0.7;
+    }
+    .form-submit {
+      width: 100%;
+      padding: 14px 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 24px rgba(139, 21, 56, 0.25);
+      transition: all 0.3s ease;
+    }
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(139, 21, 56, 0.35);
+    }
+    .form-submit:active { transform: translateY(0); }
+    
+    /* HERO */
+    .hero {
+      padding: 80px 20px 60px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+    }
+    .hero-content { max-width: 900px; margin: 0 auto; }
+    .hero h1 {
+      font-family: 'Cormorant Garamond';
+      font-size: clamp(36px, 6vw, 56px);
+      margin-bottom: 16px;
+      color: var(--maroon);
+      font-weight: 700;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--ink-soft);
+      margin: 20px auto 40px;
+      max-width: 700px;
+      line-height: 1.7;
+    }
+    .hero img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 20px;
+      margin: 30px auto;
+      box-shadow: 0 12px 32px rgba(201, 161, 74, 0.2);
+    }
+    .cta-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+      color: white;
+      padding: 18px 48px;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(139, 21, 56, 0.35);
+      transition: all 0.3s ease;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(139, 21, 56, 0.45);
+    }
+    
+    /* SECTIONS */
+    section {
+      padding: 70px 20px;
+      background: white;
+    }
+    section:nth-child(odd) { background: var(--cream); }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond';
+      font-size: clamp(32px, 5vw, 48px);
+      margin-bottom: 40px;
+      color: var(--maroon);
+      text-align: center;
+    }
+    .section-title .accent { font-style: italic; }
+    
+    /* PRICING GRID */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .price-card {
+      padding: 40px;
+      border-radius: 16px;
+      text-align: center;
+      background: white;
+      border: 2px solid rgba(139, 21, 56, 0.1);
+      transition: all 0.3s ease;
+    }
+    .price-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--maroon);
+      box-shadow: 0 12px 32px rgba(139, 21, 56, 0.15);
+    }
+    .price-card.featured {
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+      color: white;
+      transform: scale(1.05);
+    }
+    .price-card h3 {
+      font-family: 'Cormorant Garamond';
+      font-size: 28px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .price-amount {
+      font-size: 42px;
+      font-weight: 700;
+      margin: 16px 0;
+      color: var(--maroon);
+    }
+    .price-card.featured .price-amount { color: var(--gold); }
+    .price-card p {
+      font-size: 14px;
+      margin-bottom: 24px;
+      opacity: 0.8;
+    }
+    
+    /* HERO TRUST */
+    .hero-trust {
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .hero-trust span::before {
+      content: '✓ ';
+      color: var(--maroon);
+      font-weight: 700;
+    }
+    
+    /* GRID CONTENT */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-top: 40px;
+    }
+    @media (max-width: 768px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .price-card.featured { transform: scale(1); }
+    }
+    
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Kamdev Modak</h1>
+    <p class="hero-sub">The Ayurvedic Answer To Viagra — Without The Side Effects. Feel The Difference In 72 Hours.</p>
+    <img src="hero-product.jpg" alt="Kamdev Modak Premium Herbal Supplement">
+    <button class="cta-primary" onclick="openModal('hero')">Start Your 72-Hour Transformation →</button>
+    <div class="hero-trust">
+      <span>Clinically Proven Herbs</span>
+      <span>FSSAI Approved</span>
+      <span>Fast Results</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING SECTION -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Trial Pack</h3>
+        <div class="price-amount">₹1,490</div>
+        <p>7 Days • 7 Modaks</p>
+        <button class="cta-primary" onclick="openModal('trial')">Try Now</button>
+      </div>
+      <div class="price-card featured">
+        <h3>Monthly Pack</h3>
+        <div class="price-amount">₹5,550</div>
+        <p>30 Days • Most Popular</p>
+        <button class="cta-primary" onclick="openModal('monthly)">Get Monthly →</button>
+      </div>
+      <div class="price-card">
+        <h3>3-Month Pack</h3>
+        <div class="price-amount">₹15,000</div>
+        <p>90 Days • Best Value</p>
+        <button class="cta-primary" onclick="openModal('quarterly')">Get 3-Month →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section>
+  <div class="container">
+    <h2 class="section-title">You're Not Alone</h2>
+    <p style="text-align: center; font-size: 18px; color: var(--ink-soft); max-width: 800px; margin: 0 auto 40px;">
+      43% of men over 35 experience ED. Modern stress, diet, and lifestyle kill your natural energy. But you don't need synthetic drugs with side effects.
+    </p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="text-align: center; padding: 80px 20px;">
+  <div class="container">
+    <h2 class="section-title">72 Hours To Transform</h2>
+    <p style="font-size: 18px; color: var(--ink-soft); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+      Most men feel the results in 3 days. Full transformation in 3 months.
+    </p>
+    <img src="modak-lifestyle-2.jpg" alt="Kamdev Modak Lifestyle" style="max-width: 450px; width: 100%; border-radius: 20px; margin-bottom: 40px; box-shadow: 0 12px 32px rgba(201, 161, 74, 0.2);">
+    <button class="cta-primary" onclick="openModal('final')" style="padding: 20px 56px; font-size: 18px;">Start My Transformation Now →</button>
+    <div class="hero-trust" style="margin-top: 32px;">
+      <span>⚡ Limited stock available</span>
+      <span>🔒 100% secure checkout</span>
+      <span>🚚 Fast delivery across India</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Samayra Healthcare Pvt. Ltd.</strong></p>
+  <p>N-16, Kalkaji, Rampuri Marg, New Delhi – 110019</p>
+  <p style="margin-top: 20px; opacity: 0.7;">© 2026 Kamdev Modak · All Rights Reserved</p>
+</footer>
+
+<!-- MODAL WITH HARDCODED FORM -->
+<div class="modal-overlay" id="leadModal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h3>One Step Away</h3>
+    <p>Enter your details. Redirect to secure checkout.</p>
+    
+    <form id="leadForm" onsubmit="handleFormSubmit(event)">
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email Address" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="firstName" placeholder="First Name" required>
+      </div>
+      <div class="form-group">
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+      </div>
+      <button type="submit" class="form-submit">Continue To Checkout →</button>
+    </form>
+    
+    <p class="modal-trust">🔒 Your details are encrypted and never shared.</p>
+  </div>
+</div>
+
+<script>
+const RAZORPAY_LINKS = {
+  trial: 'https://rzp.io/rzp/igtS6lgg',
+  monthly: 'https://rzp.io/rzp/a1Zmxh3m',
+  quarterly: 'https://rzp.io/rzp/y8ynIRH',
+  hero: 'https://rzp.io/rzp/a1Zmxh3m',
+  final: 'https://rzp.io/rzp/a1Zmxh3m'
+};
+
+let selectedPack = 'monthly';
+
+function openModal(pack) {
+  selectedPack = pack;
+  document.getElementById('leadModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('leadModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target.id === 'leadModal') closeModal();
+}
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+  
+  // Send to Kit API silently
+  const formData = new FormData(e.target);
+  fetch('https://app.kit.com/forms/9433191/subscriptions', {
+    method: 'POST',
+    body: new URLSearchParams(formData)
+  }).catch(() => {});
+  
+  // Redirect to Razorpay
+  setTimeout(() => {
+    window.location.href = RAZORPAY_LINKS[selectedPack] || RAZORPAY_LINKS['monthly'];
+  }, 300);
+}
+
+// Close on ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+
+</body>
+</html>
