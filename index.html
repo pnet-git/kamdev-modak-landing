@@ -557,6 +557,7 @@ body {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   box-shadow: var(--shadow-md);
+  z-index: 10;
 }
 
 .price-original {
@@ -787,36 +788,39 @@ body {
 
 .guarantee-points {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
   margin-top: 50px;
-  text-align: left;
+  text-align: center;
 }
 
 .guarantee-point {
   background: rgba(255,255,255,0.08);
-  padding: 25px;
+  padding: 35px 25px;
   border-radius: 12px;
-  border: 1px solid rgba(201,161,74,0.3);
+  border: 1px solid rgba(201,161,74,0.4);
   backdrop-filter: blur(10px);
 }
 
 .guarantee-point-icon {
-  font-size: 32px;
-  margin-bottom: 15px;
+  font-size: 42px;
+  margin-bottom: 20px;
+  display: block;
 }
 
 .guarantee-point h3 {
-  font-size: 18px;
-  color: var(--gold-light);
-  margin-bottom: 10px;
+  font-size: 20px;
+  color: white;
+  margin-bottom: 15px;
   font-weight: 700;
+  letter-spacing: -0.3px;
 }
 
 .guarantee-point p {
-  font-size: 15px;
-  color: rgba(255,255,255,0.85);
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
   margin: 0;
+  line-height: 1.7;
 }
 
 @media (max-width: 768px) {
@@ -1515,43 +1519,36 @@ footer .container { max-width: 900px; }
     <div style="text-align:center; margin-bottom:40px; margin-top:40px;">
       <img src="modak-premium.jpg" alt="Kamdev Modak premium product lifestyle" style="width:100%; max-width:500px; border-radius:20px; box-shadow: 0 8px 24px rgba(91, 14, 37, 0.12);">
     </div>
-
-    <div class="risk-strip">
-      <div class="risk-item"><span class="emoji">🛡️</span> Unopened pack refund within 7 days</div>
-      <div class="risk-item"><span class="emoji">👨‍⚕️</span> Free Dr. Madhu consultation if no results</div>
-      <div class="risk-item"><span class="emoji">🌿</span> 100% natural · No habit-forming</div>
-    </div>
   </div>
 </section>
+
+<!-- TRUST STRIP -->
+<div style="background: white; padding: 25px 20px; text-align: center; border-top: 1px solid #E8E8E8;">
+  <div class="risk-strip">
+    <div class="risk-item"><span class="emoji">🛡️</span> Unopened pack refund within 7 days</div>
+    <div class="risk-item"><span class="emoji">👨‍⚕️</span> Free Dr. Madhu consultation if no results</div>
+    <div class="risk-item"><span class="emoji">🌿</span> 100% natural · No habit-forming</div>
+  </div>
+</div>
 
 <!-- ============================================ -->
 <!-- SECTION 7.5: GUARANTEE                       -->
 <!-- ============================================ -->
 <section class="guarantee-section reveal">
   <div class="guarantee-container">
-    <div class="guarantee-badge">✓ Our Promise</div>
+    <div class="guarantee-badge">🛡️ PROTECTED GUARANTEE</div>
     <h2>Results in 72 Hours. Or Your Consultation is Free.</h2>
-    <p>
-      We're <span class="guarantee-highlight">that confident</span> in Kamdev Modak. You get real results within 72 hours — or you don't pay for a consultation with Dr. Madhu Sudan himself. 
-      <br><br>
-      No money back. No unopened pack nonsense. Just <span class="guarantee-highlight">results or a free expert session</span> to find what works for you.
-    </p>
     
     <div class="guarantee-points">
       <div class="guarantee-point">
         <div class="guarantee-point-icon">⏱️</div>
         <h3>72-Hour Promise</h3>
-        <p>Feel noticeable difference in energy, confidence, and performance within 72 hours or claim your free consultation.</p>
+        <p>Feel noticeable difference in energy, confidence, and performance within 72 hours — or claim your free consultation.</p>
       </div>
       <div class="guarantee-point">
         <div class="guarantee-point-icon">👨‍⚕️</div>
         <h3>Free Dr. Madhu Consultation</h3>
-        <p>Get 60 minutes with Dr. Madhu Sudan directly — in clinic or online. No cost. No questions asked.</p>
-      </div>
-      <div class="guarantee-point">
-        <div class="guarantee-point-icon">🎯</div>
-        <h3>Results or Guidance</h3>
-        <p>Either Kamdev Modak transforms you, or Dr. Madhu personalizes a plan for your specific needs. You win either way.</p>
+        <p>Get a personalized 60-minute session with Dr. Madhu Sudan directly — in clinic or online. No cost. No strings.</p>
       </div>
     </div>
   </div>
