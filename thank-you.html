@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed - Kamdev Modak</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --maroon: #8B1538;
+      --maroon-dark: #6B0F2A;
+      --gold: #C9A14A;
+      --cream: #FAF6EE;
+      --dark: #1a1a1a;
+      --light-gray: #F5F5F5;
+      --border: #E8E8E8;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* ==========================================
+       HEADER & CHECKMARK
+       ========================================== */
+    .success-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .checkmark-circle {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      box-shadow: 0 8px 24px rgba(139, 21, 56, 0.25);
+      animation: scaleIn 0.6s ease-out;
+    }
+
+    .checkmark-circle svg {
+      width: 45px;
+      height: 45px;
+      stroke: white;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      animation: checkDraw 0.8s ease-out 0.2s both;
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes checkDraw {
+      0% {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+      }
+      100% {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 0;
+      }
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--maroon);
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .thank-you-subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ==========================================
+       SOCIAL PROOF COUNTER
+       ========================================== */
+    .social-proof {
+      background: white;
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 12px rgba(201, 161, 74, 0.1);
+    }
+
+    .proof-count {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--maroon);
+      margin-bottom: 5px;
+    }
+
+    .proof-text {
+      font-size: 15px;
+      color: #666;
+      letter-spacing: 0.3px;
+    }
+
+    /* ==========================================
+       PRODUCT IMAGE
+       ========================================== */
+    .product-showcase {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .product-image {
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 12px 40px rgba(139, 21, 56, 0.15);
+      margin-bottom: 20px;
+    }
+
+    .product-label {
+      font-size: 14px;
+      color: var(--maroon);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================
+       DELIVERY INFO CARD
+       ========================================== */
+    .delivery-card {
+      background: white;
+      border-left: 5px solid var(--gold);
+      border-radius: 8px;
+      padding: 35px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .delivery-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--maroon);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .delivery-card p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    .delivery-highlight {
+      background: rgba(201, 161, 74, 0.08);
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 15px;
+      color: var(--maroon);
+      font-weight: 500;
+      border-left: 3px solid var(--gold);
+    }
+
+    /* ==========================================
+       PoC CONTACT SECTION
+       ========================================== */
+    .poc-section {
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+      color: white;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 40px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(139, 21, 56, 0.25);
+    }
+
+    .poc-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      margin-bottom: 25px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    .poc-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .poc-item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 350px;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .poc-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .poc-value {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .poc-value a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .poc-value a:hover {
+      opacity: 0.8;
+    }
+
+    /* ==========================================
+       FAQ SECTION
+       ========================================== */
+    .faq-section {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--maroon);
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--maroon);
+    }
+
+    .faq-toggle {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: #666;
+      font-size: 15px;
+      line-height: 1.7;
+      margin-top: 0;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      margin-top: 15px;
+    }
+
+    .faq-item.active .faq-toggle {
+      transform: rotate(180deg);
+    }
+
+    /* ==========================================
+       CTA BUTTON
+       ========================================== */
+    .cta-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+      color: white;
+      padding: 18px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 24px rgba(139, 21, 56, 0.35);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(139, 21, 56, 0.45);
+    }
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      color: #888;
+      font-size: 14px;
+    }
+
+    .footer p {
+      margin-bottom: 10px;
+    }
+
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .poc-section h2 {
+        font-size: 24px;
+      }
+
+      .delivery-card {
+        padding: 25px;
+      }
+
+      .faq-section {
+        padding: 25px;
+      }
+
+      .poc-details {
+        gap: 15px;
+      }
+
+      .poc-item {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- SUCCESS HEADER -->
+  <div class="success-header">
+    <div class="checkmark-circle">
+      <svg viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h1>Order Confirmed!</h1>
+    <p class="thank-you-subtitle">
+      Thank you for your purchase. Your Kamdev Modak order has been received and we're excited to get it to you soon.
+    </p>
+  </div>
+
+  <!-- SOCIAL PROOF -->
+  <div class="social-proof">
+    <div class="proof-count" id="proofCount">2,847</div>
+    <p class="proof-text">people have already transformed their wellness with Kamdev Modak</p>
+  </div>
+
+  <!-- PRODUCT IMAGE -->
+  <div class="product-showcase">
+    <img src="https://raw.githubusercontent.com/pnet-git/kamdev-modak-landing/main/modak-premium.jpg" alt="Kamdev Modak Premium Pack" class="product-image">
+    <p class="product-label">Your Order</p>
+  </div>
+
+  <!-- DELIVERY INFO -->
+  <div class="delivery-card">
+    <h2>What Happens Next?</h2>
+    <p>
+      Our team will contact you within <strong>24 hours</strong> to confirm:
+    </p>
+    <ul style="margin-left: 20px; color: #555;">
+      <li style="margin-bottom: 10px;">Your delivery address</li>
+      <li style="margin-bottom: 10px;">Preferred delivery date</li>
+      <li style="margin-bottom: 10px;">Any special instructions or questions</li>
+    </ul>
+    <div class="delivery-highlight">
+      🚚 Expect delivery within 3-5 business days from confirmation
+    </div>
+  </div>
+
+  <!-- PoC CONTACT -->
+  <div class="poc-section">
+    <h2>Your Point of Contact</h2>
+    <div class="poc-details">
+      <div class="poc-item">
+        <p class="poc-label">Name</p>
+        <p class="poc-value">Rajkumar</p>
+      </div>
+      <div class="poc-item">
+        <p class="poc-label">Phone</p>
+        <p class="poc-value"><a href="tel:+918588021416">+91 85880 21416</a></p>
+      </div>
+      <div class="poc-item">
+        <p class="poc-label">Email</p>
+        <p class="poc-value"><a href="mailto:hello@drmadhusudan.com">hello@drmadhusudan.com</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>Common Questions</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this.parentElement)">
+        When will I receive my order?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        After we confirm your delivery address, we typically ship within 1-2 business days. You can expect delivery within 3-5 business days depending on your location.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this.parentElement)">
+        How should I take Kamdev Modak?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        Take one Modak daily in the evening with warm milk or water. For best results, consistency is key. Most users report feeling the difference within 72 hours, with full transformation by 8-12 weeks.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this.parentElement)">
+        What if I have questions about the product?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        You can reach out to Rajkumar directly at hello@drmadhusudan.com or call +91 85880 21416. He's available during business hours and can answer any questions about ingredients, usage, or results.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this.parentElement)">
+        Is there a return policy?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        We offer a 30-day satisfaction guarantee. If you're not completely satisfied with Kamdev Modak, contact us for a full refund. No questions asked.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this.parentElement)">
+        Are there any side effects?
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        Kamdev Modak is made from 100% natural, Ayurvedic ingredients. It's FSSAI approved and GMP certified. However, if you have any pre-existing medical conditions or are on medication, consult with a healthcare provider before use.
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <p style="color: #666; margin-bottom: 20px;">Questions or need immediate help?</p>
+    <a href="mailto:hello@drmadhusudan.com?subject=Kamdev%20Modak%20Order%20Inquiry" class="cta-button">Contact Rajkumar</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>© 2026 Dr. Madhu Sudan | Arogya Clinic</p>
+  <p>Your health, our commitment.</p>
+</div>
+
+<script>
+// Generate random proof count between 2,500 and 5,000
+function generateProofCount() {
+  const min = 2500;
+  const max = 5000;
+  const random = Math.floor(Math.random() * (max - min + 1)) + min;
+  document.getElementById('proofCount').textContent = random.toLocaleString();
+}
+
+generateProofCount();
+
+function toggleFaq(element) {
+  element.classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
