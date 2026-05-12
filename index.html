@@ -506,7 +506,210 @@ section {
   text-transform: uppercase;
 }
 
-/* === SECTION 7: PRICING === */
+/* === STICKY DISCOUNT BANNER === */
+.discount-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: white;
+  padding: 14px 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+  letter-spacing: 0.5px;
+}
+
+.discount-banner span {
+  color: var(--gold-light);
+  font-weight: 800;
+  margin: 0 6px;
+}
+
+.discount-timer {
+  display: inline-block;
+  margin-left: 10px;
+  font-family: 'Courier New', monospace;
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+body {
+  padding-top: 50px;
+}
+
+/* === DISCOUNT BADGE ON PRICE CARDS === */
+.discount-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: var(--gold);
+  color: var(--maroon);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-md);
+}
+
+.price-original {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.price-discounted {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* === EXIT INTENT POPUP === */
+.exit-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+.exit-popup.active {
+  display: flex;
+}
+
+.exit-popup-content {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: slideUp 0.4s ease-out;
+}
+
+.exit-popup-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s ease;
+}
+
+.exit-popup-close:hover {
+  color: var(--maroon);
+}
+
+.exit-popup-content h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: var(--maroon);
+}
+
+.exit-popup-content p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.exit-popup-highlight {
+  color: var(--maroon);
+  font-weight: 700;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === PURCHASE NOTIFICATION POPUP === */
+.purchase-notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: white;
+  border-radius: 12px;
+  padding: 16px 24px;
+  box-shadow: 0 12px 32px rgba(139, 21, 56, 0.25);
+  display: none;
+  z-index: 1500;
+  max-width: 320px;
+  animation: slideInRight 0.5s ease-out;
+  border-left: 4px solid var(--maroon);
+}
+
+.purchase-notification.active {
+  display: block;
+}
+
+.purchase-notification p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.purchase-notification .state {
+  color: var(--maroon);
+  font-weight: 700;
+}
+
+.purchase-notification .action {
+  color: var(--gold);
+  font-weight: 700;
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(400px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .purchase-notification {
+    bottom: 20px;
+    right: 20px;
+    max-width: 280px;
+  }
+
+  .exit-popup-content {
+    padding: 30px 20px;
+    max-width: 90%;
+  }
+}
 .pricing {
   background: var(--cream);
   text-align: center;
@@ -919,6 +1122,30 @@ footer .container { max-width: 900px; }
 </head>
 <body>
 
+<!-- STICKY DISCOUNT BANNER -->
+<div class="discount-banner">
+  🎉 <span>20% OFF TODAY ONLY</span> — Limited Time Offer
+  <span class="discount-timer">Ends in <span id="discountTimer">4:00</span></span>
+</div>
+
+<!-- EXIT INTENT POPUP -->
+<div class="exit-popup" id="exitPopup">
+  <div class="exit-popup-content">
+    <button class="exit-popup-close" onclick="closeExitPopup()">×</button>
+    <h2>Hold On! 🛑</h2>
+    <p>
+      Don't miss <span class="exit-popup-highlight">20% off</span> today. 
+      <br><br>
+      The <span class="exit-popup-highlight">Trial Pack shows real results in just 72 hours</span> — confidence, energy, performance. 
+      <br><br>
+      This discount won't come back. Sure you want to leave?
+    </p>
+  </div>
+</div>
+
+<!-- PURCHASE NOTIFICATION -->
+<div class="purchase-notification" id="purchaseNotification"></div>
+
 <!-- TOP TRUST BAR -->
 <div class="top-bar">
   <span>🌿 FSSAI Approved</span>
@@ -1120,31 +1347,40 @@ footer .container { max-width: 900px; }
 
     <div class="pricing-grid">
       <div class="price-card">
+        <div class="discount-badge">-20% OFF</div>
         <div class="price-icon">🌱</div>
         <h3>Trial Pack</h3>
         <p class="pack-detail">7 MODAK · 1 WEEK</p>
+        <div class="price-original">₹1,862</div>
         <div class="price-amount">₹1,490</div>
+        <div class="price-discounted">Save ₹372 today</div>
         <div class="price-per-day">₹213 per day</div>
         <p class="price-tagline">"Test it first. See the difference in 72 hours."</p>
         <button class="cta-card" onclick="openModal('trial')">Get Trial Pack →</button>
       </div>
 
       <div class="price-card featured">
+        <div class="discount-badge">-20% OFF</div>
         <span class="price-badge">⭐ Most Popular</span>
         <div class="price-icon">🔥</div>
         <h3>Monthly Pack</h3>
         <p class="pack-detail">30 MODAK · 1 MONTH</p>
+        <div class="price-original">₹6,938</div>
         <div class="price-amount">₹5,550</div>
+        <div class="price-discounted">Save ₹1,388 today</div>
         <div class="price-per-day">₹185 per day</div>
         <p class="price-tagline">"The full 1-month cycle for real results."</p>
         <button class="cta-card" onclick="openModal('monthly')">Start Monthly Pack →</button>
       </div>
 
       <div class="price-card">
+        <div class="discount-badge">-20% OFF</div>
         <div class="price-icon">💎</div>
         <h3>3-Month Transformation</h3>
         <p class="pack-detail">90 MODAK · 3 MONTHS</p>
+        <div class="price-original">₹18,750</div>
         <div class="price-amount">₹15,000</div>
+        <div class="price-discounted">Save ₹3,750 today</div>
         <div class="price-per-day">₹167 per day</div>
         <p class="price-tagline">"Best results + best value. Complete transformation."</p>
         <button class="cta-card" onclick="openModal('quarterly')">Get 3-Month Pack →</button>
@@ -1349,6 +1585,98 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+// ==========================================
+// DISCOUNT TIMER (4 HOURS)
+// ==========================================
+function startDiscountTimer() {
+  let timeLeft = 4 * 60 * 60; // 4 hours in seconds
+  
+  setInterval(() => {
+    const hours = Math.floor(timeLeft / 3600);
+    const minutes = Math.floor((timeLeft % 3600) / 60);
+    const seconds = timeLeft % 60;
+    
+    document.getElementById('discountTimer').textContent = 
+      `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    
+    if (timeLeft > 0) timeLeft--;
+  }, 1000);
+}
+
+startDiscountTimer();
+
+// ==========================================
+// EXIT INTENT POPUP
+// ==========================================
+let exitIntentTriggered = false;
+
+document.addEventListener('mouseleave', function(e) {
+  if (e.clientY < 10 && !exitIntentTriggered) {
+    exitIntentTriggered = true;
+    document.getElementById('exitPopup').classList.add('active');
+  }
+});
+
+function closeExitPopup() {
+  document.getElementById('exitPopup').classList.remove('active');
+}
+
+document.getElementById('exitPopup').addEventListener('click', function(e) {
+  if (e.target.id === 'exitPopup') {
+    closeExitPopup();
+  }
+});
+
+// ==========================================
+// PURCHASE NOTIFICATION POPUP
+// ==========================================
+const indianStates = [
+  'Delhi', 'Mumbai', 'Bangalore', 'Hyderabad', 'Chennai', 'Kolkata', 'Pune',
+  'Ahmedabad', 'Jaipur', 'Lucknow', 'Chandigarh', 'Indore', 'Surat', 'Thane',
+  'Gurgaon', 'Noida', 'Cochin', 'Visakhapatnam', 'Nagpur', 'Vadodara'
+];
+
+const firstNames = [
+  'Rajesh', 'Priya', 'Amit', 'Sneha', 'Vikram', 'Anjali', 'Arjun', 'Deepika',
+  'Rohan', 'Aisha', 'Nikhil', 'Pooja', 'Sameer', 'Kavya', 'Kunal', 'Isha',
+  'Harsh', 'Ritika', 'Dev', 'Neha', 'Akshay', 'Shruti', 'Varun', 'Ananya'
+];
+
+function getRandomName() {
+  const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+  const state = indianStates[Math.floor(Math.random() * indianStates.length)];
+  return { firstName, state };
+}
+
+function showPurchaseNotification() {
+  const { firstName, state } = getRandomName();
+  const actions = ['purchased', 'just ordered', 'bought', 'grabbed'];
+  const action = actions[Math.floor(Math.random() * actions.length)];
+  
+  const notification = document.getElementById('purchaseNotification');
+  notification.innerHTML = `
+    <p><strong>${firstName}</strong> from <span class="state">${state}</span></p>
+    <div class="action">✅ ${action.charAt(0).toUpperCase() + action.slice(1)} Kamdev Modak</div>
+  `;
+  notification.classList.add('active');
+  
+  setTimeout(() => {
+    notification.classList.remove('active');
+  }, 4000);
+}
+
+// Show first notification after 15-20 seconds
+setTimeout(() => {
+  showPurchaseNotification();
+}, Math.random() * 5000 + 15000);
+
+// Show random notifications every 30-50 seconds
+setInterval(() => {
+  if (Math.random() > 0.6) { // 40% chance every 30-50 seconds
+    showPurchaseNotification();
+  }
+}, Math.random() * 20000 + 30000);
 </script>
 
 </body>
