@@ -575,10 +575,21 @@
 <script>
 // Generate random proof count between 2,500 and 5,000
 function generateProofCount() {
-  const min = 2500;
-  const max = 5000;
-  const random = Math.floor(Math.random() * (max - min + 1)) + min;
-  document.getElementById('proofCount').textContent = random.toLocaleString();
+  // Get stored count or start at 2,500
+  let count = parseInt(localStorage.getItem('kamdevProofCount')) || 2500;
+  
+  // Increment by random 1-3 each visit
+  const increment = Math.floor(Math.random() * 3) + 1;
+  count += increment;
+  
+  // Cap at 5,000 max
+  if (count > 5000) count = 5000;
+  
+  // Save back to localStorage
+  localStorage.setItem('kamdevProofCount', count);
+  
+  // Display
+  document.getElementById('proofCount').textContent = count.toLocaleString();
 }
 
 generateProofCount();
