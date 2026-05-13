@@ -181,14 +181,13 @@ section {
   margin: 0 auto;
 }
 .section-eyebrow {
-  display: block;
+  display: inline-block;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 12px;
-  text-align: center;
 }
 .section-title {
   font-size: clamp(28px, 4vw, 44px);
@@ -451,8 +450,6 @@ section {
   grid-template-columns: 280px 1fr;
   gap: 50px;
   align-items: center;
-  justify-items: center;
-  text-align: center;
 }
 .authority-photo {
   width: 100%;
@@ -466,12 +463,11 @@ section {
   font-size: 14px;
   border: 2px dashed rgba(201,161,74,0.3);
 }
-.authority-content .section-eyebrow { color: var(--gold-light); text-align: center; }
+.authority-content .section-eyebrow { color: var(--gold-light); }
 .authority-content h2 {
   color: var(--cream);
   margin-bottom: 24px;
   font-size: clamp(28px, 4vw, 40px);
-  text-align: center;
 }
 .authority-content h2 .accent { color: var(--gold-light); }
 .authority-bio {
@@ -510,356 +506,7 @@ section {
   text-transform: uppercase;
 }
 
-/* === STICKY DISCOUNT BANNER === */
-.discount-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-  color: white;
-  padding: 14px 20px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 15px;
-  z-index: 1000;
-  box-shadow: var(--shadow-md);
-  letter-spacing: 0.5px;
-}
-
-.discount-banner span {
-  color: var(--gold-light);
-  font-weight: 800;
-  margin: 0 6px;
-}
-
-.discount-timer {
-  display: inline-block;
-  margin-left: 10px;
-  font-family: 'Courier New', monospace;
-  background: rgba(255,255,255,0.2);
-  padding: 4px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-body {
-  padding-top: 50px;
-}
-
-/* === DISCOUNT BADGE ON PRICE CARDS === */
-.discount-badge {
-  position: absolute;
-  bottom: auto;
-  top: 16px;
-  left: 16px;
-  background: var(--gold);
-  color: var(--maroon);
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  box-shadow: var(--shadow-md);
-  z-index: 10;
-}
-
-.price-original {
-  text-decoration: line-through;
-  color: #999;
-  font-size: 16px;
-  margin-bottom: 4px;
-}
-
-.price-discounted {
-  color: var(--gold);
-  font-weight: 700;
-  font-size: 14px;
-  margin-bottom: 12px;
-}
-
-/* === EXIT INTENT POPUP === */
-.exit-popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  backdrop-filter: blur(4px);
-}
-
-.exit-popup.active {
-  display: flex;
-}
-
-.exit-popup-content {
-  background: white;
-  border-radius: 16px;
-  padding: 40px;
-  max-width: 500px;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  position: relative;
-  animation: slideUp 0.4s ease-out;
-}
-
-.exit-popup-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: #999;
-  transition: color 0.3s ease;
-}
-
-.exit-popup-close:hover {
-  color: var(--maroon);
-}
-
-.exit-popup-content h2 {
-  font-size: 28px;
-  margin-bottom: 15px;
-  color: var(--maroon);
-}
-
-.exit-popup-content p {
-  font-size: 16px;
-  color: #666;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.exit-popup-highlight {
-  color: var(--maroon);
-  font-weight: 700;
-}
-
-.exit-popup-btn {
-  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 24px rgba(139, 21, 56, 0.35);
-  margin-top: 20px;
-}
-
-.exit-popup-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(139, 21, 56, 0.45);
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* === PURCHASE NOTIFICATION POPUP === */
-.purchase-notification {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: white;
-  border-radius: 12px;
-  padding: 16px 24px;
-  box-shadow: 0 12px 32px rgba(139, 21, 56, 0.25);
-  display: none;
-  z-index: 1500;
-  max-width: 320px;
-  animation: slideInRight 0.5s ease-out;
-  border-left: 4px solid var(--maroon);
-}
-
-.purchase-notification.active {
-  display: block;
-}
-
-.purchase-notification p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--ink);
-  font-weight: 600;
-}
-
-.purchase-notification .state {
-  color: var(--maroon);
-  font-weight: 700;
-}
-
-.purchase-notification .action {
-  color: var(--gold);
-  font-weight: 700;
-  margin-top: 6px;
-  font-size: 12px;
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(400px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@media (max-width: 768px) {
-  .purchase-notification {
-    bottom: 20px;
-    right: 20px;
-    max-width: 280px;
-  }
-
-  .exit-popup-content {
-    padding: 30px 20px;
-    max-width: 90%;
-  }
-}
-
-/* === GUARANTEE SECTION === */
-.guarantee-section {
-  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-  color: white;
-  padding: 80px 20px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.guarantee-section::before {
-  content: '';
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(201,161,74,0.08) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
-.guarantee-section::after {
-  content: '';
-  position: absolute;
-  bottom: -150px;
-  left: -100px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(201,161,74,0.08) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
-.guarantee-container {
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-}
-
-.guarantee-badge {
-  display: inline-block;
-  background: rgba(201,161,74,0.2);
-  border: 2px solid var(--gold);
-  color: var(--gold);
-  padding: 12px 24px;
-  border-radius: 50px;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.guarantee-section h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 48px;
-  color: white;
-  margin-bottom: 20px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-
-.guarantee-section p {
-  font-size: 18px;
-  color: rgba(255,255,255,0.95);
-  line-height: 1.8;
-  margin-bottom: 30px;
-}
-
-.guarantee-highlight {
-  color: var(--gold-light);
-  font-weight: 700;
-}
-
-.guarantee-points {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  margin-top: 50px;
-  text-align: center;
-}
-
-.guarantee-point {
-  background: rgba(255,255,255,0.08);
-  padding: 35px 25px;
-  border-radius: 12px;
-  border: 1px solid rgba(201,161,74,0.4);
-  backdrop-filter: blur(10px);
-}
-
-.guarantee-point-icon {
-  font-size: 42px;
-  margin-bottom: 20px;
-  display: block;
-}
-
-.guarantee-point h3 {
-  font-size: 20px;
-  color: white;
-  margin-bottom: 15px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-}
-
-.guarantee-point p {
-  font-size: 16px;
-  color: rgba(255,255,255,0.9);
-  margin: 0;
-  line-height: 1.7;
-}
-
-@media (max-width: 768px) {
-  .guarantee-section {
-    padding: 60px 20px;
-  }
-
-  .guarantee-section h2 {
-    font-size: 32px;
-  }
-
-  .guarantee-section p {
-    font-size: 16px;
-  }
-}
+/* === SECTION 7: PRICING === */
 .pricing {
   background: var(--cream);
   text-align: center;
@@ -1272,31 +919,6 @@ footer .container { max-width: 900px; }
 </head>
 <body>
 
-<!-- STICKY DISCOUNT BANNER -->
-<div class="discount-banner">
-  🎉 <span>LIMITED TIME DISCOUNTS OFFERED TODAY</span>
-  <span class="discount-timer">Ends in <span id="discountTimer">4:00</span></span>
-</div>
-
-<!-- EXIT INTENT POPUP -->
-<div class="exit-popup" id="exitPopup">
-  <div class="exit-popup-content">
-    <button class="exit-popup-close" onclick="closeExitPopup()">×</button>
-    <h2>Hold On! 🛑</h2>
-    <p>
-      Don't miss <span class="exit-popup-highlight">limited time discounts</span> today. 
-      <br><br>
-      The <span class="exit-popup-highlight">7-day trial shows real results</span> — confidence, energy, performance. 
-      <br><br>
-      This offer won't come back. Sure you want to leave?
-    </p>
-    <button class="exit-popup-btn" onclick="acceptOfferAndScroll()">Yes, I Want The 7-Day Trial</button>
-  </div>
-</div>
-
-<!-- PURCHASE NOTIFICATION -->
-<div class="purchase-notification" id="purchaseNotification"></div>
-
 <!-- TOP TRUST BAR -->
 <div class="top-bar">
   <span>🌿 FSSAI Approved</span>
@@ -1363,8 +985,6 @@ footer .container { max-width: 900px; }
           <li><span class="icon">✗</span> Body temperature spikes</li>
           <li><span class="icon">✗</span> Works for one night only</li>
           <li><span class="icon">✗</span> Emergency-room results</li>
-          <li><span class="icon">✗</span> Creates Dependency</li>
-          <li><span class="icon">✗</span> Has Side Effects</li>
         </ul>
       </div>
       <div class="comparison-col good">
@@ -1376,8 +996,6 @@ footer .container { max-width: 900px; }
           <li><span class="icon">✓</span> Supports full body health</li>
           <li><span class="icon">✓</span> Long-term restoration</li>
           <li><span class="icon">✓</span> Steady daily improvement</li>
-          <li><span class="icon">✓</span> No Dependency</li>
-          <li><span class="icon">✓</span> No Side Effects</li>
         </ul>
       </div>
     </div>
@@ -1502,40 +1120,31 @@ footer .container { max-width: 900px; }
 
     <div class="pricing-grid">
       <div class="price-card">
-        <div class="discount-badge">-20% OFF</div>
         <div class="price-icon">🌱</div>
         <h3>Trial Pack</h3>
         <p class="pack-detail">7 MODAK · 1 WEEK</p>
-        <div class="price-original">₹1,862</div>
         <div class="price-amount">₹1,490</div>
-        <div class="price-discounted">Save ₹372 today</div>
         <div class="price-per-day">₹213 per day</div>
         <p class="price-tagline">"Test it first. See the difference in 72 hours."</p>
         <button class="cta-card" onclick="openModal('trial')">Get Trial Pack →</button>
       </div>
 
       <div class="price-card featured">
-        <div class="discount-badge">-20% OFF</div>
         <span class="price-badge">⭐ Most Popular</span>
         <div class="price-icon">🔥</div>
         <h3>Monthly Pack</h3>
         <p class="pack-detail">30 MODAK · 1 MONTH</p>
-        <div class="price-original">₹6,938</div>
         <div class="price-amount">₹5,550</div>
-        <div class="price-discounted">Save ₹1,388 today</div>
         <div class="price-per-day">₹185 per day</div>
         <p class="price-tagline">"The full 1-month cycle for real results."</p>
         <button class="cta-card" onclick="openModal('monthly')">Start Monthly Pack →</button>
       </div>
 
       <div class="price-card">
-        <div class="discount-badge">-20% OFF</div>
         <div class="price-icon">💎</div>
         <h3>3-Month Transformation</h3>
         <p class="pack-detail">90 MODAK · 3 MONTHS</p>
-        <div class="price-original">₹18,750</div>
         <div class="price-amount">₹15,000</div>
-        <div class="price-discounted">Save ₹3,750 today</div>
         <div class="price-per-day">₹167 per day</div>
         <p class="price-tagline">"Best results + best value. Complete transformation."</p>
         <button class="cta-card" onclick="openModal('quarterly')">Get 3-Month Pack →</button>
@@ -1548,36 +1157,11 @@ footer .container { max-width: 900px; }
     <div style="text-align:center; margin-bottom:40px; margin-top:40px;">
       <img src="modak-premium.jpg" alt="Kamdev Modak premium product lifestyle" style="width:100%; max-width:500px; border-radius:20px; box-shadow: 0 8px 24px rgba(91, 14, 37, 0.12);">
     </div>
-  </div>
-</section>
 
-<!-- TRUST STRIP -->
-<div style="background: white; padding: 25px 20px; text-align: center; border-top: 1px solid #E8E8E8;">
-  <div class="risk-strip">
-    <div class="risk-item"><span class="emoji">🌿</span> 100% natural · No habit-forming</div>
-  </div>
-</div>
-
-<!-- ============================================ -->
-<!-- SECTION 7.5: GUARANTEE                       -->
-<!-- ============================================ -->
-<section class="guarantee-section reveal">
-  <div class="guarantee-container">
-    <div class="guarantee-badge">🛡️ PROTECTED GUARANTEE</div>
-    <h2>Results in 7 Days. Or Your Consultation is Free.</h2>
-    <p style="font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 20px;">🌿 100% Natural · No Habit-Forming</p>
-    
-    <div class="guarantee-points">
-      <div class="guarantee-point">
-        <div class="guarantee-point-icon">⏱️</div>
-        <h3>7-Day Promise</h3>
-        <p>Feel noticeable difference in energy, confidence, and performance within 7 days — or claim your free consultation.</p>
-      </div>
-      <div class="guarantee-point">
-        <div class="guarantee-point-icon">👨‍⚕️</div>
-        <h3>Free Dr. Madhu Consultation</h3>
-        <p>Get a personalized 60-minute session with Dr. Madhu Sudan directly — in clinic or online. No cost. No strings.</p>
-      </div>
+    <div class="risk-strip">
+      <div class="risk-item"><span class="emoji">🛡️</span> Unopened pack refund within 7 days</div>
+      <div class="risk-item"><span class="emoji">👨‍⚕️</span> Free Dr. Madhu consultation if no results</div>
+      <div class="risk-item"><span class="emoji">🌿</span> 100% natural · No habit-forming</div>
     </div>
   </div>
 </section>
@@ -1593,11 +1177,11 @@ footer .container { max-width: 900px; }
     <div class="faq-list">
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-question">How fast will I see results?</div>
-        <div class="faq-answer">Feel a noticeable difference in energy, confidence, and performance within 7 days. Full transformation happens over 2-3 months of daily use. Our guarantee: results in 7 days or a free consultation with Dr. Madhu Sudan.</div>
+        <div class="faq-answer">Most patients feel a noticeable difference within 72 hours — more energy, lighter body, mental clarity. Full results compound over 30 to 90 days of daily use.</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-question">Are there any side effects?</div>
-        <div class="faq-answer">None. Kamdev Modak is made from 100% natural Ayurvedic herbs (Ashwagandha, Shilajit, Kaunch Beej, Shatavari, Gokshura). Unlike synthetic pills, it works with your body, not against it. No dependency, no habit-forming.</div>
+        <div class="faq-answer">None. Kamdev Modak is made from 100% natural Ayurvedic herbs (Ashwagandha, Shilajit, Kaunch Beej, Shatavari, Gokshura). Unlike synthetic pills, it works with your body, not against it.</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-question">How long should I take it?</div>
@@ -1609,7 +1193,7 @@ footer .container { max-width: 900px; }
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-question">What if it doesn't work for me?</div>
-        <div class="faq-answer">We have 100% trust on our product and confidence it will give you results in 7 days. If after 7 days you feel it's not giving you the results you're looking for, Dr. Madhu Sudan will give you a free personalized consultation — in clinic or online — to assess your case and create a plan that works for you. No 100% money-back refund, but guaranteed expert guidance.</div>
+        <div class="faq-answer">Unopened packs are eligible for a full refund within 7 days. If you've completed the full course and feel you haven't seen results, you can book a free personal consultation with Dr. Madhu Sudan to assess your case.</div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-question">Will my order be discreet?</div>
@@ -1642,38 +1226,11 @@ footer .container { max-width: 900px; }
 </section>
 
 <!-- ============================================ -->
-<!-- SECTION 10: TESTIMONIALS                     -->
-<!-- ============================================ -->
-<section class="testimonials" style="padding: 80px 20px; background: white;">
-  <div class="container reveal" style="max-width: 1000px;">
-    <div class="section-eyebrow" style="text-align: center;">REAL RESULTS</div>
-    <h2 class="section-title" style="text-align:center; margin-left:auto; margin-right:auto; margin-bottom: 60px;">What Our Customers Say</h2>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-      <!-- TESTIMONIAL 1 -->
-      <div style="text-align: center; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
-        <img src="testimonial-1.jpg" alt="Customer testimonial 1" style="width: 100%; height: 300px; object-fit: cover;">
-      </div>
-
-      <!-- TESTIMONIAL 2 -->
-      <div style="text-align: center; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
-        <img src="testimonial-2.jpg" alt="Customer testimonial 2" style="width: 100%; height: 300px; object-fit: cover;">
-      </div>
-
-      <!-- TESTIMONIAL 3 -->
-      <div style="text-align: center; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.08); transition: transform 0.3s ease;">
-        <img src="testimonial-3.jpg" alt="Customer testimonial 3" style="width: 100%; height: 300px; object-fit: cover;">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
 <!-- FOOTER                                       -->
 <!-- ============================================ -->
 <footer>
   <div class="container">
-    <div class="footer-mfr">Formulated by Dr. Madhu Sudan.</div>
+    <div class="footer-mfr">Manufactured & Marketed By: Samayra Healthcare Pvt. Ltd.<br>N-16, Kalkaji, Rampuri Marg, New Delhi – 110019</div>
     <div class="footer-disclaimer">
       This product is a Health Supplement and is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Not recommended for children, pregnant, or lactating women. Consult your healthcare provider before use if you have underlying health conditions. Store in a cool, dry place away from sunlight.
     </div>
@@ -1688,219 +1245,6 @@ footer .container { max-width: 900px; }
 </footer>
 
 <!-- ============================================ -->
-<!-- MODAL — HARDCODED FORM (NO KIT EMBED)        -->
+<!-- MODAL — KIT FORM (Name + Email + Phone)      -->
 <!-- ============================================ -->
 <div class="modal-overlay" id="leadModal" onclick="closeModalOutside(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <h3>One Step Away.</h3>
-    <p>Enter your details to unlock your offer. Your information is 100% confidential.</p>
-
-    <!-- HARDCODED FORM — SENDS TO KIT API VIA FETCH -->
-    <form id="leadForm" onsubmit="handleFormSubmit(event)" method="post">
-      <div class="form-group">
-        <input class="formkit-input" type="email" name="email_address" placeholder="Email Address" required>
-      </div>
-      <div class="form-group">
-        <input class="formkit-input" type="text" name="fields[first_name]" placeholder="First Name" required>
-      </div>
-      <div class="form-group">
-        <input class="formkit-input" type="tel" name="fields[phone_number]" placeholder="Phone Number" required>
-      </div>
-      <button type="submit" class="form-submit" style="background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%); color: white; font-weight: 700; letter-spacing: 0.5px; font-size: 16px; box-shadow: 0 8px 24px rgba(139, 21, 56, 0.35); transition: all 0.3s ease; padding: 18px 28px; border-radius: 8px;">Continue To Checkout →</button>
-    </form>
-
-    <p class="modal-trust">🔒 Your details are encrypted and never shared.</p>
-  </div>
-</div>
-
-<script>
-// ==========================================
-// RAZORPAY PAYMENT PAGE LINKS
-// ==========================================
-const RAZORPAY_LINKS = {
-  trial: "https://rzp.io/rzp/igtS6lgg",
-  monthly: "https://rzp.io/rzp/a1Zmxh3m",
-  quarterly: "https://rzp.io/rzp/y8ynIRH",
-  hero: "https://rzp.io/rzp/a1Zmxh3m",
-  final: "https://rzp.io/rzp/a1Zmxh3m"
-};
-
-let selectedPack = "monthly";
-
-function openModal(pack) {
-  selectedPack = pack;
-  localStorage.setItem("selectedPack", pack);
-  document.getElementById("leadModal").classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-  document.getElementById("leadModal").classList.remove("active");
-  document.body.style.overflow = "";
-}
-
-function closeModalOutside(e) {
-  if (e.target.id === "leadModal") closeModal();
-}
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeModal();
-});
-
-function handleFormSubmit(e) {
-  e.preventDefault();
-  const email = e.target.querySelector("input[name=\"email_address\"]").value;
-  const firstName = e.target.querySelector("input[name=\"fields[first_name]\"]").value;
-  const phone = e.target.querySelector("input[name=\"fields[phone_number]\"]").value;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    alert("Please enter a valid email address");
-    return;
-  }
-  if (firstName.trim().length < 2) {
-    alert("Please enter a valid name");
-    return;
-  }
-  const phoneDigits = phone.replace(/\D/g, "");
-  if (phoneDigits.length !== 10) {
-    alert("Please enter a valid 10-digit phone number");
-    return;
-  }
-  const pack = localStorage.getItem("selectedPack") || "monthly";
-  const formData = new FormData(e.target);
-  fetch("https://app.kit.com/forms/9433191/subscriptions", {
-    method: "POST",
-    body: new URLSearchParams(formData)
-  }).catch(() => {});
-  setTimeout(() => {
-    window.location.href = RAZORPAY_LINKS[pack] || RAZORPAY_LINKS["monthly"];
-  }, 300);
-}
-
-function toggleFaq(item) {
-  item.classList.toggle("active");
-}
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("in-view");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-// ==========================================
-// DISCOUNT TIMER (4 HOURS)
-// ==========================================
-function startDiscountTimer() {
-  let timeLeft = 4 * 60 * 60; // 4 hours in seconds
-  
-  setInterval(() => {
-    const hours = Math.floor(timeLeft / 3600);
-    const minutes = Math.floor((timeLeft % 3600) / 60);
-    const seconds = timeLeft % 60;
-    
-    document.getElementById('discountTimer').textContent = 
-      `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    
-    if (timeLeft > 0) timeLeft--;
-  }, 1000);
-}
-
-startDiscountTimer();
-
-// ==========================================
-// EXIT INTENT POPUP
-// ==========================================
-let exitIntentTriggered = false;
-
-document.addEventListener('mouseleave', function(e) {
-  if (e.clientY < 10 && !exitIntentTriggered) {
-    exitIntentTriggered = true;
-    document.getElementById('exitPopup').classList.add('active');
-  }
-});
-
-function closeExitPopup() {
-  document.getElementById('exitPopup').classList.remove('active');
-}
-
-function acceptOfferAndScroll() {
-  document.getElementById('exitPopup').classList.remove('active');
-  setTimeout(() => {
-    document.querySelector('.pricing').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 300);
-}
-
-document.getElementById('exitPopup').addEventListener('click', function(e) {
-  if (e.target.id === 'exitPopup') {
-    closeExitPopup();
-  }
-});
-
-// ==========================================
-// PURCHASE NOTIFICATION POPUP
-// ==========================================
-const indianStates = [
-  'Delhi', 'Mumbai', 'Bangalore', 'Hyderabad', 'Chennai', 'Kolkata', 'Pune',
-  'Ahmedabad', 'Jaipur', 'Lucknow', 'Chandigarh', 'Indore', 'Surat', 'Thane',
-  'Gurgaon', 'Noida', 'Cochin', 'Visakhapatnam', 'Nagpur', 'Vadodara'
-];
-
-const maleNames = [
-  'Rajesh', 'Amit', 'Vikram', 'Arjun', 'Rohan', 'Sameer', 'Kunal', 'Dev',
-  'Varun', 'Akshay', 'Harsh', 'Nikhil', 'Anand', 'Deepak', 'Sanjay', 'Ravi',
-  'Manish', 'Arun', 'Vikash', 'Pradeep', 'Suresh', 'Ramesh', 'Ashok', 'Vishal',
-  'Aditya', 'Rahul', 'Naveen', 'Siddharth', 'Karan', 'Aryan'
-];
-
-const femaleNames = [
-  'Priya', 'Sneha', 'Anjali', 'Deepika', 'Aisha', 'Ritika', 'Isha', 'Neha',
-  'Ananya', 'Pooja', 'Kavya', 'Shruti'
-];
-
-function getRandomName() {
-  const isMale = Math.random() < 0.8; // 80% male
-  const firstName = isMale 
-    ? maleNames[Math.floor(Math.random() * maleNames.length)]
-    : femaleNames[Math.floor(Math.random() * femaleNames.length)];
-  const state = indianStates[Math.floor(Math.random() * indianStates.length)];
-  return { firstName, state };
-}
-
-function showPurchaseNotification() {
-  const { firstName, state } = getRandomName();
-  const actions = ['purchased', 'just ordered', 'bought', 'grabbed'];
-  const action = actions[Math.floor(Math.random() * actions.length)];
-  
-  const notification = document.getElementById('purchaseNotification');
-  notification.innerHTML = `
-    <p><strong>${firstName}</strong> from <span class="state">${state}</span></p>
-    <div class="action">✅ ${action.charAt(0).toUpperCase() + action.slice(1)} Kamdev Modak</div>
-  `;
-  notification.classList.add('active');
-  
-  setTimeout(() => {
-    notification.classList.remove('active');
-  }, 4000);
-}
-
-// Show first notification after 15-20 seconds
-setTimeout(() => {
-  showPurchaseNotification();
-}, Math.random() * 5000 + 15000);
-
-// Show random notifications every 30-50 seconds
-setInterval(() => {
-  if (Math.random() > 0.6) { // 40% chance every 30-50 seconds
-    showPurchaseNotification();
-  }
-}, Math.random() * 20000 + 30000);
-</script>
-
-</body>
-</html>
