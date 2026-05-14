@@ -1556,7 +1556,7 @@ footer .container { max-width: 900px; }
       " 
       onmouseover="this.style.color='#666'; this.style.borderColor='#bbb';"
       onmouseout="this.style.color='#999'; this.style.borderColor='#ddd';"
-      onclick="this.style.opacity='0.5'; this.style.pointerEvents='none';">
+      onclick="document.querySelector('.testimonials').scrollIntoView({ behavior: 'smooth', block: 'start' });">
         No, I'm Good. I Prefer Talking About Changing Over Actually Changing.
       </button>
     </div>
