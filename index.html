@@ -1533,6 +1533,33 @@ footer .container { max-width: 900px; }
     </div>
 
     <p class="timeline-caption">72-Hour Promise for Transformation. Most herbal formulas take weeks. Kamdev Modak begins working within 72 hours, then compounds for full results in 7 days.</p>
+
+    <!-- DUAL CTA BUTTONS: PRIMARY + SECONDARY (LOSS AVERSION) -->
+    <div style="text-align: center; margin-top: 60px; display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
+      <!-- PRIMARY BUTTON -->
+      <button class="cta-primary" style="padding: 18px 40px; font-size: 16px; font-weight: 700;" onclick="document.querySelector('.pricing').scrollIntoView({ behavior: 'smooth', block: 'start' })">
+        ✓ Yes, I'm Ready to Transform. Start Now →
+      </button>
+
+      <!-- SECONDARY BUTTON (FADED - LOSS AVERSION) -->
+      <button style="
+        padding: 14px 30px;
+        font-size: 14px;
+        font-weight: 500;
+        background: transparent;
+        color: #999;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-style: italic;
+      " 
+      onmouseover="this.style.color='#666'; this.style.borderColor='#bbb';"
+      onmouseout="this.style.color='#999'; this.style.borderColor='#ddd';"
+      onclick="this.style.opacity='0.5'; this.style.pointerEvents='none';">
+        No, I'm Good. I Prefer Talking About Changing Over Actually Changing.
+      </button>
+    </div>
   </div>
 </section>
 
