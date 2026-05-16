@@ -3,6 +3,14 @@
   "outputDirectory": ".",
   "rewrites": [
     {
+      "source": "/offer-trial",
+      "destination": "/offer-trial.html"
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/thank-you/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
