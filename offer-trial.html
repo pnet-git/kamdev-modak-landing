@@ -608,9 +608,9 @@ h1, h2, h3, h4 {
     <p class="hero-subheadline">
       After 15 years of research and 1,00,000+ patients, Dr. Madhu discovered the blend that restores complete rhythm without side effects. In just 72 hours, you'll feel the difference.
     </p>
-    <button class="cta-primary" onclick="document.querySelector('.trial-offer').scrollIntoView({ behavior: 'smooth', block: 'start' })">
+    <a href="#trial-section" class="cta-primary" style="display: inline-block; text-decoration: none;">
       Start Your 7-Day Trial →
-    </button>
+    </a>
   </div>
 </section>
 
@@ -804,7 +804,7 @@ h1, h2, h3, h4 {
 </section>
 
 <!-- TRIAL OFFER: PRIMARY CTA -->
-<section class="trial-offer">
+<section class="trial-offer" id="trial-section">
   <div class="trial-container">
     <div class="trial-eyebrow">No Prescription. No Shame. No Side Effects.</div>
     <h1 class="trial-headline">Start Your 7-Day Trial</h1>
@@ -815,9 +815,9 @@ h1, h2, h3, h4 {
 
     <div class="trial-badge">✓ 72-Hour Results Guarantee</div>
 
-    <button class="cta-primary" onclick="openModal('trial')" style="margin-bottom: 30px;">
+    <a href="https://rzp.io/rzp/igtS6lgg" class="cta-primary" style="margin-bottom: 30px; display: inline-block; text-decoration: none;">
       ✓ Claim Your Trial Pack Now →
-    </button>
+    </a>
 
     <div class="guarantee">
       <div class="guarantee-title">🛡️ Here's Our Promise</div>
@@ -840,20 +840,6 @@ h1, h2, h3, h4 {
     </p>
   </div>
 </footer>
-
-<!-- MODAL FOR FORM -->
-<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; display:flex; align-items:center; justify-content:center;">
-  <div style="background:white; padding:40px; border-radius:12px; max-width:500px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-    <h3 style="margin-bottom:20px; color:#5C0E25; font-family:'Cormorant Garamond';">Start Your 7-Day Trial</h3>
-    
-    <!-- KIT.COM FORM EMBED -->
-    <script async data-uid="956fbaf570" src="https://arogya-clinic.kit.com/embed.js"></script>
-
-    <button onclick="closeModal()" style="margin-top:20px; width:100%; padding:12px; background:#ddd; border:none; border-radius:6px; cursor:pointer; font-weight:600;">
-      Close
-    </button>
-  </div>
-</div>
 
 <script>
 // Countdown timer
@@ -889,14 +875,6 @@ setInterval(() => {
   currentTestimonial = (currentTestimonial + 1) % 5;
   showTestimonial(currentTestimonial);
 }, 6000);
-
-// Modal
-function openModal(type) {
-  document.getElementById('modal').style.display = 'flex';
-}
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
-}
 </script>
 
 </body>
