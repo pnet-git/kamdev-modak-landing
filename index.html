@@ -1364,13 +1364,60 @@ footer .container { max-width: 900px; }
   .authority-bio li { text-align: left; }
   .risk-strip { flex-direction: column; align-items: flex-start; }
   .risk-item { width: 100%; }
+  
+  /* MOBILE STICKY BANNER FIX - prevent hero overlap */
+  body { padding-top: 75px; }
+  .discount-banner { 
+    font-size: 12px; 
+    padding: 10px 12px;
+    line-height: 1.4;
+  }
+  .discount-banner span { margin: 0 3px; display: inline; }
+  .discount-timer { 
+    font-size: 11px; 
+    padding: 3px 8px; 
+    margin-left: 6px;
+    display: inline-block;
+  }
+  
+  /* HERO MOBILE FIX */
+  .hero h1 { font-size: 32px; line-height: 1.2; }
+  .hero-sub { font-size: 15px; padding: 0 10px; }
+  .hero-badge { font-size: 11px; padding: 6px 14px; }
+  .hero-product-image { max-width: 280px; margin-bottom: 30px; }
+  .cta-primary { padding: 16px 28px; font-size: 15px; }
+  .hero-trust { 
+    flex-direction: column; 
+    gap: 8px; 
+    align-items: center;
+    font-size: 13px;
+  }
+  
+  /* COMPARISON QUOTE CARD MOBILE */
+  .comparison-quote-card { 
+    flex-direction: column !important; 
+    text-align: center;
+    gap: 20px !important;
+  }
+  
+  /* HERBS MOBILE */
+  .herbs-grid { grid-template-columns: 1fr; }
+  
+  /* GUARANTEE MOBILE */
+  .guarantee-points { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
+  body { padding-top: 85px; }
   .timeline-grid { grid-template-columns: 1fr; }
   .modal { padding: 36px 24px; }
-  .hero h1 { font-size: 30px; }
-  .section-title { font-size: 26px; }
+  .hero h1 { font-size: 26px; }
+  .section-title { font-size: 24px; }
+  .discount-banner { font-size: 11px; padding: 8px 10px; }
+  .discount-timer { font-size: 10px; }
+  
+  /* SECTION TITLES MOBILE */
+  section .container h2 { font-size: 24px !important; line-height: 1.25; }
 }
 
 /* === SCROLL REVEAL === */
@@ -1599,7 +1646,7 @@ footer .container { max-width: 900px; }
     
     <!-- DR. MADHU QUOTE CARD WITH PHOTO -->
     <div style="max-width: 850px; margin: 30px auto 50px; background: linear-gradient(135deg, var(--cream-dark) 0%, var(--cream) 100%); border-radius: 20px; padding: 35px; box-shadow: 0 10px 30px rgba(91, 14, 37, 0.12); border-left: 5px solid var(--gold);">
-      <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+      <div class="comparison-quote-card" style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
         <div style="flex: 1; min-width: 280px;">
           <div style="font-size: 32px; color: var(--gold); line-height: 1; margin-bottom: 8px;">"</div>
           <p style="font-size: 18px; color: var(--ink); line-height: 1.7; margin-bottom: 16px; font-style: italic; font-family: 'Cormorant Garamond', serif; font-weight: 500;">
