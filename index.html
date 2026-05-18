@@ -1382,6 +1382,134 @@ footer .container { max-width: 900px; }
   opacity: 1;
   transform: translateY(0);
 }
+/* === CELEBRITY MARQUEE — TRUSTED BY BOLLYWOOD === */
+.celebrity-section {
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+  padding: 80px 0 90px;
+  overflow: hidden;
+  position: relative;
+}
+
+.celebrity-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  opacity: 0.4;
+}
+
+.celebrity-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  opacity: 0.4;
+}
+
+.celebrity-header {
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.celebrity-eyebrow {
+  display: inline-block;
+  background: var(--maroon-dark);
+  color: var(--gold-light);
+  padding: 8px 22px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.celebrity-section h2 {
+  font-size: clamp(30px, 4.5vw, 46px);
+  margin-bottom: 14px;
+  color: var(--maroon-dark);
+}
+
+.celebrity-section h2 .accent {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.celebrity-tagline {
+  font-size: 16px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.celebrity-marquee {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.celebrity-track {
+  display: flex;
+  gap: 24px;
+  animation: marqueeScroll 30s linear infinite;
+  flex-shrink: 0;
+}
+
+.celebrity-marquee:hover .celebrity-track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50%)); }
+}
+
+.celebrity-photo {
+  flex-shrink: 0;
+  width: 360px;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--cream-dark);
+  box-shadow: 0 10px 30px rgba(91, 14, 37, 0.18);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  border: 3px solid var(--white);
+}
+
+.celebrity-photo:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 45px rgba(91, 14, 37, 0.28);
+}
+
+.celebrity-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .celebrity-section {
+    padding: 60px 0 70px;
+  }
+  .celebrity-photo {
+    width: 280px;
+    height: 170px;
+  }
+  .celebrity-track {
+    gap: 16px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1641,6 +1769,35 @@ footer .container { max-width: 900px; }
           <span class="authority-quote-author">— Dr. Madhu Sudan</span>
         </blockquote>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 6.5: TRUSTED BY BOLLYWOOD & BEYOND   -->
+<!-- ============================================ -->
+<section class="celebrity-section reveal">
+  <div class="celebrity-header">
+    <div class="celebrity-eyebrow">★ A 15-Year Legacy</div>
+    <h2>Trusted By <span class="accent">Bollywood & Beyond.</span></h2>
+    <p class="celebrity-tagline">From Bollywood stars to leading professionals across India — Dr. Madhu's expertise has earned the trust of thousands who could choose anyone, anywhere.</p>
+  </div>
+
+  <div class="celebrity-marquee">
+    <div class="celebrity-track">
+      <!-- Set 1 (Original) -->
+      <div class="celebrity-photo"><img src="celeb-arbaaz-khan.jpg" alt="Dr. Madhu with celebrity"></div>
+      <div class="celebrity-photo"><img src="celeb-govinda.jpg" alt="Dr. Madhu with celebrity"></div>
+      <div class="celebrity-photo"><img src="celeb-juhi-chawla.jpg" alt="Dr. Madhu with celebrity"></div>
+      <div class="celebrity-photo"><img src="celeb-karishma-kapoor.jpg" alt="Dr. Madhu with celebrity"></div>
+      <div class="celebrity-photo"><img src="celeb-soha-ali-khan.jpg" alt="Dr. Madhu with celebrity"></div>
+      
+      <!-- Set 2 (Duplicate for seamless loop) -->
+      <div class="celebrity-photo"><img src="celeb-arbaaz-khan.jpg" alt="Dr. Madhu with celebrity"></div>
+      <div class="celebrity-photo"><img src="celeb-govinda.jpg" alt="Dr. Madhu with celebrity"></div>
+      <div class="celebrity-photo"><img src="celeb-juhi-chawla.jpg" alt="Dr. Madhu with celebrity"></div>
+      <div class="celebrity-photo"><img src="celeb-karishma-kapoor.jpg" alt="Dr. Madhu with celebrity"></div>
+      <div class="celebrity-photo"><img src="celeb-soha-ali-khan.jpg" alt="Dr. Madhu with celebrity"></div>
     </div>
   </div>
 </section>
