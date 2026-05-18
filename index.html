@@ -1396,15 +1396,15 @@ footer .container { max-width: 900px; }
 <div class="exit-popup" id="exitPopup">
   <div class="exit-popup-content">
     <button class="exit-popup-close" onclick="closeExitPopup()">×</button>
-    <h2>Hold On! 🛑</h2>
+    <h2>Wait — Before You Go.</h2>
     <p>
-      Don't miss <span class="exit-popup-highlight">limited time discounts</span> today. 
+      Dr. Madhu spent <span class="exit-popup-highlight">15 years creating this formula</span>. 
       <br><br>
-      The <span class="exit-popup-highlight">7-day trial shows real results</span> — confidence, energy, performance. 
+      The 7-day trial gives you the chance to <span class="exit-popup-highlight">feel the difference in just 72 hours</span> — risk-free. Plus a <span class="exit-popup-highlight">FREE 1:1 consultation</span> with Dr. Madhu himself.
       <br><br>
-      This offer won't come back. Sure you want to leave?
+      Today's discount won't be here tomorrow. Are you sure?
     </p>
-    <button class="exit-popup-btn" onclick="acceptOfferAndScroll()">Yes, I Want The 7-Day Trial</button>
+    <button class="exit-popup-btn" onclick="acceptOfferAndScroll()">✓ Yes, Show Me The Trial Pack</button>
   </div>
 </div>
 
@@ -1882,8 +1882,14 @@ footer .container { max-width: 900px; }
 <div class="modal-overlay" id="leadModal" onclick="closeModalOutside(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">×</button>
-    <h3>One Step Away.</h3>
-    <p>Enter your details to unlock your offer. Your information is 100% confidential.</p>
+    <h3>You're One Step Away From Your Transformation.</h3>
+    <p style="margin-bottom: 20px;">Enter your details below. <strong>Dr. Madhu's team will contact you within 24 hours</strong> to confirm delivery and schedule your <strong>FREE 1:1 consultation</strong>.</p>
+
+    <!-- SELECTED PACK DISPLAY -->
+    <div id="selectedPackDisplay" style="background: rgba(201,161,74,0.1); padding: 14px 18px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--gold); display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 14px; color: var(--ink-soft); font-weight: 600;">Selected Pack:</span>
+      <span id="packName" style="font-size: 15px; color: var(--maroon-dark); font-weight: 700;">Monthly Pack — ₹5,550</span>
+    </div>
 
     <!-- HARDCODED FORM — SENDS TO KIT API VIA FETCH -->
     <form id="leadForm" onsubmit="handleFormSubmit(event)" method="post">
@@ -1894,12 +1900,20 @@ footer .container { max-width: 900px; }
         <input class="formkit-input" type="text" name="fields[first_name]" placeholder="First Name" required>
       </div>
       <div class="form-group">
-        <input class="formkit-input" type="tel" name="fields[phone_number]" placeholder="Phone Number" required>
+        <input class="formkit-input" type="tel" name="fields[phone_number]" placeholder="Phone Number (10 digits)" required>
       </div>
-      <button type="submit" class="form-submit" style="background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%); color: white; font-weight: 700; letter-spacing: 0.5px; font-size: 16px; box-shadow: 0 8px 24px rgba(139, 21, 56, 0.35); transition: all 0.3s ease; padding: 18px 28px; border-radius: 8px;">Continue To Checkout →</button>
+      <button type="submit" class="form-submit" style="background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%); color: white; font-weight: 700; letter-spacing: 0.5px; font-size: 16px; box-shadow: 0 8px 24px rgba(139, 21, 56, 0.35); transition: all 0.3s ease; padding: 18px 28px; border-radius: 8px;">✓ Confirm & Continue To Checkout →</button>
     </form>
 
-    <p class="modal-trust">🔒 Your details are encrypted and never shared.</p>
+    <div style="margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(139,21,56,0.1); text-align: center;">
+      <p style="font-size: 13px; color: var(--ink-soft); margin-bottom: 8px;">
+        ✓ FREE 1:1 consultation with Dr. Madhu included<br>
+        ✓ 100% Ayurvedic · Zero Side Effects · FSSAI Approved<br>
+        ✓ Discreet packaging · Delivery in 3-5 days
+      </p>
+    </div>
+
+    <p class="modal-trust">🔒 Your details are 100% confidential and never shared.</p>
   </div>
 </div>
 
@@ -1920,6 +1934,20 @@ let selectedPack = "monthly";
 function openModal(pack) {
   selectedPack = pack;
   localStorage.setItem("selectedPack", pack);
+  
+  // Update pack name display
+  const packNames = {
+    trial: "Trial Pack (7 Modak) — ₹1,490",
+    monthly: "Monthly Pack (30 Modak) — ₹5,550",
+    quarterly: "3-Month Transformation (90 Modak) — ₹15,000",
+    final: "Monthly Pack (30 Modak) — ₹5,550",
+    hero: "Monthly Pack (30 Modak) — ₹5,550"
+  };
+  const packNameEl = document.getElementById("packName");
+  if (packNameEl) {
+    packNameEl.textContent = packNames[pack] || packNames["monthly"];
+  }
+  
   document.getElementById("leadModal").classList.add("active");
   document.body.style.overflow = "hidden";
 }
