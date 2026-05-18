@@ -1387,7 +1387,7 @@ footer .container { max-width: 900px; }
   .hero-sub { 
     font-size: 15px; 
     padding: 0 10px; 
-    margin: 0 auto 30px;
+    margin: 0 auto 40px;
     line-height: 1.55;
     text-align: center;
   }
@@ -1397,11 +1397,14 @@ footer .container { max-width: 900px; }
     margin-bottom: 18px;
   }
   .hero-product-image { 
-    max-width: 260px; 
+    width: 260px !important;
+    max-width: 260px !important;
+    height: 260px;
     margin: 0 auto 45px !important;
-    padding: 15px;
+    padding: 0 !important;
     position: relative;
     z-index: 1;
+    flex-shrink: 0;
   }
   .hero .cta-primary { 
     padding: 16px 28px; 
