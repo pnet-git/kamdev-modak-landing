@@ -738,6 +738,29 @@ body {
 }
 
 /* === GUARANTEE SECTION === */
+/* === REEL (DR MADHU VIDEO) SECTION === */
+.reel-section { background: var(--cream); padding: 70px 20px; text-align: center; }
+.reel-eyebrow { font-size: 13px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+.reel-head { font-family:'Cormorant Garamond',serif; font-size: 36px; color: var(--maroon-dark); margin-bottom: 8px; line-height:1.15; }
+.reel-head .accent { color: var(--maroon); font-style: italic; }
+.reel-sub { color:#6b5d52; font-size:16px; max-width:560px; margin:0 auto 32px; }
+.reel-frame { max-width: 340px; margin: 0 auto; background:#000; border-radius: 22px; overflow:hidden; box-shadow: 0 18px 50px rgba(91,14,37,0.28); border:3px solid var(--gold); }
+.reel-frame video { width:100%; aspect-ratio: 9/16; display:block; object-fit:cover; background:#000; }
+.reel-caption { margin-top:18px; font-size:15px; color:var(--maroon-dark); font-weight:600; }
+@media (max-width:768px){ .reel-head{ font-size:28px; } .reel-frame{ max-width:300px; } }
+
+/* === ORIGIN STORY SECTION === */
+.origin-story { background:#ffffff; padding: 70px 20px; border-top:1px solid rgba(139,21,56,0.1); border-bottom:1px solid rgba(139,21,56,0.1); }
+.story-container { max-width: 760px; margin: 0 auto; }
+.story-eyebrow { font-size:13px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; text-align:center; }
+.story-head { font-family:'Cormorant Garamond',serif; font-size:38px; color:var(--maroon-dark); margin-bottom:28px; text-align:center; line-height:1.15; }
+.story-head .accent { color:var(--maroon); font-style:italic; }
+.story-text { font-size:17px; line-height:1.8; color:#3a2e28; margin-bottom:22px; }
+.story-text strong { color:var(--maroon-dark); font-weight:700; }
+.story-highlight { background:rgba(201,161,74,0.1); padding:28px 30px; border-left:4px solid var(--gold); border-radius:6px; margin:30px 0; font-size:18px; color:var(--maroon-dark); font-weight:500; line-height:1.75; font-style:italic; }
+.story-cta { text-align:center; margin-top:38px; }
+@media (max-width:768px){ .story-head{ font-size:30px; } .story-highlight{ font-size:16px; padding:22px; } }
+
 /* === BONUS STACK SECTION === */
 .bonus-section { background: linear-gradient(180deg, var(--cream-dark) 0%, #E8DCC4 100%); padding: 80px 20px; }
 .bonus-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
@@ -1936,9 +1959,25 @@ footer .container { max-width: 900px; }
 </section>
 
 <!-- ============================================ -->
+<!-- SECTION 6.6: DR MADHU REEL                   -->
+<!-- ============================================ -->
+<section class="reel-section reveal">
+  <div class="reel-eyebrow">In His Own Words</div>
+  <h2 class="reel-head">Hear Dr. Madhu explain <span class="accent">Kamdev Modak</span></h2>
+  <p class="reel-sub">No marketing talk. Just the doctor himself — on what actually works, what doesn't, and why he created this formula.</p>
+  <div class="reel-frame">
+    <video controls playsinline preload="metadata" poster="modak-premium.jpg">
+      <source src="https://res.cloudinary.com/dvcmkibgp/video/upload/v1778944482/modak-reel_iay0wi.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="reel-caption">▶ The truth about what works (and what doesn't)</div>
+</section>
+
+<!-- ============================================ -->
 <!-- SECTION 7: PRICING                           -->
 <!-- ============================================ -->
-<section class="pricing">
+<section class="pricing" id="pricing">
   <div class="container reveal">
     <div class="section-eyebrow">The Offer</div>
     <h2 class="section-title" style="margin-left:auto; margin-right:auto;">Pick Your Pack. Start Your <span class="accent">72-Hour Transformation.</span></h2>
@@ -2061,6 +2100,23 @@ footer .container { max-width: 900px; }
           <li>Safe with heart, BP, diabetes &amp; liver conditions · ages 14–100</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 7.6: ORIGIN STORY                    -->
+<!-- ============================================ -->
+<section class="origin-story reveal">
+  <div class="story-container">
+    <div class="story-eyebrow">The Origin</div>
+    <h2 class="story-head">How <span class="accent">Kamdev Modak</span> Was Born</h2>
+    <p class="story-text">Dr. Madhu didn't set out to create a supplement. For 14+ years, he listened to thousands of men share their deepest struggles. They came to him broken.</p>
+    <p class="story-text">Some tried the pharmaceutical route. It worked — but the side effects were brutal: jitters, anxiety, crashes. Others felt ashamed. They knew something was wrong, but pills felt like giving up.</p>
+    <div class="story-highlight">"I watched them suffer through the side effects. And I realized there had to be a better way. So I spent years mining ancient Ayurvedic texts, testing 47 different herb combinations — until I found the one that restored what was lost, without the damage."<br><br><strong>— Dr. Madhu Sudan</strong></div>
+    <p class="story-text">That formula is <strong>Kamdev Modak</strong>. Named after the god of desire — because it works just like its name suggests.</p>
+    <div class="story-cta">
+      <a href="#pricing" class="cta-primary">Start Your Transformation →</a>
     </div>
   </div>
 </section>
