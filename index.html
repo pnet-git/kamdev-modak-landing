@@ -40,6 +40,9 @@ body {
   overflow-x: hidden;
 }
 
+/* Mobile safety net: no image overflows its container */
+img { max-width: 100%; height: auto; }
+
 h1, h2, h3, h4 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
@@ -764,6 +767,7 @@ body {
 .reel-frame video { width:100%; aspect-ratio: 16/9; display:block; object-fit:contain; background:#000; }
 .reel-caption { margin-top:18px; font-size:15px; color:var(--maroon-dark); font-weight:600; }
 @media (max-width:768px){ .reel-head{ font-size:28px; } .reel-frame{ max-width:100%; } }
+@media (max-width:768px){ body { padding-top: 60px; } }
 
 /* === ORIGIN STORY SECTION === */
 .origin-story { background:#ffffff; padding: 70px 20px; border-top:1px solid rgba(139,21,56,0.1); border-bottom:1px solid rgba(139,21,56,0.1); }
