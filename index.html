@@ -600,15 +600,28 @@ body {
 }
 
 .exit-popup-content {
-  background: white;
-  border-radius: 16px;
-  padding: 40px;
-  max-width: 500px;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+  border-radius: 20px;
+  padding: 46px 40px;
+  max-width: 520px;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 24px 70px rgba(91,14,37,0.45);
   position: relative;
+  border: 2px solid var(--gold);
   animation: slideUp 0.4s ease-out;
 }
+.exit-popup-eyebrow {
+  display:inline-block; background: rgba(201,161,74,0.18); border:1px solid var(--gold);
+  color: var(--maroon); font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  padding:7px 16px; border-radius:50px; margin-bottom:18px;
+}
+.exit-popup-offerbox {
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: var(--cream); border-radius:14px; padding:18px 22px; margin:22px 0 4px;
+}
+.exit-popup-offerbox .eo-top { font-size:14px; color:var(--gold-light); font-weight:600; letter-spacing:0.5px; }
+.exit-popup-offerbox .eo-main { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; margin-top:4px; line-height:1.2; }
+.exit-popup-offerbox .eo-main .eo-free { color:var(--gold-light); }
 
 .exit-popup-close {
   position: absolute;
@@ -627,16 +640,18 @@ body {
 }
 
 .exit-popup-content h2 {
-  font-size: 28px;
-  margin-bottom: 15px;
-  color: var(--maroon);
+  font-family:'Cormorant Garamond',serif;
+  font-size: 34px;
+  margin-bottom: 14px;
+  color: var(--maroon-dark);
+  font-weight:700;
 }
 
 .exit-popup-content p {
   font-size: 16px;
-  color: #666;
+  color: #5c5048;
   line-height: 1.7;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .exit-popup-highlight {
@@ -645,17 +660,18 @@ body {
 }
 
 .exit-popup-btn {
-  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--gold) 0%, #b8862f 100%);
+  color: var(--maroon-dark);
   border: none;
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 15px;
+  padding: 17px 34px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 24px rgba(139, 21, 56, 0.35);
-  margin-top: 20px;
+  box-shadow: 0 10px 28px rgba(201,161,74,0.45);
+  margin-top: 22px;
+  letter-spacing:0.3px;
 }
 
 .exit-popup-btn:hover {
@@ -744,10 +760,10 @@ body {
 .reel-head { font-family:'Cormorant Garamond',serif; font-size: 36px; color: var(--maroon-dark); margin-bottom: 8px; line-height:1.15; }
 .reel-head .accent { color: var(--maroon); font-style: italic; }
 .reel-sub { color:#6b5d52; font-size:16px; max-width:560px; margin:0 auto 32px; }
-.reel-frame { max-width: 340px; margin: 0 auto; background:#000; border-radius: 22px; overflow:hidden; box-shadow: 0 18px 50px rgba(91,14,37,0.28); border:3px solid var(--gold); }
-.reel-frame video { width:100%; aspect-ratio: 9/16; display:block; object-fit:cover; background:#000; }
+.reel-frame { max-width: 720px; margin: 0 auto; background:#000; border-radius: 16px; overflow:hidden; box-shadow: 0 18px 50px rgba(91,14,37,0.28); border:3px solid var(--gold); }
+.reel-frame video { width:100%; aspect-ratio: 16/9; display:block; object-fit:cover; background:#000; }
 .reel-caption { margin-top:18px; font-size:15px; color:var(--maroon-dark); font-weight:600; }
-@media (max-width:768px){ .reel-head{ font-size:28px; } .reel-frame{ max-width:300px; } }
+@media (max-width:768px){ .reel-head{ font-size:28px; } .reel-frame{ max-width:100%; } }
 
 /* === ORIGIN STORY SECTION === */
 .origin-story { background:#ffffff; padding: 70px 20px; border-top:1px solid rgba(139,21,56,0.1); border-bottom:1px solid rgba(139,21,56,0.1); }
@@ -758,6 +774,8 @@ body {
 .story-text { font-size:17px; line-height:1.8; color:#3a2e28; margin-bottom:22px; }
 .story-text strong { color:var(--maroon-dark); font-weight:700; }
 .story-highlight { background:rgba(201,161,74,0.1); padding:28px 30px; border-left:4px solid var(--gold); border-radius:6px; margin:30px 0; font-size:18px; color:var(--maroon-dark); font-weight:500; line-height:1.75; font-style:italic; }
+.story-portrait { text-align:center; margin: 0 auto 26px; }
+.story-portrait img { width:120px; height:120px; border-radius:50%; object-fit:cover; border:3px solid var(--gold); box-shadow:0 8px 24px rgba(91,14,37,0.2); }
 .story-cta { text-align:center; margin-top:38px; }
 @media (max-width:768px){ .story-head{ font-size:30px; } .story-highlight{ font-size:16px; padding:22px; } }
 
@@ -1665,15 +1683,17 @@ footer .container { max-width: 900px; }
 <div class="exit-popup" id="exitPopup">
   <div class="exit-popup-content">
     <button class="exit-popup-close" onclick="closeExitPopup()">×</button>
+    <div class="exit-popup-eyebrow">⏳ Today's Discount Ends Soon</div>
     <h2>Wait — Before You Go.</h2>
     <p>
-      Dr. Madhu spent <span class="exit-popup-highlight">14+ years creating this formula</span>. 
-      <br><br>
-      The 7-day trial gives you the chance to <span class="exit-popup-highlight">feel the difference in just 72 hours</span> — risk-free. Plus a <span class="exit-popup-highlight">FREE 1:1 consultation</span> with Dr. Madhu himself.
-      <br><br>
-      Today's discount won't be here tomorrow. Are you sure?
+      Dr. Madhu spent <span class="exit-popup-highlight">14+ years</span> perfecting this formula. The 7-day trial lets you <span class="exit-popup-highlight">feel the difference in 72 hours</span> — risk-free.
     </p>
-    <button class="exit-popup-btn" onclick="acceptOfferAndScroll()">✓ Yes, Show Me The Trial Pack</button>
+    <div class="exit-popup-offerbox">
+      <div class="eo-top">Your trial today includes</div>
+      <div class="eo-main">7-Day Trial Pack + a <span class="eo-free">FREE 1:1 Consultation</span></div>
+    </div>
+    <p style="margin-top:16px;font-weight:600;color:var(--maroon-dark);">This offer won't be here tomorrow.</p>
+    <button class="exit-popup-btn" onclick="acceptOfferAndScroll()">Yes — Show Me The Trial Pack →</button>
   </div>
 </div>
 
@@ -1966,7 +1986,7 @@ footer .container { max-width: 900px; }
   <h2 class="reel-head">Hear Dr. Madhu explain <span class="accent">Kamdev Modak</span></h2>
   <p class="reel-sub">No marketing talk. Just the doctor himself — on what actually works, what doesn't, and why he created this formula.</p>
   <div class="reel-frame">
-    <video controls playsinline preload="metadata" poster="modak-premium.jpg">
+    <video controls playsinline preload="metadata" poster="dr-madhu-quote.jpg">
       <source src="https://res.cloudinary.com/dvcmkibgp/video/upload/v1778944482/modak-reel_iay0wi.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -2109,6 +2129,7 @@ footer .container { max-width: 900px; }
 <!-- ============================================ -->
 <section class="origin-story reveal">
   <div class="story-container">
+    <div class="story-portrait"><img src="dr-madhu-quote.jpg" alt="Dr. Madhu Sudan"></div>
     <div class="story-eyebrow">The Origin</div>
     <h2 class="story-head">How <span class="accent">Kamdev Modak</span> Was Born</h2>
     <p class="story-text">Dr. Madhu didn't set out to create a supplement. For 14+ years, he listened to thousands of men share their deepest struggles. They came to him broken.</p>
