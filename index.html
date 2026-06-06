@@ -738,6 +738,25 @@ body {
 }
 
 /* === GUARANTEE SECTION === */
+/* === BONUS STACK SECTION === */
+.bonus-section { background: linear-gradient(180deg, var(--cream-dark) 0%, #E8DCC4 100%); padding: 80px 20px; }
+.bonus-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.bonus-eyebrow { color: var(--gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 14px; margin-bottom: 10px; }
+.bonus-section h2 { font-family: 'Cormorant Garamond', serif; color: var(--maroon-dark); font-size: 38px; line-height: 1.15; margin-bottom: 8px; }
+.bonus-section h2 .accent { color: var(--maroon); font-style: italic; }
+.bonus-sub { color: #6b5d52; font-size: 16px; margin-bottom: 26px; }
+.bonus-image img { width: 100%; border-radius: 20px; box-shadow: 0 18px 50px rgba(91,14,37,0.22); }
+.bonus-stack-list { list-style: none; padding: 0; margin: 0 0 22px; }
+.bonus-stack-list li { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(139,21,56,0.25); }
+.bonus-item-name { color: var(--maroon-dark); font-weight: 600; font-size: 16px; }
+.bonus-item-name small { display:block; color:#7a6a5e; font-weight:400; font-size:13px; margin-top:2px; }
+.bonus-item-value { color: var(--maroon); font-weight: 700; white-space: nowrap; }
+.bonus-total { display:flex; align-items:center; justify-content:space-between; margin-top: 18px; padding: 16px 20px; background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%); border-radius: 14px; color: var(--cream); }
+.bonus-total .t-label { font-weight:600; font-size:15px; }
+.bonus-total .t-strike { text-decoration: line-through; opacity:0.7; margin-right:10px; font-size:18px; }
+.bonus-total .t-free { color: var(--gold-light); font-weight:800; font-size:22px; font-family:'Cormorant Garamond',serif; }
+@media (max-width: 768px) { .bonus-container { grid-template-columns: 1fr; gap: 30px; } .bonus-image { order: -1; } .bonus-section h2 { font-size: 30px; } }
+
 .guarantee-section {
   background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
   color: white;
@@ -770,7 +789,7 @@ body {
 }
 
 .guarantee-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -790,6 +809,22 @@ body {
   text-transform: uppercase;
 }
 
+.g-grid { display:grid; grid-template-columns: 0.85fr 1.15fr; gap:50px; align-items:center; text-align:left; max-width:1000px; margin:0 auto; position:relative; z-index:2; }
+.g-seal { position:relative; width:230px; height:230px; margin:0 auto; display:flex; align-items:center; justify-content:center; border-radius:50%;
+  background: radial-gradient(circle at 50% 40%, rgba(201,161,74,0.25) 0%, rgba(201,161,74,0.05) 60%, transparent 75%);
+  border:2px solid var(--gold); box-shadow:0 0 50px rgba(201,161,74,0.35), inset 0 0 30px rgba(201,161,74,0.15); }
+.g-seal-inner { text-align:center; }
+.g-seal-inner .g-num { font-family:'Cormorant Garamond',serif; font-size:64px; font-weight:700; color:var(--gold-light); line-height:1; }
+.g-seal-inner .g-sub { display:block; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-top:6px; font-weight:700; }
+.g-ring { position:absolute; inset:-14px; border:1px dashed rgba(201,161,74,0.45); border-radius:50%; }
+.g-eyebrow { color:var(--gold); font-weight:700; letter-spacing:2px; text-transform:uppercase; font-size:13px; margin-bottom:14px; }
+.g-head { font-family:'Cormorant Garamond',serif; font-size:40px; line-height:1.12; color:#fff; font-weight:700; margin-bottom:16px; }
+.g-head .gh-accent { color:var(--gold-light); font-style:italic; }
+.g-lead { font-size:17px; color:rgba(255,255,255,0.9); line-height:1.7; margin-bottom:24px; }
+.g-checks { list-style:none; padding:0; margin:0; }
+.g-checks li { display:flex; gap:12px; align-items:flex-start; font-size:16px; color:rgba(255,255,255,0.95); padding:10px 0; }
+.g-checks li::before { content:'✓'; color:var(--gold-light); font-weight:800; font-size:18px; flex-shrink:0; }
+@media (max-width:768px){ .g-grid{ grid-template-columns:1fr; gap:34px; text-align:center; } .g-checks li{ text-align:left; } .g-head{ font-size:30px; } .g-seal{ width:190px; height:190px; } .g-seal-inner .g-num{ font-size:52px; } }
 .guarantee-section h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 48px;
@@ -1976,31 +2011,55 @@ footer .container { max-width: 900px; }
 </div>
 
 <!-- ============================================ -->
+<!-- SECTION 7.4: BONUS STACK                     -->
+<!-- ============================================ -->
+<section class="bonus-section reveal">
+  <div class="bonus-container">
+    <div class="bonus-image">
+      <img src="bonus-stack.png" alt="Everything you get free with Kamdev Modak — 1:1 consultation, self-assessment, daily power routine, and 7-day WhatsApp support">
+    </div>
+    <div class="bonus-content">
+      <div class="bonus-eyebrow">Everything You Get</div>
+      <h2>Buy Modak. Get the <span class="accent">complete care system</span> — free.</h2>
+      <p class="bonus-sub">Every pack comes loaded with Dr. Madhu's full support stack. Real value ₹4,996 — yours at zero extra cost.</p>
+      <ul class="bonus-stack-list">
+        <li><span class="bonus-item-name">Private 1:1 Consultation with Dr. Madhu<small>30-minute session — in clinic or online</small></span><span class="bonus-item-value">₹497</span></li>
+        <li><span class="bonus-item-name">Sexual Health Self-Assessment<small>Know your score in minutes</small></span><span class="bonus-item-value">₹999</span></li>
+        <li><span class="bonus-item-name">Daily Power Routine<small>Printable day-by-day plan</small></span><span class="bonus-item-value">₹1,500</span></li>
+        <li><span class="bonus-item-name">7-Day WhatsApp Follow-Up Support<small>Guided check-ins, every day</small></span><span class="bonus-item-value">₹2,000</span></li>
+      </ul>
+      <div class="bonus-total">
+        <span class="t-label">Total value with every pack</span>
+        <span><span class="t-strike">₹4,996</span><span class="t-free">FREE</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
 <!-- SECTION 7.5: GUARANTEE                       -->
 <!-- ============================================ -->
 <section class="guarantee-section reveal">
   <div class="guarantee-container">
-    <div class="guarantee-badge">🛡️ DOUBLE PROTECTION</div>
-    <h2>Every Purchase Includes A <span style="color: var(--gold-light);">FREE 1:1 Consultation</span> With Dr. Madhu.</h2>
-    <p style="font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 20px;">🌿 100% Natural · No Habit-Forming · Zero Side Effects</p>
-    
-    <div class="guarantee-points">
-      <div class="guarantee-point">
-        <div class="guarantee-point-icon">👨‍⚕️</div>
-        <h3>Free Private Consultation (Included)</h3>
-        <p>When you purchase any pack, you automatically get a <strong>FREE 1:1 private consultation with Dr. Madhu Sudan</strong> — 30 minutes, in clinic or online. Have doubts? Confused about anything? Ask him directly. No extra cost.</p>
-        <p style="margin-top:14px; font-weight:600;">Your free consultation includes everything our consult patients pay for:</p>
-        <ul style="list-style:none; padding:0; margin:10px 0 0; text-align:left; display:inline-block;">
-          <li style="margin:6px 0;">✅ Sexual Health Self-Assessment — know your score</li>
-          <li style="margin:6px 0;">✅ Daily Sexual Health Power Routine PDF</li>
-          <li style="margin:6px 0;">✅ 7-day WhatsApp follow-up support</li>
-        </ul>
-        <p style="margin-top:12px; color: var(--gold-light); font-weight:700;">Total value ₹4,996 — yours FREE with any pack</p>
+    <div class="g-grid">
+      <div class="g-seal-wrap">
+        <div class="g-seal">
+          <div class="g-ring"></div>
+          <div class="g-seal-inner">
+            <span class="g-num">7</span>
+            <span class="g-sub">Day Promise</span>
+          </div>
+        </div>
       </div>
-      <div class="guarantee-point">
-        <div class="guarantee-point-icon">⏱️</div>
-        <h3>7-Day Results Promise</h3>
-        <p>Feel noticeable difference in energy, confidence, and performance within 7 days — or claim your free follow-up consultation. We stand by every Modak.</p>
+      <div class="g-content">
+        <div class="g-eyebrow">Our No-Risk Promise</div>
+        <h2 class="g-head">Feel the difference in 7 days — <span class="gh-accent">or your follow-up is on us.</span></h2>
+        <p class="g-lead">Dr. Madhu stands behind every Modak. Start the routine, give it 7 days, and if you don't feel a real change in energy and confidence, claim a free follow-up consultation — no questions asked.</p>
+        <ul class="g-checks">
+          <li>Noticeable difference within 7 days — or a free follow-up consultation</li>
+          <li>100% Ayurvedic — no habit-forming, zero side effects</li>
+          <li>Safe with heart, BP, diabetes &amp; liver conditions · ages 14–100</li>
+        </ul>
       </div>
     </div>
   </div>
