@@ -529,25 +529,21 @@ section {
   z-index: 1000;
   box-shadow: var(--shadow-md);
   box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: block !important;
   text-align: center !important;
 }
 .cf-announce-bar .cf-ab-text {
-  display: block !important;
-  width: 100% !important;
-  margin: 0 !important;
+  display: table !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   padding: 0 !important;
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 0.5px;
-  text-align: center !important;
 }
 .cf-announce-bar .cf-ab-timer {
-  display: inline-block !important;
-  margin: 5px 0 0 0 !important;
+  display: table !important;
+  margin: 5px auto 0 auto !important;
   font-family: 'Courier New', monospace;
   background: rgba(255,255,255,0.2);
   padding: 3px 12px;
