@@ -2231,23 +2231,31 @@ footer .container { max-width: 900px; }
       <div class="testimonial-carousel" id="testimonialCarousel">
         <!-- TESTIMONIAL 1 -->
         <div class="testimonial-slide">
-          <img src="testimonial-1.jpg" alt="Rajesh Verma testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+          <img src="testimonial-1.jpg" alt="Client feedback testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
         </div>
         <!-- TESTIMONIAL 2 -->
         <div class="testimonial-slide">
-          <img src="testimonial-2.jpg" alt="Nitin Kulkarni testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+          <img src="testimonial-2.jpg" alt="Client feedback testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
         </div>
         <!-- TESTIMONIAL 3 -->
         <div class="testimonial-slide">
-          <img src="testimonial-3.jpg" alt="Amit Sharma testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+          <img src="testimonial-3.jpg" alt="Client feedback testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
         </div>
         <!-- TESTIMONIAL 4 -->
         <div class="testimonial-slide">
-          <img src="testimonial-4.jpg" alt="Vikram Singh testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+          <img src="testimonial-4.jpg" alt="Client feedback testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
         </div>
         <!-- TESTIMONIAL 5 -->
         <div class="testimonial-slide">
-          <img src="testimonial-5.jpg" alt="Sandeep Patil testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+          <img src="testimonial-5.jpg" alt="Client feedback testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+        </div>
+        <!-- TESTIMONIAL 6 -->
+        <div class="testimonial-slide">
+          <img src="testimonial-6.jpg" alt="Client feedback testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+        </div>
+        <!-- TESTIMONIAL 7 -->
+        <div class="testimonial-slide">
+          <img src="testimonial-7.jpg" alt="Client feedback testimonial" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
         </div>
       </div>
       
@@ -2262,6 +2270,8 @@ footer .container { max-width: 900px; }
         <span class="dot" onclick="testimonialCarousel.goTo(2)"></span>
         <span class="dot" onclick="testimonialCarousel.goTo(3)"></span>
         <span class="dot" onclick="testimonialCarousel.goTo(4)"></span>
+        <span class="dot" onclick="testimonialCarousel.goTo(5)"></span>
+        <span class="dot" onclick="testimonialCarousel.goTo(6)"></span>
       </div>
     </div>
   </div>
@@ -2494,7 +2504,7 @@ function handleFormSubmit(e) {
 // ==========================================
 const testimonialCarousel = {
   currentIndex: 0,
-  totalSlides: 5,
+  totalSlides: 7,
   autoPlayInterval: null,
   
   init() {
