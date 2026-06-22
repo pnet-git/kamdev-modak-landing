@@ -515,37 +515,45 @@ section {
 }
 
 /* === STICKY DISCOUNT BANNER === */
-.discount-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+/* === CF ANNOUNCE BAR (rebuilt clean, isolated namespace) === */
+.cf-announce-bar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
   background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
   color: var(--gold-light);
-  padding: 12px 16px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 15px;
+  padding: 12px 16px !important;
   z-index: 1000;
   box-shadow: var(--shadow-md);
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
 }
-
-.discount-banner .db-line {
-  display: block;
-  width: 100%;
-  text-align: center;
+.cf-announce-bar .cf-ab-text {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-weight: 700;
+  font-size: 15px;
   letter-spacing: 0.5px;
-  text-indent: 0.5px;
+  text-align: center !important;
 }
-
-.discount-timer {
-  display: inline-block;
-  margin-top: 5px;
+.cf-announce-bar .cf-ab-timer {
+  display: inline-block !important;
+  margin: 5px 0 0 0 !important;
   font-family: 'Courier New', monospace;
   background: rgba(255,255,255,0.2);
   padding: 3px 12px;
   border-radius: 4px;
   font-size: 13px;
+  letter-spacing: 0.5px;
 }
 
 body {
@@ -1450,12 +1458,13 @@ footer .container { max-width: 900px; }
   
   /* MOBILE STICKY BANNER FIX - prevent hero overlap */
   body { padding-top: 70px; }
-  .discount-banner { 
+  .cf-announce-bar { 
     font-size: 12px; 
-    padding: 10px 12px;
+    padding: 10px 12px !important;
     line-height: 1.4;
   }
-  .discount-timer { 
+  .cf-announce-bar .cf-ab-text { font-size: 12px; }
+  .cf-announce-bar .cf-ab-timer { 
     font-size: 11px; 
     padding: 3px 8px; 
   }
@@ -1528,8 +1537,8 @@ footer .container { max-width: 900px; }
   .modal { padding: 36px 24px; }
   .hero h1 { font-size: 26px; }
   .section-title { font-size: 24px; }
-  .discount-banner { font-size: 11px; padding: 8px 10px; }
-  .discount-timer { font-size: 10px; }
+  .cf-announce-bar { font-size: 11px; padding: 8px 10px !important; }
+  .cf-announce-bar .cf-ab-timer { font-size: 10px; }
   
   /* SECTION TITLES MOBILE */
   section .container h2 { font-size: 24px !important; line-height: 1.25; }
@@ -1678,9 +1687,9 @@ footer .container { max-width: 900px; }
 <body>
 
 <!-- STICKY DISCOUNT BANNER -->
-<div class="discount-banner">
-  <span class="db-line">LIMITED TIME DISCOUNTS OFFERED TODAY</span>
-  <span class="db-line"><span class="discount-timer">Ends in <span id="discountTimer">4:00</span></span></span>
+<div class="cf-announce-bar">
+  <span class="cf-ab-text">LIMITED TIME DISCOUNTS OFFERED TODAY</span>
+  <span class="cf-ab-timer">Ends in <span id="discountTimer">4:00</span></span>
 </div>
 
 <!-- EXIT INTENT POPUP -->
