@@ -521,35 +521,30 @@ section {
   left: 0;
   right: 0;
   background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-  color: white;
-  padding: 14px 20px;
+  color: var(--gold-light);
+  padding: 12px 16px;
   text-align: center;
   font-weight: 700;
   font-size: 15px;
   z-index: 1000;
   box-shadow: var(--shadow-md);
   letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 4px 8px;
 }
 
-.discount-banner span {
-  color: var(--gold-light);
-  font-weight: 800;
-  margin: 0 6px;
+.discount-banner .db-line {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .discount-timer {
   display: inline-block;
-  margin-left: 10px;
+  margin-top: 5px;
   font-family: 'Courier New', monospace;
   background: rgba(255,255,255,0.2);
-  padding: 4px 12px;
+  padding: 3px 12px;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 body {
@@ -1459,24 +1454,9 @@ footer .container { max-width: 900px; }
     padding: 10px 12px;
     line-height: 1.4;
   }
-  .discount-banner span { margin: 0 3px; display: inline; }
-  .discount-banner .discount-headline {
-    width: 100%;
-    flex-basis: 100%;
-    display: block;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-  }
-  .discount-banner .discount-headline span { margin: 0; padding: 0; display: inline; }
   .discount-timer { 
     font-size: 11px; 
     padding: 3px 8px; 
-    margin: 4px auto 0;
-    display: block;
-    width: fit-content;
-    flex-basis: 100%;
-    text-align: center;
   }
   
   /* HERO MOBILE FIX */
@@ -1698,8 +1678,8 @@ footer .container { max-width: 900px; }
 
 <!-- STICKY DISCOUNT BANNER -->
 <div class="discount-banner">
-  <span class="discount-headline"><span>LIMITED TIME DISCOUNTS OFFERED TODAY</span></span>
-  <span class="discount-timer">Ends in <span id="discountTimer">4:00</span></span>
+  <span class="db-line">LIMITED TIME DISCOUNTS OFFERED TODAY</span>
+  <span class="db-line"><span class="discount-timer">Ends in <span id="discountTimer">4:00</span></span></span>
 </div>
 
 <!-- EXIT INTENT POPUP -->
