@@ -1460,6 +1460,11 @@ footer .container { max-width: 900px; }
     line-height: 1.4;
   }
   .discount-banner span { margin: 0 3px; display: inline; }
+  .discount-headline {
+    flex-basis: 100%;
+    text-align: center;
+    margin: 0 !important;
+  }
   .discount-timer { 
     font-size: 11px; 
     padding: 3px 8px; 
@@ -1689,7 +1694,7 @@ footer .container { max-width: 900px; }
 
 <!-- STICKY DISCOUNT BANNER -->
 <div class="discount-banner">
-  🎉 <span>LIMITED TIME DISCOUNTS OFFERED TODAY</span>
+  <span class="discount-headline">🎉 <span>LIMITED TIME DISCOUNTS OFFERED TODAY</span></span>
   <span class="discount-timer">Ends in <span id="discountTimer">4:00</span></span>
 </div>
 
