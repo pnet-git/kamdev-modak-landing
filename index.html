@@ -1320,7 +1320,7 @@ body {
 footer {
   background: #1A0E0E;
   color: rgba(250,246,238,0.6);
-  padding: 50px 20px 30px;
+  padding: 50px 20px 100px;
   font-size: 13px;
   text-align: center;
 }
@@ -1675,6 +1675,62 @@ footer .container { max-width: 900px; }
   }
 }
 
+/* === STICKY FOOTER (replicated from consult page, customized for Modak) === */
+.mdk-sticky-footer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--white);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 999;
+}
+.mdk-sticky-left { display: flex; flex-direction: column; min-width: 0; }
+.mdk-sticky-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--maroon-dark);
+  line-height: 1.25;
+}
+.mdk-sticky-price {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+.mdk-sticky-price s { color: var(--ink-soft); opacity: 0.7; }
+.mdk-sticky-price b { color: var(--maroon); font-weight: 800; font-size: 16px; }
+.mdk-sticky-btn {
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(139,21,56,0.35);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+}
+.mdk-sticky-btn:hover { transform: translateY(-1px); }
+@media (max-width: 768px) {
+  .mdk-sticky-footer { padding: 10px 14px; gap: 10px; }
+  .mdk-sticky-tagline { font-size: 13px; line-height: 1.2; }
+  .mdk-sticky-price { font-size: 12px; }
+  .mdk-sticky-price b { font-size: 14px; }
+  .mdk-sticky-btn { padding: 12px 20px; font-size: 14px; }
+}
+@media (max-width: 400px) {
+  .mdk-sticky-tagline { font-size: 12px; }
+  .mdk-sticky-btn { padding: 11px 16px; font-size: 13px; }
+}
 </style>
 </head>
 <body>
@@ -2292,6 +2348,15 @@ footer .container { max-width: 900px; }
     <div class="footer-copy">© 2026 Kamdev Modak · Dr. Madhu Sudan · All Rights Reserved.</div>
   </div>
 </footer>
+
+<!-- STICKY FOOTER (always-visible CTA) -->
+<div class="mdk-sticky-footer">
+  <div class="mdk-sticky-left">
+    <div class="mdk-sticky-tagline">Ancient Science, Packed Into One Modak.</div>
+    <div class="mdk-sticky-price"><s>₹18,750</s> today — 7-Day Trial just <b>₹1,490</b></div>
+  </div>
+  <button class="mdk-sticky-btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth', block:'start'})">Order Now →</button>
+</div>
 
 <!-- ============================================ -->
 <!-- MODAL — HARDCODED FORM (NO KIT EMBED)        -->
