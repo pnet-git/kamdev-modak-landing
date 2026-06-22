@@ -1461,19 +1461,9 @@ footer .container { max-width: 900px; }
   .risk-strip { flex-direction: column; align-items: flex-start; }
   .risk-item { width: 100%; }
   
-  /* MOBILE STICKY BANNER FIX - prevent hero overlap */
-  body { padding-top: 70px; }
-  .cf-announce-bar { 
-    font-size: 12px; 
-    padding: 10px 12px !important;
-    line-height: 1.4;
-  }
-  .cf-announce-bar .cf-ab-text { font-size: 12px; }
-  .cf-announce-bar .cf-ab-timer { 
-    font-size: 11px; 
-    padding: 3px 8px; 
-  }
-  
+  /* MOBILE: hide announce bar entirely */
+  body { padding-top: 0; }
+  .cf-announce-bar { display: none !important; }
   /* HERO MOBILE FIX */
   .hero { padding: 30px 20px 60px !important; }
   .hero-container { display: flex; flex-direction: column; align-items: center; }
@@ -1537,13 +1527,11 @@ footer .container { max-width: 900px; }
 }
 
 @media (max-width: 480px) {
-  body { padding-top: 70px; }
+  body { padding-top: 0; }
   .timeline-grid { grid-template-columns: 1fr; }
   .modal { padding: 36px 24px; }
   .hero h1 { font-size: 26px; }
   .section-title { font-size: 24px; }
-  .cf-announce-bar { font-size: 11px; padding: 8px 10px !important; }
-  .cf-announce-bar .cf-ab-timer { font-size: 10px; }
   
   /* SECTION TITLES MOBILE */
   section .container h2 { font-size: 24px !important; line-height: 1.25; }
