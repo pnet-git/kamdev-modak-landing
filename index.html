@@ -6,6 +6,24 @@
 <title>Kamdev Modak — The Ayurvedic Answer To Viagra | Dr. Madhu Sudan</title>
 <meta name="description" content="Feel the difference in 72 hours. Formulated by Dr. Madhu Sudan, India's leading sexologist. 100% Ayurvedic. Zero side effects.">
 
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '921929390306325');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=921929390306325&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <!-- Fonts: Cormorant Garamond (serif, heritage) + Inter (clean body) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2438,6 +2456,9 @@ let selectedPack = "monthly";
 function openModal(pack) {
   selectedPack = pack;
   localStorage.setItem("selectedPack", pack);
+
+  // Meta Pixel: user opened checkout
+  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_name: pack });
   
   // Update pack name display
   const packNames = {
@@ -2494,6 +2515,8 @@ function handleFormSubmit(e) {
     method: "POST",
     body: new URLSearchParams(formData)
   }).catch(() => {});
+  // Meta Pixel: user submitted details, redirecting to payment
+  if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', { content_name: pack });
   setTimeout(() => {
     window.location.href = RAZORPAY_LINKS[pack] || RAZORPAY_LINKS["monthly"];
   }, 300);
