@@ -1492,6 +1492,63 @@ footer .container { max-width: 900px; }
   padding: 16px;
   font-size: 16px;
 }
+.pack-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.pack-opt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border: 2px solid rgba(139,21,56,0.15);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--white);
+  position: relative;
+}
+.pack-opt:hover { border-color: rgba(139,21,56,0.4); }
+.pack-opt.selected {
+  border-color: var(--maroon);
+  background: rgba(201,161,74,0.08);
+  box-shadow: 0 4px 14px rgba(139,21,56,0.12);
+}
+.pack-opt-left { display: flex; align-items: center; gap: 10px; }
+.pack-radio {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(139,21,56,0.3);
+  flex-shrink: 0;
+  position: relative;
+  transition: all 0.2s ease;
+}
+.pack-opt.selected .pack-radio { border-color: var(--maroon); }
+.pack-opt.selected .pack-radio::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--maroon);
+}
+.pack-opt-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+.pack-opt-sub { font-size: 11px; color: var(--ink-soft); }
+.pack-opt-price { font-size: 15px; font-weight: 700; color: var(--maroon-dark); white-space: nowrap; }
+.pack-opt-badge {
+  position: absolute;
+  top: -8px; right: 12px;
+  background: var(--gold);
+  color: var(--maroon-dark);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+}
 .modal-trust {
   text-align: center;
   margin-top: 18px;
@@ -1851,7 +1908,7 @@ footer .container { max-width: 900px; }
       </div>
     </div>
 
-    <button class="cta-primary" onclick="openModal('trial')">👉 Order Now</button>
+    <button class="cta-primary" onclick="openModal('cta')">👉 Order Now</button>
 
     <div class="hero-trust">
       <span>1,14,000+ Patients</span>
@@ -1941,7 +1998,7 @@ footer .container { max-width: 900px; }
     <p class="herbs-tagline">5,000 years of Ayurveda. Combined in one daily modak.</p>
 
     <div style="text-align:center; margin-top:36px;">
-      <button class="cta-primary" onclick="openModal('trial')">👉 Order Now</button>
+      <button class="cta-primary" onclick="openModal('cta')">👉 Order Now</button>
     </div>
   </div>
 </section>
@@ -2158,7 +2215,7 @@ footer .container { max-width: 900px; }
     </div>
 
     <div style="text-align:center; margin-top:40px;">
-      <button class="cta-primary" onclick="openModal('trial')">👉 Start My Transformation</button>
+      <button class="cta-primary" onclick="openModal('cta')">👉 Start My Transformation</button>
     </div>
   </div>
 </section>
@@ -2179,7 +2236,7 @@ footer .container { max-width: 900px; }
   <div class="reel-caption">▶ The truth about what works (and what doesn't)</div>
 
   <div style="text-align:center; margin-top:36px;">
-    <button class="cta-primary" onclick="openModal('trial')">👉 Order My Kamdev Modak</button>
+    <button class="cta-primary" onclick="openModal('cta')">👉 Order My Kamdev Modak</button>
   </div>
 </section>
 
@@ -2298,7 +2355,7 @@ footer .container { max-width: 900px; }
     <!-- DUAL CTA BUTTONS: PRIMARY + SECONDARY (LOSS AVERSION) -->
     <div style="text-align: center; margin-top: 60px; display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
       <!-- PRIMARY BUTTON -->
-      <button class="cta-primary" style="padding: 18px 40px; font-size: 16px; font-weight: 700;" onclick="openModal('trial')">
+      <button class="cta-primary" style="padding: 18px 40px; font-size: 16px; font-weight: 700;" onclick="openModal('cta')">
         ✓ Yes, I'm Ready to Transform. Start Now →
       </button>
 
@@ -2409,7 +2466,7 @@ footer .container { max-width: 900px; }
       <img src="modak-lifestyle-2.jpg" alt="Kamdev Modak - start your transformation" style="width:100%; max-width:450px; border-radius:20px; box-shadow: 0 12px 32px rgba(201,161,74,0.3);">
     </div>
     
-    <button class="cta-primary" onclick="openModal('final')">👉 Start My 72-Hour Transformation</button>
+    <button class="cta-primary" onclick="openModal('cta')">👉 Start My 72-Hour Transformation</button>
     <div class="urgency-strip">
       <span>⚡ Trial pack stock limited</span>
       <span>🔒 100% secure checkout</span>
@@ -2446,7 +2503,7 @@ footer .container { max-width: 900px; }
     <div class="mdk-sticky-tagline">Ancient Science, Packed Into One Modak.</div>
     <div class="mdk-sticky-price"><s>₹18,750</s> today — 7-Day Trial just <b>₹1,490</b></div>
   </div>
-  <button class="mdk-sticky-btn" onclick="openModal('trial')">Order Now →</button>
+  <button class="mdk-sticky-btn" onclick="openModal('cta')">Order Now →</button>
 </div>
 
 <!-- ============================================ -->
@@ -2458,10 +2515,39 @@ footer .container { max-width: 900px; }
     <h3>You're One Step Away From Your Transformation.</h3>
     <p style="margin-bottom: 20px;">Enter your details below. <strong>Dr. Madhu's team will contact you within 24 hours</strong> to confirm delivery and schedule your <strong>FREE 1:1 consultation</strong>.</p>
 
-    <!-- SELECTED PACK DISPLAY -->
-    <div id="selectedPackDisplay" style="background: rgba(201,161,74,0.1); padding: 14px 18px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--gold); display: flex; justify-content: space-between; align-items: center;">
-      <span style="font-size: 14px; color: var(--ink-soft); font-weight: 600;">Selected Pack:</span>
-      <span id="packName" style="font-size: 15px; color: var(--maroon-dark); font-weight: 700;">Monthly Pack — ₹5,550</span>
+    <!-- PACK SELECTOR -->
+    <div class="pack-options" id="packOptions">
+      <div class="pack-opt" data-pack="trial" onclick="selectPack('trial')">
+        <div class="pack-opt-left">
+          <span class="pack-radio"></span>
+          <div>
+            <div class="pack-opt-name">Trial Pack</div>
+            <div class="pack-opt-sub">7 Modak · 1 week</div>
+          </div>
+        </div>
+        <div class="pack-opt-price">₹1,490</div>
+      </div>
+      <div class="pack-opt selected" data-pack="monthly" onclick="selectPack('monthly')">
+        <span class="pack-opt-badge">MOST POPULAR</span>
+        <div class="pack-opt-left">
+          <span class="pack-radio"></span>
+          <div>
+            <div class="pack-opt-name">Monthly Pack</div>
+            <div class="pack-opt-sub">30 Modak · 1 month</div>
+          </div>
+        </div>
+        <div class="pack-opt-price">₹5,550</div>
+      </div>
+      <div class="pack-opt" data-pack="quarterly" onclick="selectPack('quarterly')">
+        <div class="pack-opt-left">
+          <span class="pack-radio"></span>
+          <div>
+            <div class="pack-opt-name">3-Month Transformation</div>
+            <div class="pack-opt-sub">90 Modak · 3 months · best value</div>
+          </div>
+        </div>
+        <div class="pack-opt-price">₹15,000</div>
+      </div>
     </div>
 
     <!-- HARDCODED FORM — SENDS TO KIT API VIA FETCH -->
@@ -2505,27 +2591,28 @@ const RAZORPAY_LINKS = {
 let selectedPack = "monthly";
 
 function openModal(pack) {
-  selectedPack = pack;
-  localStorage.setItem("selectedPack", pack);
+  // Generic CTAs (hero/footer/mid-page) pass trial/hero/final — default those to monthly (best seller).
+  // Real pricing buttons pass trial/monthly/quarterly — respect their choice.
+  const directPacks = ['trial','monthly','quarterly'];
+  // hero/final always map to monthly; a generic 'trial' from non-pricing buttons also defaults to monthly
+  let preselect = (pack === 'hero' || pack === 'final') ? 'monthly' : pack;
+  if (!directPacks.includes(preselect)) preselect = 'monthly';
+
+  selectPack(preselect);
 
   // Meta Pixel: user opened checkout
-  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_name: pack });
-  
-  // Update pack name display
-  const packNames = {
-    trial: "Trial Pack (7 Modak) — ₹1,490",
-    monthly: "Monthly Pack (30 Modak) — ₹5,550",
-    quarterly: "3-Month Transformation (90 Modak) — ₹15,000",
-    final: "Monthly Pack (30 Modak) — ₹5,550",
-    hero: "Monthly Pack (30 Modak) — ₹5,550"
-  };
-  const packNameEl = document.getElementById("packName");
-  if (packNameEl) {
-    packNameEl.textContent = packNames[pack] || packNames["monthly"];
-  }
-  
+  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_name: selectedPack });
+
   document.getElementById("leadModal").classList.add("active");
   document.body.style.overflow = "hidden";
+}
+
+function selectPack(pack) {
+  selectedPack = pack;
+  localStorage.setItem("selectedPack", pack);
+  document.querySelectorAll('.pack-opt').forEach(el => {
+    el.classList.toggle('selected', el.dataset.pack === pack);
+  });
 }
 
 function closeModal() {
@@ -2692,7 +2779,7 @@ function closeExitPopup() {
 function acceptOfferAndScroll() {
   document.getElementById('exitPopup').classList.remove('active');
   setTimeout(() => {
-    openModal('trial');
+    openModal('cta');
   }, 300);
 }
 
