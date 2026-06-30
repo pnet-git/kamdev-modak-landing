@@ -1848,7 +1848,7 @@ footer .container { max-width: 900px; }
       </div>
     </div>
 
-    <button class="cta-primary" onclick="document.getElementById('pricing').scrollIntoView({ behavior: 'smooth', block: 'start' })">👉 Order Now</button>
+    <button class="cta-primary" onclick="openModal('trial')">👉 Order Now</button>
 
     <div class="hero-trust">
       <span>1,14,000+ Patients</span>
@@ -1938,7 +1938,7 @@ footer .container { max-width: 900px; }
     <p class="herbs-tagline">5,000 years of Ayurveda. Combined in one daily modak.</p>
 
     <div style="text-align:center; margin-top:36px;">
-      <button class="cta-primary" onclick="document.getElementById('pricing').scrollIntoView({ behavior: 'smooth', block: 'start' })">👉 Get My Kamdev Modak</button>
+      <button class="cta-primary" onclick="openModal('trial')">👉 Get My Kamdev Modak</button>
     </div>
   </div>
 </section>
@@ -1967,7 +1967,7 @@ footer .container { max-width: 900px; }
     </div>
 
     <div style="text-align:center; margin-top:40px;">
-      <button class="cta-primary" onclick="document.getElementById('pricing').scrollIntoView({ behavior: 'smooth', block: 'start' })">👉 Start My Transformation</button>
+      <button class="cta-primary" onclick="openModal('trial')">👉 Start My Transformation</button>
     </div>
   </div>
 </section>
@@ -1988,7 +1988,7 @@ footer .container { max-width: 900px; }
   <div class="reel-caption">▶ The truth about what works (and what doesn't)</div>
 
   <div style="text-align:center; margin-top:36px;">
-    <button class="cta-primary" onclick="document.getElementById('pricing').scrollIntoView({ behavior: 'smooth', block: 'start' })">👉 Order My Kamdev Modak</button>
+    <button class="cta-primary" onclick="openModal('trial')">👉 Order My Kamdev Modak</button>
   </div>
 </section>
 
@@ -2237,7 +2237,7 @@ footer .container { max-width: 900px; }
     <!-- DUAL CTA BUTTONS: PRIMARY + SECONDARY (LOSS AVERSION) -->
     <div style="text-align: center; margin-top: 60px; display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
       <!-- PRIMARY BUTTON -->
-      <button class="cta-primary" style="padding: 18px 40px; font-size: 16px; font-weight: 700;" onclick="document.querySelector('.pricing').scrollIntoView({ behavior: 'smooth', block: 'start' })">
+      <button class="cta-primary" style="padding: 18px 40px; font-size: 16px; font-weight: 700;" onclick="openModal('trial')">
         ✓ Yes, I'm Ready to Transform. Start Now →
       </button>
 
@@ -2440,7 +2440,7 @@ footer .container { max-width: 900px; }
     <div class="mdk-sticky-tagline">Ancient Science, Packed Into One Modak.</div>
     <div class="mdk-sticky-price"><s>₹18,750</s> today — 7-Day Trial just <b>₹1,490</b></div>
   </div>
-  <button class="mdk-sticky-btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth', block:'start'})">Order Now →</button>
+  <button class="mdk-sticky-btn" onclick="openModal('trial')">Order Now →</button>
 </div>
 
 <!-- ============================================ -->
@@ -2686,7 +2686,7 @@ function closeExitPopup() {
 function acceptOfferAndScroll() {
   document.getElementById('exitPopup').classList.remove('active');
   setTimeout(() => {
-    document.querySelector('.pricing').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    openModal('trial');
   }, 300);
 }
 
