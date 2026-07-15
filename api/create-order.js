@@ -60,7 +60,8 @@ module.exports = async (req, res) => {
       },
       order_note: chosen.label,
       order_tags: {
-        pack: String(pack || "monthly")
+        pack: String(pack || "monthly"),
+        env: ENV
       }
     };
 
