@@ -18,14 +18,14 @@ module.exports = async (req, res) => {
   try {
     // Parse body (Vercel may give string or object)
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body || {});
-    const { pack, name, email, phone } = body;
+    const { pack, name, email, phone, address } = body;
 
     const chosen = PACKS[pack] || PACKS.monthly;
 
-    // basic validation
-    const cleanPhone = String(phone || "").replace(/\D/g, "").slice(-10);
-    if (cleanPhone.length !== 10) {
-      return res.status(400).json({ error: "Valid 10-digit phone required" });
+    // basic validation — international friendly (8-15 digits)
+    const cleanPhone = String(phone || "").replace(/\D/g, "");
+    if (cleanPhone.length < 8 || cleanPhone.length > 15) {
+      return res.status(400).json({ error: "Valid phone required" });
     }
 
     const ENV = (process.env.CASHFREE_ENV || "sandbox").toLowerCase();
@@ -45,6 +45,7 @@ module.exports = async (req, res) => {
     const origin = req.headers.origin || "https://modak.drmadhusudan.com";
     const returnUrl = `${origin}/thank-you?order_id={order_id}&amount=${chosen.amount}&pack=${pack || "monthly"}`;
 
+    const addr = address || {};
     const orderPayload = {
       order_id: orderId,
       order_amount: chosen.amount,
@@ -58,7 +59,16 @@ module.exports = async (req, res) => {
       order_meta: {
         return_url: returnUrl
       },
-      order_note: chosen.label
+      order_note: chosen.label,
+      order_tags: {
+        pack: String(pack || "monthly"),
+        ship_line1: (addr.line1 || "").slice(0, 250),
+        ship_line2: (addr.line2 || "").slice(0, 250),
+        ship_city: (addr.city || "").slice(0, 100),
+        ship_state: (addr.state || "").slice(0, 100),
+        ship_postal: (addr.postal_code || "").slice(0, 20),
+        ship_country: (addr.country || "IN").slice(0, 10)
+      }
     };
 
     const cfRes = await fetch(`${BASE}/orders`, {

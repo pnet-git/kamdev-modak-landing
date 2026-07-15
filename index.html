@@ -2562,7 +2562,30 @@ footer .container { max-width: 900px; }
         <input class="formkit-input" type="text" name="fields[first_name]" placeholder="First Name" required>
       </div>
       <div class="form-group">
-        <input class="formkit-input" type="tel" name="fields[phone_number]" placeholder="Phone Number (10 digits)" required>
+        <input class="formkit-input" type="tel" name="fields[phone_number]" placeholder="Phone Number" required>
+      </div>
+      <div class="form-group">
+        <input class="formkit-input" type="text" name="address_line1" placeholder="Address Line 1" required>
+      </div>
+      <div class="form-group">
+        <input class="formkit-input" type="text" name="address_line2" placeholder="Address Line 2 (optional)">
+      </div>
+      <div class="form-group" style="display:flex; gap:10px;">
+        <input class="formkit-input" type="text" name="city" placeholder="City" required style="flex:1;">
+        <input class="formkit-input" type="text" name="state" placeholder="State / Province" required style="flex:1;">
+      </div>
+      <div class="form-group" style="display:flex; gap:10px;">
+        <input class="formkit-input" type="text" name="postal_code" placeholder="Postal / ZIP Code" required style="flex:1;">
+        <select class="formkit-input" name="country" required style="flex:1;">
+          <option value="IN" selected>India</option>
+          <option value="US">United States</option>
+          <option value="GB">United Kingdom</option>
+          <option value="CA">Canada</option>
+          <option value="AU">Australia</option>
+          <option value="AE">UAE</option>
+          <option value="SG">Singapore</option>
+          <option value="OTHER">Other</option>
+        </select>
       </div>
       <button type="submit" class="form-submit" style="background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%); color: white; font-weight: 700; letter-spacing: 0.5px; font-size: 16px; box-shadow: 0 8px 24px rgba(139, 21, 56, 0.35); transition: all 0.3s ease; padding: 18px 28px; border-radius: 8px;">✓ Confirm & Continue To Checkout →</button>
     </form>
@@ -2633,23 +2656,32 @@ document.addEventListener("keydown", (e) => {
 
 function handleFormSubmit(e) {
   e.preventDefault();
-  const email = e.target.querySelector("input[name=\"email_address\"]").value;
-  const firstName = e.target.querySelector("input[name=\"fields[first_name]\"]").value;
-  const phone = e.target.querySelector("input[name=\"fields[phone_number]\"]").value;
+  const g = (n) => { const el = e.target.querySelector(`[name="${n}"]`); return el ? el.value.trim() : ""; };
+  const email = g("email_address");
+  const firstName = g("fields[first_name]");
+  const phone = g("fields[phone_number]");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    alert("Please enter a valid email address");
-    return;
-  }
-  if (firstName.trim().length < 2) {
-    alert("Please enter a valid name");
-    return;
-  }
+  if (!emailRegex.test(email)) { alert("Please enter a valid email address"); return; }
+  if (firstName.length < 2) { alert("Please enter a valid name"); return; }
   const phoneDigits = phone.replace(/\D/g, "");
-  if (phoneDigits.length !== 10) {
-    alert("Please enter a valid 10-digit phone number");
+  // international-friendly: 8-15 digits
+  if (phoneDigits.length < 8 || phoneDigits.length > 15) {
+    alert("Please enter a valid phone number");
     return;
   }
+  const address = {
+    line1: g("address_line1"),
+    line2: g("address_line2"),
+    city: g("city"),
+    state: g("state"),
+    postal_code: g("postal_code"),
+    country: g("country")
+  };
+  if (!address.line1 || !address.city || !address.state || !address.postal_code) {
+    alert("Please complete your shipping address");
+    return;
+  }
+
   const pack = localStorage.getItem("selectedPack") || "monthly";
   const formData = new FormData(e.target);
   // capture lead to Kit (fire and forget)
@@ -2660,10 +2692,10 @@ function handleFormSubmit(e) {
   // Meta Pixel: user submitted details, moving to payment
   if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', { content_name: pack });
 
-  startCashfreeCheckout(pack, firstName, email, phoneDigits);
+  startCashfreeCheckout(pack, firstName, email, phoneDigits, address);
 }
 
-async function startCashfreeCheckout(pack, name, email, phone) {
+async function startCashfreeCheckout(pack, name, email, phone, address) {
   const btn = document.querySelector("#leadForm button[type='submit']");
   const originalText = btn ? btn.innerHTML : "";
   if (btn) { btn.disabled = true; btn.innerHTML = "Processing…"; }
@@ -2672,7 +2704,7 @@ async function startCashfreeCheckout(pack, name, email, phone) {
     const resp = await fetch("/api/create-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pack, name, email, phone })
+      body: JSON.stringify({ pack, name, email, phone, address })
     });
     const data = await resp.json();
 
@@ -2684,8 +2716,9 @@ async function startCashfreeCheckout(pack, name, email, phone) {
     const cashfree = Cashfree({ mode });
     cashfree.checkout({
       paymentSessionId: data.payment_session_id,
-      redirectTarget: "_self"   // opens Cashfree checkout in the same page
+      redirectTarget: "_modal"   // opens Cashfree checkout as an overlay on our page
     });
+    if (btn) { btn.disabled = false; btn.innerHTML = originalText; }
   } catch (err) {
     alert("Sorry, we couldn't start the payment. Please try again.");
     if (btn) { btn.disabled = false; btn.innerHTML = originalText; }
