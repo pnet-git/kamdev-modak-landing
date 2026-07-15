@@ -2682,9 +2682,8 @@ async function startCashfreeCheckout(pack, name, email, phone) {
     const cashfree = Cashfree({ mode });
     cashfree.checkout({
       paymentSessionId: data.payment_session_id,
-      redirectTarget: "_modal"   // opens Cashfree checkout as an overlay on our page
+      redirectTarget: "_self"   // full-page checkout; auto-redirects to return_url (thank-you) after payment
     });
-    if (btn) { btn.disabled = false; btn.innerHTML = originalText; }
   } catch (err) {
     alert("Sorry, we couldn't start the payment. Please try again.");
     if (btn) { btn.disabled = false; btn.innerHTML = originalText; }
