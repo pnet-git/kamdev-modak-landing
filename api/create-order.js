@@ -87,6 +87,7 @@ module.exports = async (req, res) => {
     return res.status(200).json({
       payment_session_id: data.payment_session_id,
       order_id: orderId,
+      amount: chosen.amount,
       env: ENV
     });
   } catch (err) {

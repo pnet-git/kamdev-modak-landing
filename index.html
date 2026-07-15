@@ -2679,10 +2679,24 @@ async function startCashfreeCheckout(pack, name, email, phone) {
     }
 
     const mode = (data.env === "production") ? "production" : "sandbox";
+    const orderId = data.order_id;
+    const amount = data.amount;
     const cashfree = Cashfree({ mode });
     cashfree.checkout({
       paymentSessionId: data.payment_session_id,
-      redirectTarget: "_self"   // full-page checkout; auto-redirects to return_url (thank-you) after payment
+      redirectTarget: "_modal"   // popup overlay ON our page (landing page stays behind)
+    }).then((result) => {
+      // Popup mode: we handle the result and redirect to thank-you ourselves.
+      if (result && result.error) {
+        // user closed popup or payment failed — re-enable button, stay on page
+        if (btn) { btn.disabled = false; btn.innerHTML = originalText; }
+        return;
+      }
+      // payment done (or redirect) — send them to thank-you with amount + pack for the pixel
+      var tyUrl = "/thank-you?order_id=" + encodeURIComponent(orderId || "") +
+                  "&amount=" + encodeURIComponent(amount || "") +
+                  "&pack=" + encodeURIComponent(pack || "monthly");
+      window.location.href = tyUrl;
     });
   } catch (err) {
     alert("Sorry, we couldn't start the payment. Please try again.");
