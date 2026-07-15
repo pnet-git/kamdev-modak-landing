@@ -24,6 +24,9 @@ src="https://www.facebook.com/tr?id=921929390306325&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
+<!-- Cashfree JS SDK -->
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+
 <!-- Fonts: Cormorant Garamond (serif, heritage) + Inter (clean body) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2649,15 +2652,44 @@ function handleFormSubmit(e) {
   }
   const pack = localStorage.getItem("selectedPack") || "monthly";
   const formData = new FormData(e.target);
+  // capture lead to Kit (fire and forget)
   fetch("https://app.kit.com/forms/9433191/subscriptions", {
     method: "POST",
     body: new URLSearchParams(formData)
   }).catch(() => {});
-  // Meta Pixel: user submitted details, redirecting to payment
+  // Meta Pixel: user submitted details, moving to payment
   if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', { content_name: pack });
-  setTimeout(() => {
-    window.location.href = RAZORPAY_LINKS[pack] || RAZORPAY_LINKS["monthly"];
-  }, 300);
+
+  startCashfreeCheckout(pack, firstName, email, phoneDigits);
+}
+
+async function startCashfreeCheckout(pack, name, email, phone) {
+  const btn = document.querySelector("#leadForm button[type='submit']");
+  const originalText = btn ? btn.innerHTML : "";
+  if (btn) { btn.disabled = true; btn.innerHTML = "Processing…"; }
+
+  try {
+    const resp = await fetch("/api/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pack, name, email, phone })
+    });
+    const data = await resp.json();
+
+    if (!resp.ok || !data.payment_session_id) {
+      throw new Error(data.error || "Could not start payment");
+    }
+
+    const mode = (data.env === "production") ? "production" : "sandbox";
+    const cashfree = Cashfree({ mode });
+    cashfree.checkout({
+      paymentSessionId: data.payment_session_id,
+      redirectTarget: "_self"   // opens Cashfree checkout in the same page
+    });
+  } catch (err) {
+    alert("Sorry, we couldn't start the payment. Please try again.");
+    if (btn) { btn.disabled = false; btn.innerHTML = originalText; }
+  }
 }
 
 // ==========================================

@@ -1,0 +1,9 @@
+{
+  "name": "kamdev-modak-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kamdev Modak landing page with Cashfree checkout",
+  "dependencies": {
+    "cashfree-pg": "^4.3.0"
+  }
+}
