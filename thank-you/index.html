@@ -39,40 +39,6 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
 
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '921929390306325');
-  fbq('track', 'PageView');
-
-  // Purchase event — reads amount from URL if present, else fires without value
-  (function(){
-    var params = new URLSearchParams(window.location.search);
-    // try common param names SuperProfile / gateways may use
-    var amt = params.get('amount') || params.get('amt') || params.get('value') || params.get('price') || params.get('total');
-    var order = params.get('order_id') || params.get('orderId') || params.get('txnid') || params.get('payment_id') || '';
-    var data = { currency: 'INR' };
-    if (amt) {
-      // strip any commas / currency symbols, keep the number
-      var clean = parseFloat(String(amt).replace(/[^0-9.]/g, ''));
-      if (!isNaN(clean) && clean > 0) data.value = clean;
-    }
-    if (order) data.order_id = order;
-    fbq('track', 'Purchase', data);
-  })();
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=921929390306325&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     * {
