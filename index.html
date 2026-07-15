@@ -2564,29 +2564,6 @@ footer .container { max-width: 900px; }
       <div class="form-group">
         <input class="formkit-input" type="tel" name="fields[phone_number]" placeholder="Phone Number" required>
       </div>
-      <div class="form-group">
-        <input class="formkit-input" type="text" name="address_line1" placeholder="Address Line 1" required>
-      </div>
-      <div class="form-group">
-        <input class="formkit-input" type="text" name="address_line2" placeholder="Address Line 2 (optional)">
-      </div>
-      <div class="form-group" style="display:flex; gap:10px;">
-        <input class="formkit-input" type="text" name="city" placeholder="City" required style="flex:1;">
-        <input class="formkit-input" type="text" name="state" placeholder="State / Province" required style="flex:1;">
-      </div>
-      <div class="form-group" style="display:flex; gap:10px;">
-        <input class="formkit-input" type="text" name="postal_code" placeholder="Postal / ZIP Code" required style="flex:1;">
-        <select class="formkit-input" name="country" required style="flex:1;">
-          <option value="IN" selected>India</option>
-          <option value="US">United States</option>
-          <option value="GB">United Kingdom</option>
-          <option value="CA">Canada</option>
-          <option value="AU">Australia</option>
-          <option value="AE">UAE</option>
-          <option value="SG">Singapore</option>
-          <option value="OTHER">Other</option>
-        </select>
-      </div>
       <button type="submit" class="form-submit" style="background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%); color: white; font-weight: 700; letter-spacing: 0.5px; font-size: 16px; box-shadow: 0 8px 24px rgba(139, 21, 56, 0.35); transition: all 0.3s ease; padding: 18px 28px; border-radius: 8px;">✓ Confirm & Continue To Checkout →</button>
     </form>
 
@@ -2669,20 +2646,9 @@ function handleFormSubmit(e) {
     alert("Please enter a valid phone number");
     return;
   }
-  const address = {
-    line1: g("address_line1"),
-    line2: g("address_line2"),
-    city: g("city"),
-    state: g("state"),
-    postal_code: g("postal_code"),
-    country: g("country")
-  };
-  if (!address.line1 || !address.city || !address.state || !address.postal_code) {
-    alert("Please complete your shipping address");
-    return;
-  }
-
-  const pack = localStorage.getItem("selectedPack") || "monthly";
+  // Pack: read fresh from the currently-selected card (most reliable), fall back to localStorage.
+  const selectedCard = document.querySelector('.pack-opt.selected');
+  const pack = (selectedCard && selectedCard.dataset.pack) || localStorage.getItem("selectedPack") || "monthly";
   const formData = new FormData(e.target);
   // capture lead to Kit (fire and forget)
   fetch("https://app.kit.com/forms/9433191/subscriptions", {
@@ -2692,10 +2658,10 @@ function handleFormSubmit(e) {
   // Meta Pixel: user submitted details, moving to payment
   if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', { content_name: pack });
 
-  startCashfreeCheckout(pack, firstName, email, phoneDigits, address);
+  startCashfreeCheckout(pack, firstName, email, phoneDigits);
 }
 
-async function startCashfreeCheckout(pack, name, email, phone, address) {
+async function startCashfreeCheckout(pack, name, email, phone) {
   const btn = document.querySelector("#leadForm button[type='submit']");
   const originalText = btn ? btn.innerHTML : "";
   if (btn) { btn.disabled = true; btn.innerHTML = "Processing…"; }
@@ -2704,7 +2670,7 @@ async function startCashfreeCheckout(pack, name, email, phone, address) {
     const resp = await fetch("/api/create-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pack, name, email, phone, address })
+      body: JSON.stringify({ pack, name, email, phone })
     });
     const data = await resp.json();
 

@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
   try {
     // Parse body (Vercel may give string or object)
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body || {});
-    const { pack, name, email, phone, address } = body;
+    const { pack, name, email, phone } = body;
 
     const chosen = PACKS[pack] || PACKS.monthly;
 
@@ -45,7 +45,6 @@ module.exports = async (req, res) => {
     const origin = req.headers.origin || "https://modak.drmadhusudan.com";
     const returnUrl = `${origin}/thank-you?order_id={order_id}&amount=${chosen.amount}&pack=${pack || "monthly"}`;
 
-    const addr = address || {};
     const orderPayload = {
       order_id: orderId,
       order_amount: chosen.amount,
@@ -61,13 +60,7 @@ module.exports = async (req, res) => {
       },
       order_note: chosen.label,
       order_tags: {
-        pack: String(pack || "monthly"),
-        ship_line1: (addr.line1 || "").slice(0, 250),
-        ship_line2: (addr.line2 || "").slice(0, 250),
-        ship_city: (addr.city || "").slice(0, 100),
-        ship_state: (addr.state || "").slice(0, 100),
-        ship_postal: (addr.postal_code || "").slice(0, 20),
-        ship_country: (addr.country || "IN").slice(0, 10)
+        pack: String(pack || "monthly")
       }
     };
 
